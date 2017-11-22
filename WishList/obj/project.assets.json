@@ -22324,20 +22324,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bill\\.nuget\\packages\\": {}
+    "C:\\Users\\prebe\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Toegepaste Informatica 3de jaar\\Native Apps II - mobile apps Windows\\Project - Wishlist\\WishList\\WishList\\WishList.csproj",
+      "projectUniqueName": "D:\\SCHOOL\\Docs school\\3e jaar\\Native Apps II mobile apps voor Windows\\wishlist\\WishList\\WishList.csproj",
       "projectName": "WishList",
-      "projectPath": "D:\\Toegepaste Informatica 3de jaar\\Native Apps II - mobile apps Windows\\Project - Wishlist\\WishList\\WishList\\WishList.csproj",
-      "packagesPath": "C:\\Users\\Bill\\.nuget\\packages\\",
-      "outputPath": "D:\\Toegepaste Informatica 3de jaar\\Native Apps II - mobile apps Windows\\Project - Wishlist\\WishList\\WishList\\obj\\",
+      "projectPath": "D:\\SCHOOL\\Docs school\\3e jaar\\Native Apps II mobile apps voor Windows\\wishlist\\WishList\\WishList.csproj",
+      "packagesPath": "C:\\Users\\prebe\\.nuget\\packages\\",
+      "outputPath": "D:\\SCHOOL\\Docs school\\3e jaar\\Native Apps II mobile apps voor Windows\\wishlist\\WishList\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\Bill\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\prebe\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

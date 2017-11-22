@@ -2,6 +2,7 @@ App.xbf
 Styles\Custom.xbf
 Views\Busy.xbf
 Views\DetailPage.xbf
+Views\LoginPage.xbf
 Views\MainPage.xbf
 Views\SettingsPage.xbf
 Views\Splash.xbf

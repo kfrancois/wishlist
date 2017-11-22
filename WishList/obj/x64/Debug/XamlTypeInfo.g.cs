@@ -156,7 +156,7 @@ namespace WishList.WishList_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[75];
+            _typeNameTable = new string[76];
             _typeNameTable[0] = "Template10.Common.BootStrapper";
             _typeNameTable[1] = "Windows.UI.Xaml.Application";
             _typeNameTable[2] = "Template10.Common.StateItems";
@@ -214,26 +214,27 @@ namespace WishList.WishList_XamlTypeInfo
             _typeNameTable[54] = "Template10.Common.IStateItems";
             _typeNameTable[55] = "WishList.Views.DetailPage";
             _typeNameTable[56] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[57] = "WishList.ViewModels.MainPageViewModel";
-            _typeNameTable[58] = "Microsoft.Xaml.Interactivity.Interaction";
-            _typeNameTable[59] = "Microsoft.Xaml.Interactivity.BehaviorCollection";
-            _typeNameTable[60] = "Windows.UI.Xaml.DependencyObjectCollection";
-            _typeNameTable[61] = "Template10.Behaviors.KeyBehavior";
-            _typeNameTable[62] = "Microsoft.Xaml.Interactivity.ActionCollection";
-            _typeNameTable[63] = "Windows.System.VirtualKey";
-            _typeNameTable[64] = "Template10.Behaviors.KeyBehavior.Kinds";
-            _typeNameTable[65] = "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior";
-            _typeNameTable[66] = "Microsoft.Xaml.Interactivity.Behavior";
-            _typeNameTable[67] = "Template10.Behaviors.FocusAction";
-            _typeNameTable[68] = "Microsoft.Xaml.Interactions.Core.CallMethodAction";
-            _typeNameTable[69] = "WishList.Views.MainPage";
-            _typeNameTable[70] = "WishList.ViewModels.SettingsPageViewModel";
-            _typeNameTable[71] = "WishList.ViewModels.SettingsPartViewModel";
-            _typeNameTable[72] = "WishList.ViewModels.AboutPartViewModel";
-            _typeNameTable[73] = "WishList.Views.SettingsPage";
-            _typeNameTable[74] = "WishList.Views.Splash";
+            _typeNameTable[57] = "WishList.Views.LoginPage";
+            _typeNameTable[58] = "WishList.ViewModels.MainPageViewModel";
+            _typeNameTable[59] = "Microsoft.Xaml.Interactivity.Interaction";
+            _typeNameTable[60] = "Microsoft.Xaml.Interactivity.BehaviorCollection";
+            _typeNameTable[61] = "Windows.UI.Xaml.DependencyObjectCollection";
+            _typeNameTable[62] = "Template10.Behaviors.KeyBehavior";
+            _typeNameTable[63] = "Microsoft.Xaml.Interactivity.ActionCollection";
+            _typeNameTable[64] = "Windows.System.VirtualKey";
+            _typeNameTable[65] = "Template10.Behaviors.KeyBehavior.Kinds";
+            _typeNameTable[66] = "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior";
+            _typeNameTable[67] = "Microsoft.Xaml.Interactivity.Behavior";
+            _typeNameTable[68] = "Template10.Behaviors.FocusAction";
+            _typeNameTable[69] = "Microsoft.Xaml.Interactions.Core.CallMethodAction";
+            _typeNameTable[70] = "WishList.Views.MainPage";
+            _typeNameTable[71] = "WishList.ViewModels.SettingsPageViewModel";
+            _typeNameTable[72] = "WishList.ViewModels.SettingsPartViewModel";
+            _typeNameTable[73] = "WishList.ViewModels.AboutPartViewModel";
+            _typeNameTable[74] = "WishList.Views.SettingsPage";
+            _typeNameTable[75] = "WishList.Views.Splash";
 
-            _typeTable = new global::System.Type[75];
+            _typeTable = new global::System.Type[76];
             _typeTable[0] = typeof(global::Template10.Common.BootStrapper);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Application);
             _typeTable[2] = typeof(global::Template10.Common.StateItems);
@@ -291,24 +292,25 @@ namespace WishList.WishList_XamlTypeInfo
             _typeTable[54] = typeof(global::Template10.Common.IStateItems);
             _typeTable[55] = typeof(global::WishList.Views.DetailPage);
             _typeTable[56] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[57] = typeof(global::WishList.ViewModels.MainPageViewModel);
-            _typeTable[58] = typeof(global::Microsoft.Xaml.Interactivity.Interaction);
-            _typeTable[59] = typeof(global::Microsoft.Xaml.Interactivity.BehaviorCollection);
-            _typeTable[60] = typeof(global::Windows.UI.Xaml.DependencyObjectCollection);
-            _typeTable[61] = typeof(global::Template10.Behaviors.KeyBehavior);
-            _typeTable[62] = typeof(global::Microsoft.Xaml.Interactivity.ActionCollection);
-            _typeTable[63] = typeof(global::Windows.System.VirtualKey);
-            _typeTable[64] = typeof(global::Template10.Behaviors.KeyBehavior.Kinds);
-            _typeTable[65] = typeof(global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior);
-            _typeTable[66] = typeof(global::Microsoft.Xaml.Interactivity.Behavior);
-            _typeTable[67] = typeof(global::Template10.Behaviors.FocusAction);
-            _typeTable[68] = typeof(global::Microsoft.Xaml.Interactions.Core.CallMethodAction);
-            _typeTable[69] = typeof(global::WishList.Views.MainPage);
-            _typeTable[70] = typeof(global::WishList.ViewModels.SettingsPageViewModel);
-            _typeTable[71] = typeof(global::WishList.ViewModels.SettingsPartViewModel);
-            _typeTable[72] = typeof(global::WishList.ViewModels.AboutPartViewModel);
-            _typeTable[73] = typeof(global::WishList.Views.SettingsPage);
-            _typeTable[74] = typeof(global::WishList.Views.Splash);
+            _typeTable[57] = typeof(global::WishList.Views.LoginPage);
+            _typeTable[58] = typeof(global::WishList.ViewModels.MainPageViewModel);
+            _typeTable[59] = typeof(global::Microsoft.Xaml.Interactivity.Interaction);
+            _typeTable[60] = typeof(global::Microsoft.Xaml.Interactivity.BehaviorCollection);
+            _typeTable[61] = typeof(global::Windows.UI.Xaml.DependencyObjectCollection);
+            _typeTable[62] = typeof(global::Template10.Behaviors.KeyBehavior);
+            _typeTable[63] = typeof(global::Microsoft.Xaml.Interactivity.ActionCollection);
+            _typeTable[64] = typeof(global::Windows.System.VirtualKey);
+            _typeTable[65] = typeof(global::Template10.Behaviors.KeyBehavior.Kinds);
+            _typeTable[66] = typeof(global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior);
+            _typeTable[67] = typeof(global::Microsoft.Xaml.Interactivity.Behavior);
+            _typeTable[68] = typeof(global::Template10.Behaviors.FocusAction);
+            _typeTable[69] = typeof(global::Microsoft.Xaml.Interactions.Core.CallMethodAction);
+            _typeTable[70] = typeof(global::WishList.Views.MainPage);
+            _typeTable[71] = typeof(global::WishList.ViewModels.SettingsPageViewModel);
+            _typeTable[72] = typeof(global::WishList.ViewModels.SettingsPartViewModel);
+            _typeTable[73] = typeof(global::WishList.ViewModels.AboutPartViewModel);
+            _typeTable[74] = typeof(global::WishList.Views.SettingsPage);
+            _typeTable[75] = typeof(global::WishList.Views.Splash);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -355,18 +357,19 @@ namespace WishList.WishList_XamlTypeInfo
         private object Activate_49_Busy() { return new global::WishList.Views.Busy(); }
         private object Activate_50_DetailPageViewModel() { return new global::WishList.ViewModels.DetailPageViewModel(); }
         private object Activate_55_DetailPage() { return new global::WishList.Views.DetailPage(); }
-        private object Activate_57_MainPageViewModel() { return new global::WishList.ViewModels.MainPageViewModel(); }
-        private object Activate_59_BehaviorCollection() { return new global::Microsoft.Xaml.Interactivity.BehaviorCollection(); }
-        private object Activate_61_KeyBehavior() { return new global::Template10.Behaviors.KeyBehavior(); }
-        private object Activate_62_ActionCollection() { return new global::Microsoft.Xaml.Interactivity.ActionCollection(); }
-        private object Activate_65_EventTriggerBehavior() { return new global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior(); }
-        private object Activate_67_FocusAction() { return new global::Template10.Behaviors.FocusAction(); }
-        private object Activate_68_CallMethodAction() { return new global::Microsoft.Xaml.Interactions.Core.CallMethodAction(); }
-        private object Activate_69_MainPage() { return new global::WishList.Views.MainPage(); }
-        private object Activate_70_SettingsPageViewModel() { return new global::WishList.ViewModels.SettingsPageViewModel(); }
-        private object Activate_71_SettingsPartViewModel() { return new global::WishList.ViewModels.SettingsPartViewModel(); }
-        private object Activate_72_AboutPartViewModel() { return new global::WishList.ViewModels.AboutPartViewModel(); }
-        private object Activate_73_SettingsPage() { return new global::WishList.Views.SettingsPage(); }
+        private object Activate_57_LoginPage() { return new global::WishList.Views.LoginPage(); }
+        private object Activate_58_MainPageViewModel() { return new global::WishList.ViewModels.MainPageViewModel(); }
+        private object Activate_60_BehaviorCollection() { return new global::Microsoft.Xaml.Interactivity.BehaviorCollection(); }
+        private object Activate_62_KeyBehavior() { return new global::Template10.Behaviors.KeyBehavior(); }
+        private object Activate_63_ActionCollection() { return new global::Microsoft.Xaml.Interactivity.ActionCollection(); }
+        private object Activate_66_EventTriggerBehavior() { return new global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior(); }
+        private object Activate_68_FocusAction() { return new global::Template10.Behaviors.FocusAction(); }
+        private object Activate_69_CallMethodAction() { return new global::Microsoft.Xaml.Interactions.Core.CallMethodAction(); }
+        private object Activate_70_MainPage() { return new global::WishList.Views.MainPage(); }
+        private object Activate_71_SettingsPageViewModel() { return new global::WishList.ViewModels.SettingsPageViewModel(); }
+        private object Activate_72_SettingsPartViewModel() { return new global::WishList.ViewModels.SettingsPartViewModel(); }
+        private object Activate_73_AboutPartViewModel() { return new global::WishList.ViewModels.AboutPartViewModel(); }
+        private object Activate_74_SettingsPage() { return new global::WishList.Views.SettingsPage(); }
         private void MapAdd_2_StateItems(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.String, global::System.Object>)instance;
@@ -393,13 +396,13 @@ namespace WishList.WishList_XamlTypeInfo
             var newItem = (global::Template10.Controls.HamburgerButtonInfo)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_59_BehaviorCollection(object instance, object item)
+        private void VectorAdd_60_BehaviorCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.DependencyObject>)instance;
             var newItem = (global::Windows.UI.Xaml.DependencyObject)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_62_ActionCollection(object instance, object item)
+        private void VectorAdd_63_ActionCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.DependencyObject>)instance;
             var newItem = (global::Windows.UI.Xaml.DependencyObject)item;
@@ -822,34 +825,41 @@ namespace WishList.WishList_XamlTypeInfo
                 xamlType = new global::WishList.WishList_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 57:   //  WishList.ViewModels.MainPageViewModel
+            case 57:   //  WishList.Views.LoginPage
+                userType = new global::WishList.WishList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_57_LoginPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 58:   //  WishList.ViewModels.MainPageViewModel
                 userType = new global::WishList.WishList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Template10.Mvvm.ViewModelBase"));
-                userType.Activator = Activate_57_MainPageViewModel;
+                userType.Activator = Activate_58_MainPageViewModel;
                 userType.AddMemberName("Value");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 58:   //  Microsoft.Xaml.Interactivity.Interaction
+            case 59:   //  Microsoft.Xaml.Interactivity.Interaction
                 userType = new global::WishList.WishList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.AddMemberName("Behaviors");
                 xamlType = userType;
                 break;
 
-            case 59:   //  Microsoft.Xaml.Interactivity.BehaviorCollection
+            case 60:   //  Microsoft.Xaml.Interactivity.BehaviorCollection
                 userType = new global::WishList.WishList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObjectCollection"));
-                userType.CollectionAdd = VectorAdd_59_BehaviorCollection;
+                userType.CollectionAdd = VectorAdd_60_BehaviorCollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 60:   //  Windows.UI.Xaml.DependencyObjectCollection
+            case 61:   //  Windows.UI.Xaml.DependencyObjectCollection
                 xamlType = new global::WishList.WishList_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 61:   //  Template10.Behaviors.KeyBehavior
+            case 62:   //  Template10.Behaviors.KeyBehavior
                 userType = new global::WishList.WishList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
-                userType.Activator = Activate_61_KeyBehavior;
+                userType.Activator = Activate_62_KeyBehavior;
                 userType.SetContentPropertyName("Template10.Behaviors.KeyBehavior.Actions");
                 userType.AddMemberName("Actions");
                 userType.AddMemberName("Key");
@@ -861,14 +871,14 @@ namespace WishList.WishList_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 62:   //  Microsoft.Xaml.Interactivity.ActionCollection
+            case 63:   //  Microsoft.Xaml.Interactivity.ActionCollection
                 userType = new global::WishList.WishList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObjectCollection"));
-                userType.CollectionAdd = VectorAdd_62_ActionCollection;
+                userType.CollectionAdd = VectorAdd_63_ActionCollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 63:   //  Windows.System.VirtualKey
+            case 64:   //  Windows.System.VirtualKey
                 userType = new global::WishList.WishList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("None", global::Windows.System.VirtualKey.None);
                 userType.AddEnumValue("LeftButton", global::Windows.System.VirtualKey.LeftButton);
@@ -1043,16 +1053,16 @@ namespace WishList.WishList_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 64:   //  Template10.Behaviors.KeyBehavior.Kinds
+            case 65:   //  Template10.Behaviors.KeyBehavior.Kinds
                 userType = new global::WishList.WishList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("KeyUp", global::Template10.Behaviors.KeyBehavior.Kinds.KeyUp);
                 userType.AddEnumValue("KeyDown", global::Template10.Behaviors.KeyBehavior.Kinds.KeyDown);
                 xamlType = userType;
                 break;
 
-            case 65:   //  Microsoft.Xaml.Interactions.Core.EventTriggerBehavior
+            case 66:   //  Microsoft.Xaml.Interactions.Core.EventTriggerBehavior
                 userType = new global::WishList.WishList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.Xaml.Interactivity.Behavior"));
-                userType.Activator = Activate_65_EventTriggerBehavior;
+                userType.Activator = Activate_66_EventTriggerBehavior;
                 userType.SetContentPropertyName("Microsoft.Xaml.Interactions.Core.EventTriggerBehavior.Actions");
                 userType.AddMemberName("Actions");
                 userType.AddMemberName("EventName");
@@ -1060,65 +1070,65 @@ namespace WishList.WishList_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 66:   //  Microsoft.Xaml.Interactivity.Behavior
+            case 67:   //  Microsoft.Xaml.Interactivity.Behavior
                 userType = new global::WishList.WishList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
                 userType.AddMemberName("AssociatedObject");
                 xamlType = userType;
                 break;
 
-            case 67:   //  Template10.Behaviors.FocusAction
+            case 68:   //  Template10.Behaviors.FocusAction
                 userType = new global::WishList.WishList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
-                userType.Activator = Activate_67_FocusAction;
+                userType.Activator = Activate_68_FocusAction;
                 userType.AddMemberName("TargetObject");
                 xamlType = userType;
                 break;
 
-            case 68:   //  Microsoft.Xaml.Interactions.Core.CallMethodAction
+            case 69:   //  Microsoft.Xaml.Interactions.Core.CallMethodAction
                 userType = new global::WishList.WishList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
-                userType.Activator = Activate_68_CallMethodAction;
+                userType.Activator = Activate_69_CallMethodAction;
                 userType.AddMemberName("MethodName");
                 userType.AddMemberName("TargetObject");
                 xamlType = userType;
                 break;
 
-            case 69:   //  WishList.Views.MainPage
+            case 70:   //  WishList.Views.MainPage
                 userType = new global::WishList.WishList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_69_MainPage;
+                userType.Activator = Activate_70_MainPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 70:   //  WishList.ViewModels.SettingsPageViewModel
+            case 71:   //  WishList.ViewModels.SettingsPageViewModel
                 userType = new global::WishList.WishList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Template10.Mvvm.ViewModelBase"));
-                userType.Activator = Activate_70_SettingsPageViewModel;
+                userType.Activator = Activate_71_SettingsPageViewModel;
                 userType.AddMemberName("SettingsPartViewModel");
                 userType.AddMemberName("AboutPartViewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 71:   //  WishList.ViewModels.SettingsPartViewModel
+            case 72:   //  WishList.ViewModels.SettingsPartViewModel
                 userType = new global::WishList.WishList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Template10.Mvvm.ViewModelBase"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 72:   //  WishList.ViewModels.AboutPartViewModel
+            case 73:   //  WishList.ViewModels.AboutPartViewModel
                 userType = new global::WishList.WishList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Template10.Mvvm.ViewModelBase"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 73:   //  WishList.Views.SettingsPage
+            case 74:   //  WishList.Views.SettingsPage
                 userType = new global::WishList.WishList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_73_SettingsPage;
+                userType.Activator = Activate_74_SettingsPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 74:   //  WishList.Views.Splash
+            case 75:   //  WishList.Views.Splash
                 userType = new global::WishList.WishList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
                 userType.SetIsLocalType();
                 xamlType = userType;

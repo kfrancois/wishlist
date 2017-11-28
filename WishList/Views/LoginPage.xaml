@@ -8,8 +8,8 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Orientation="Vertical" Background="LightGray">
-            <StackPanel Background="#FF0C00FF">
+        <StackPanel Orientation="Vertical" Background="White">
+            <StackPanel Background="#6B69D6">
                 <TextBlock Text="Wishter" FontSize="50" Margin="4" TextAlignment="Center" FocusVisualPrimaryBrush="White" FocusVisualSecondaryBrush="#99000000" Foreground="#FFF7F7F7"/>
             </StackPanel>
                 <TextBlock Text="Login" FontSize="36" Margin="4" TextAlignment="Center" Foreground="Black"/>

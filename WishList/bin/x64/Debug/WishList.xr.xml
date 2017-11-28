@@ -104,8 +104,6 @@
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="Width" />
       <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="FocusVisualPrimaryBrush" />
-      <RootProperty Name="FocusVisualSecondaryBrush" />
       <RootProperty Name="Inlines" />
       <RootProperty Name="LineHeight" />
     </RootType>
@@ -166,8 +164,6 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="Children" />
-      <RootProperty Name="Orientation" />
-      <RootProperty Name="Background" />
     </RootType>
     <RootType FullName="WishList.Views.DetailPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">

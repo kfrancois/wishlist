@@ -7,3 +7,5 @@
 /.vs/WishList/v15/sqlite3/storage.ide-wal
 /.vs/WishList/v15/sqlite3/storage.ide-shm
 /WishList/obj/x64/Debug/Views
+
+/packages

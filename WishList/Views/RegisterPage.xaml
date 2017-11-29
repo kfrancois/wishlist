@@ -8,6 +8,45 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Background="#6B69D6">
+                <TextBlock Text="Wishter" FontSize="50" Margin="4" TextAlignment="Center" FocusVisualPrimaryBrush="White" FocusVisualSecondaryBrush="#99000000" Foreground="#FFF7F7F7"/>
+            </StackPanel>
+            
+            <TextBlock x:Name="Title" Text="Register new Wishter" FontSize="24" Margin="0,20,0,20" TextAlignment="Center"/>
 
+            <TextBlock Text="Enter your e-mail below" Margin="0,0,0,20"
+               TextWrapping="Wrap" Width="300"
+               TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+
+            <TextBox x:Name="registerEmail" Margin="4" Width="250" PlaceholderText="E-mail adress"/>
+
+            <TextBlock Text="Enter your password below" Margin="0,20,0,20"
+               TextWrapping="Wrap" Width="300"
+               TextAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="Black"/>
+            <PasswordBox x:Name="registerPassword" Width="250" MaxLength="16"
+             PlaceholderText="Password"/>
+
+            <TextBlock Text="Re-enter password" Margin="0,20,0,20"
+               TextWrapping="Wrap" Width="300"
+               TextAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="Black"/>
+            <PasswordBox x:Name="reenterPass" Width="250" MaxLength="16"
+             PlaceholderText="Password"/>
+
+            <Grid HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="backButton" Content="Back" Background="Red" Foreground="White"
+         Width="80" Margin="20,20" Grid.Column="0" Grid.Row="0"/>
+            
+            <Button x:Name="registerButton" Content="Register" Background="DodgerBlue" Foreground="White"
+         Width="80" Margin="20,20" Grid.Column="1" Grid.Row="0"/>
+
+            </Grid>
+        </StackPanel>
     </Grid>
 </Page>

@@ -24,12 +24,16 @@
             <PasswordBox x:Name="passwordBox" Width="250" MaxLength="16"
              PlaceholderText="Password"/>
             <!--PasswordChanged="passwordBox_PasswordChanged"-->
-
             <TextBlock x:Name="statusText" Margin="10" HorizontalAlignment="Center" />
+            <TextBlock Text="Don't have an account?"
+                TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+            <TextBlock x:Name="RegisterButtonTextBlock" Text="Register now"
+               Foreground="DodgerBlue"
+               TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
             <Button x:Name="PassportSignInButton" Content="Login" Background="DodgerBlue" Foreground="White"
          Width="80" HorizontalAlignment="Center" Margin="0,20"/>
         </StackPanel>
     </Grid>
 </Page>
-
+<!-- PointerPressed="RegisterButtonTextBlock_OnPointerPressed"-->
 <!-- https://docs.microsoft.com/en-us/windows/uwp/security/microsoft-passport-login -->

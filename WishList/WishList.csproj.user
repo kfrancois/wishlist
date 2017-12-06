@@ -4,4 +4,12 @@
     <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
     <UseEmulator>true</UseEmulator>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DeviceId>7C3F55B7-619D-452D-B6B0-A4A36BC552CC</DeviceId>
+    <UseEmulator>false</UseEmulator>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DeviceId>47FF8CA8-6CE4-4B6F-8CD3-91936EBF1534</DeviceId>
+    <UseEmulator>true</UseEmulator>
+  </PropertyGroup>
 </Project>

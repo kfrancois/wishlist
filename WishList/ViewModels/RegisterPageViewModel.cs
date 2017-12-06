@@ -9,5 +9,10 @@ namespace WishList.ViewModels
 {
     public class RegisterPageViewModel : ViewModelBase
     {
+        public void GotoLoginPage() =>
+            NavigationService.Navigate(typeof(Views.LoginPage));
+
+        public void GotoMainPage() =>
+             NavigationService.Navigate(typeof(Views.MainPage));
     }
 }

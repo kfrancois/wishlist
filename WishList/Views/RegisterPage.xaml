@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="WishList.Views.RegisterPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WishList.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:WishList.ViewModels"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:RegisterPageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer>
+            <StackPanel>
+                <StackPanel Background="DodgerBlue">
+                    <TextBlock Text="Wishter" FontSize="50" Margin="4" TextAlignment="Center" FocusVisualPrimaryBrush="White" FocusVisualSecondaryBrush="#99000000" Foreground="#FFF7F7F7"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock x:Name="Title" Text="Register new Wishter" FontSize="24" Margin="0,20,0,20" TextAlignment="Center"/>
+
+                    <TextBlock Text="Enter your e-mail below" Margin="0,0,0,20"
+               TextWrapping="Wrap" Width="300"
+               TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+
+                    <TextBox x:Name="registerEmail" Margin="4" Width="250" PlaceholderText="E-mail adress"/>
+
+                    <TextBlock Text="Enter your password below" Margin="0,20,0,20"
+               TextWrapping="Wrap" Width="300"
+               TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                    <PasswordBox x:Name="registerPassword" Width="250" MaxLength="16"
+             PlaceholderText="Password"/>
+
+                    <TextBlock Text="Re-enter password" Margin="0,20,0,20"
+               TextWrapping="Wrap" Width="300"
+               TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                    <PasswordBox x:Name="reenterPass" Width="250" MaxLength="16"
+             PlaceholderText="Password"/>
+
+                    <Grid HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button x:Name="backButton" Content="Back" Background="Red" Foreground="White"
+         Width="80" Margin="5,10" Grid.Column="0" Grid.Row="0" Click="{x:Bind ViewModel.GotoLoginPage}"/>
+
+                        <Button x:Name="registerButton" Content="Register" Background="DodgerBlue" Foreground="White"
+         Width="80" Margin="5,10" Grid.Column="1" Grid.Row="0" Click="{x:Bind ViewModel.GotoMainPage}"/>
+
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

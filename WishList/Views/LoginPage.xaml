@@ -5,31 +5,42 @@
     xmlns:local="using:WishList.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:WishList.ViewModels"
     mc:Ignorable="d">
 
+    <Page.DataContext>
+        <vm:LoginPageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Orientation="Vertical" Background="White">
-            <StackPanel Background="#6B69D6">
+        <ScrollViewer Background="White">
+            <StackPanel>
+            <StackPanel Background="DodgerBlue">
                 <TextBlock Text="Wishter" FontSize="50" Margin="4" TextAlignment="Center" FocusVisualPrimaryBrush="White" FocusVisualSecondaryBrush="#99000000" Foreground="#FFF7F7F7"/>
             </StackPanel>
                 <TextBlock Text="Login" FontSize="36" Margin="4" TextAlignment="Center" Foreground="Black"/>
             <TextBlock x:Name="ErrorMessage" Text="" FontSize="20" Margin="4" Foreground="Red" TextAlignment="Center" />
-            <TextBlock Text="Enter your username below" Margin="0,0,0,20"
+            <TextBlock Text="Enter your e-mail below" Margin="0,0,0,20"
                TextWrapping="Wrap" Width="300"
                TextAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="Black" />
-            <TextBox x:Name="UsernameTextBox" Margin="4" Width="250" BorderBrush="#FF858585" PlaceholderText="Username"/>
+            <TextBox x:Name="UsernameTextBox" Margin="4" Width="250" PlaceholderText="E-mail adress" SelectionHighlightColor="{x:Null}" Background="{x:Null}" FocusVisualSecondaryBrush="#99000000"/>
             <TextBlock Text="Enter your password below" Margin="0,20,0,20"
                TextWrapping="Wrap" Width="300"
                TextAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="Black"/>
             <PasswordBox x:Name="passwordBox" Width="250" MaxLength="16"
-             PlaceholderText="Password"/>
+             PlaceholderText="Password" SelectionHighlightColor="{x:Null}" Background="{x:Null}" FocusVisualSecondaryBrush="#99000000"/>
             <!--PasswordChanged="passwordBox_PasswordChanged"-->
-
             <TextBlock x:Name="statusText" Margin="10" HorizontalAlignment="Center" />
+            <TextBlock Text="Don't have an account?"
+                TextAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="Black"/>
+            <TextBlock x:Name="RegisterButtonTextBlock" Text="Register now"
+               Foreground="DodgerBlue"
+               TextAlignment="Center" VerticalAlignment="Center" FontSize="16" PointerPressed="{x:Bind ViewModel.GotoRegisterPage}"/>
             <Button x:Name="PassportSignInButton" Content="Login" Background="DodgerBlue" Foreground="White"
-         Width="80" HorizontalAlignment="Center" Margin="0,20"/>
-        </StackPanel>
+         Width="80" HorizontalAlignment="Center" Margin="0,20" FocusVisualSecondaryBrush="DodgerBlue" FocusVisualPrimaryBrush="DodgerBlue" Click="{x:Bind ViewModel.GotoMainPage}"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
-
+<!-- PointerPressed="RegisterButtonTextBlock_OnPointerPressed"-->
 <!-- https://docs.microsoft.com/en-us/windows/uwp/security/microsoft-passport-login -->

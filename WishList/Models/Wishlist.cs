@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WishList.Model
 {
-    class Wishlist
+    public class Wishlist
     {
         private DateTime date;
         private string title;

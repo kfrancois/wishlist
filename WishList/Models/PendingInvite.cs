@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WishList.Model
 {
-    class PendingInvite
+    public class PendingInvite
     {
     }
 }

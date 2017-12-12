@@ -10,7 +10,6 @@
             </ResourceDictionary.MergedDictionaries>
 
             <!--  custom resources  -->
-
         </ResourceDictionary>
     </Application.Resources>
 

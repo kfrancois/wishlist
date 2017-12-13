@@ -64,24 +64,23 @@
                RelativePanel.Below="pageHeader">
 
             <!--  Overview  -->
-            <PivotItem DataContext="{Binding SettingsPartViewModel}" Header="Overview">
-                <TextBlock Text="Overview"/>
+            <PivotItem Header="Overview">
+                <Frame x:Name="overviewframe"/>
             </PivotItem>
 
             <!--  own wishlists  -->
-            <PivotItem DataContext="{Binding SettingsPartViewModel}"
-                       Header="Own wishlists">
-                <TextBlock Text="Own Wishlists"/>
+            <PivotItem Header="Own wishlists">
+                <Frame x:Name="wishlistframe"/>
             </PivotItem>
 
             <!--  subscripted wishlists  -->
             <PivotItem Header="Subsciptions">
-                <TextBlock Text="Subscriptions"/>
+                <Frame x:Name="subscriptionframe"/>
             </PivotItem>
             
             <!--  invites  -->
             <PivotItem Header="Invites">
-                <TextBlock Text="Invites"/>
+                <Frame x:Name="invitesframe"/>
             </PivotItem>
         </Pivot>
     </RelativePanel>

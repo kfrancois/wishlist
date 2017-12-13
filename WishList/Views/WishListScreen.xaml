@@ -50,7 +50,7 @@
                             <TextBlock Text="{Binding Price}" />
                         </StackPanel>
                     </Grid>
-                  <!--  <StackPanel Orientation="Horizontal" Margin="2">
+                    <!--  <StackPanel Orientation="Horizontal" Margin="2">
                         <TextBlock Name="text1" Text="{Binding Title}"/>
                         <StackPanel Width="150" Margin="10,0,0,0" Orientation="Vertical">
                             <TextBlock Text="Description" FontWeight="Bold"/>

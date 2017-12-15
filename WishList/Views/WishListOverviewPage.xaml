@@ -8,6 +8,99 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="This is Overview"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Row="0" Grid.Column="0">
+        <TextBlock Text="Own Wishes"/>
+        <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.3*"/>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.3*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Name="text1" Text="{Binding Title}"/>
+                        <StackPanel  Margin="10,0,0,0" Orientation="Vertical">
+                            <TextBlock Text="Description" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Description}"/>
+                        </StackPanel>
+                        <StackPanel Margin="10,0,0,0" Orientation="Vertical">
+                            <TextBlock Text="Price" FontWeight="Bold"/>
+                            <!--  <TextBlock Text="{Binding Price, Converter={StaticResource DateToStringFormatConverter}}" /> -->
+                            <TextBlock Text="{Binding Price}" />
+                        </StackPanel>
+                    </Grid>
+                    <!--  <StackPanel Orientation="Horizontal" Margin="2">
+                        <TextBlock Name="text1" Text="{Binding Title}"/>
+                        <StackPanel Width="150" Margin="10,0,0,0" Orientation="Vertical">
+                            <TextBlock Text="Description" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Description}"/>
+                       </StackPanel>
+                        <StackPanel Width="100" Margin="10,0,0,0" Orientation="Vertical">
+                            <TextBlock Text="Price" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Price, Converter={StaticResource DateToStringFormatConverter}}" />
+                        </StackPanel>
+
+                    </StackPanel> -->
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        </StackPanel>
+        <StackPanel  Grid.Row="0" Grid.Column="1">
+        <TextBlock Text="Subscriptions"/>
+        <ListView x:Name="ListView2" ItemsSource="{Binding}" Width="Auto" HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.3*"/>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.3*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Name="text1" Text="{Binding Title}"/>
+                        <StackPanel  Margin="10,0,0,0" Orientation="Vertical">
+                            <TextBlock Text="Description" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Description}"/>
+                        </StackPanel>
+                        <StackPanel Margin="10,0,0,0" Orientation="Vertical">
+                            <TextBlock Text="Price" FontWeight="Bold"/>
+                            <!--  <TextBlock Text="{Binding Price, Converter={StaticResource DateToStringFormatConverter}}" /> -->
+                            <TextBlock Text="{Binding Price}" />
+                        </StackPanel>
+                    </Grid>
+                    <!--  <StackPanel Orientation="Horizontal" Margin="2">
+                        <TextBlock Name="text1" Text="{Binding Title}"/>
+                        <StackPanel Width="150" Margin="10,0,0,0" Orientation="Vertical">
+                            <TextBlock Text="Description" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Description}"/>
+                       </StackPanel>
+                        <StackPanel Width="100" Margin="10,0,0,0" Orientation="Vertical">
+                            <TextBlock Text="Price" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Price, Converter={StaticResource DateToStringFormatConverter}}" />
+                        </StackPanel>
+
+                    </StackPanel> -->
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        </StackPanel>
     </Grid>
 </Page>
+
+    <!--
+        <ListView x:Name="own" SelectionChanged="own_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    -->

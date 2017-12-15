@@ -7,7 +7,63 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="This is the subscriptions page" />
-    </Grid>
+    <StackPanel Name="stackpanel" Background="White" HorizontalAlignment="Stretch" Width="Auto">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="LaptopView">
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ListView1.Width" Value="Auto"/>
+                        <Setter Target="Test.Text" Value="success"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <TextBlock x:Name="Test" Text="Yolo"/>
+        <Button Canvas.Left="87" Canvas.Top="10">
+            <Button.Content>
+                <Image Width="10" Height="10"  Source="ms-appx:///Assets/ic_add_circle_black_24dp_2x.png"/>
+            </Button.Content>
+        </Button>
+        <ListView x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.3*"/>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.3*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Name="text1" Text="{Binding Title}"/>
+                        <StackPanel  Margin="10,0,0,0" Orientation="Vertical">
+                            <TextBlock Text="Description" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Description}"/>
+                        </StackPanel>
+                        <StackPanel Margin="10,0,0,0" Orientation="Vertical">
+                            <TextBlock Text="Price" FontWeight="Bold"/>
+                            <!--  <TextBlock Text="{Binding Price, Converter={StaticResource DateToStringFormatConverter}}" /> -->
+                            <TextBlock Text="{Binding Price}" />
+                        </StackPanel>
+                    </Grid>
+                    <!--  <StackPanel Orientation="Horizontal" Margin="2">
+                        <TextBlock Name="text1" Text="{Binding Title}"/>
+                        <StackPanel Width="150" Margin="10,0,0,0" Orientation="Vertical">
+                            <TextBlock Text="Description" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Description}"/>
+                       </StackPanel>
+                        <StackPanel Width="100" Margin="10,0,0,0" Orientation="Vertical">
+                            <TextBlock Text="Price" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Price, Converter={StaticResource DateToStringFormatConverter}}" />
+                        </StackPanel>
+
+                    </StackPanel> -->
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackPanel>
+
 </Page>

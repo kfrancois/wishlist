@@ -86,7 +86,7 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
                 <StackPanel>
-                    <TextBlock x:Name="RegisterButtonTextBlock" Text="See More? Go to Subscriptions" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                    <TextBlock Text="See More? Go to Subscriptions" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
                 </StackPanel>
             </StackPanel>
         </Grid>

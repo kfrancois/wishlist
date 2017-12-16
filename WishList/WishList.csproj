@@ -124,6 +124,9 @@
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\NewInvite.xaml.cs">
+      <DependentUpon>NewInvite.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NewWishList.xaml.cs">
       <DependentUpon>NewWishList.xaml</DependentUpon>
     </Compile>
@@ -189,6 +192,10 @@
     <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NewInvite.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NewWishList.xaml">
       <SubType>Designer</SubType>

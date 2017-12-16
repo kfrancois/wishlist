@@ -40,6 +40,9 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+                <StackPanel>
+                    <TextBlock Text="See More? Go to Own Wishes" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                </StackPanel>
             </StackPanel>
             <StackPanel>
                 <TextBlock Text="Subscriptions"/>
@@ -72,6 +75,9 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+                <StackPanel>
+                    <TextBlock Text="See More? Go to Subscriptions" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
     </ScrollViewer>

@@ -25,7 +25,7 @@ namespace WishList.Views
     /// </summary>
     public sealed partial class WishListOverviewPage : Page
     {
-        public ObservableCollection<Wish> WishListItem = new ObservableCollection<Wish>();
+        public ObservableCollection<Wishlist> WishListItem = new ObservableCollection<Wishlist>();
         public WishListOverviewPageViewModel WishListOverviewPageViewModelItem { get; private set; }
 
         public WishListOverviewPage()
@@ -34,13 +34,13 @@ namespace WishList.Views
             this.WishListOverviewPageViewModelItem = new WishListOverviewPageViewModel();
 
             MakeHardcodeWishlist();
-            ListView1.DataContext = WishListItem;
-            ListView2.DataContext = WishListItem;
+            ListView1.DataContext = WishListItem.Take(5);
+            ListView2.DataContext = WishListItem.Take(5);
         }
 
         private void MakeHardcodeWishlist()
         {
-            foreach (Wish wish in this.WishListOverviewPageViewModelItem.WishListItem)
+            foreach (Wishlist wish in this.WishListOverviewPageViewModelItem.WishList)
             {
                 this.WishListItem.Add(wish);
             }

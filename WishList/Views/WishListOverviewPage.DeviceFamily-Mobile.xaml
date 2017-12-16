@@ -5,32 +5,22 @@
     xmlns:local="using:WishList.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" xmlns:vm="using:WishList.ViewModels">
-
-    <Page.DataContext>
-        <vm:WishListOverviewPageViewModel x:Name="ViewModel" />
-    </Page.DataContext>
+    mc:Ignorable="d">
 
     <ScrollViewer Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" VerticalScrollBarVisibility="Hidden">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.8*"/>
-                <ColumnDefinition Width="0.1*"/>
-                <ColumnDefinition Width="0.8*"/>
-            </Grid.ColumnDefinitions>
-
-            <StackPanel Grid.Row="0" Grid.Column="0">
-                <TextBlock Text="Own Wishes" FontWeight="Bold" FontSize="20px"/>
+        <StackPanel>
+            <StackPanel>
+                <TextBlock Text="Own Wishlists"/>
                 <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="2*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Name="text1" Text="{Binding Title}" Grid.Row="0" Grid.Column="0" TextWrapping="WrapWholeWords"/>
-                                <StackPanel  Margin="10,0,0,0" Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Name="text1" Text="{Binding Title}" Grid.Row="0" Grid.Column="0" TextWrapping="WrapWholeWords" Margin="10,0,0,0" FontWeight="Bold"/>
+                                <StackPanel  Margin="10,0,0,0" Orientation="Vertical" Grid.Row="1" Grid.Column="0">
                                     <TextBlock Text="Description" FontWeight="Bold"/>
                                     <TextBlock Text="{Binding Description}" TextWrapping="WrapWholeWords"/>
                                 </StackPanel>
@@ -50,22 +40,19 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <StackPanel>
-                    <TextBlock Text="See More? Go to Own Wishes" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
-                </StackPanel>
             </StackPanel>
-            <StackPanel  Grid.Row="0" Grid.Column="2">
-                <TextBlock Text="Subscriptions" FontWeight="Bold" FontSize="20px"/>
+            <StackPanel>
+                <TextBlock Text="Subscriptions"/>
                 <ListBox x:Name="ListView2" ItemsSource="{Binding}" Width="Auto" HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Margin="10,10,10,10">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="2*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Name="text1" Text="{Binding Title}" Grid.Row="0" Grid.Column="0" TextWrapping="WrapWholeWords"/>
-                                <StackPanel  Margin="10,0,0,0" Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Name="text1" Text="{Binding Title}" Grid.Row="0" Grid.Column="0" TextWrapping="WrapWholeWords" Margin="10,0,0,0" FontWeight="Bold"/>
+                                <StackPanel  Margin="10,0,0,0" Orientation="Vertical" Grid.Row="1" Grid.Column="0">
                                     <TextBlock Text="Description" FontWeight="Bold"/>
                                     <TextBlock Text="{Binding Description}" TextWrapping="WrapWholeWords"/>
                                 </StackPanel>
@@ -85,15 +72,12 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <StackPanel>
-                    <TextBlock x:Name="RegisterButtonTextBlock" Text="See More? Go to Subscriptions" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
-                </StackPanel>
             </StackPanel>
-        </Grid>
+        </StackPanel>
     </ScrollViewer>
 </Page>
 
-    <!--
+<!--
         <ListView x:Name="own" SelectionChanged="own_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>

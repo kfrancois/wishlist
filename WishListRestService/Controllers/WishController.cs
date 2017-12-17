@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Models;
-using WebApplication1.Repository;
+using WishListRestService.Models;
+using WishListRestService.Repository;
 
-namespace WebApplication1.Controllers
+namespace WishListRestService.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]

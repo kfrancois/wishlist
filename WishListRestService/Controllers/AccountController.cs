@@ -9,12 +9,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using WebApplication1.Data;
-using WebApplication1.Models;
+using WishListRestService.Models;
 
-namespace WebApplication1.Controllers
+namespace WishListRestService.Controllers
 {
     [Route("[controller]/[action]")]
     public class AccountController : Controller

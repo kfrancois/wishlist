@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using WebApplication1.Models;
+﻿using System.Collections.Generic;
+using WishListRestService.Models;
 
-namespace WebApplication1.Repository
+namespace WishListRestService.Repository
 {
     public interface IWishListRepository
     {

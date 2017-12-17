@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using WebApplication1.Models;
+using WishListRestService.Models;
 
-namespace WebApplication1.Data.Mapping
+namespace WishListRestService.Data.Mapping
 {
     public class PendingInviteConfiguration : IEntityTypeConfiguration<PendingInvite>
     {

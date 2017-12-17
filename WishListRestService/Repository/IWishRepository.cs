@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using WebApplication1.Models;
+using WishListRestService.Models;
 
-namespace WebApplication1.Repository
+namespace WishListRestService.Repository
 {
     public interface IWishRepository
     {

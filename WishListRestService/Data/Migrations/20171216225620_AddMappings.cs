@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
 
-namespace WebApplication1.Data.Migrations
+namespace WishListRestService.Data.Migrations
 {
     public partial class AddMappings : Migration
     {

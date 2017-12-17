@@ -1,13 +1,12 @@
-﻿using System;
-using WebApplication1.Models;
-using WebApplication1.Repository;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using WishListRestService.Models;
+using WishListRestService.Repository;
 
-namespace WebApplication1.Controllers
+namespace WishListRestService.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]
@@ -26,7 +25,14 @@ namespace WebApplication1.Controllers
         public IEnumerable<WishList> Get()
         {
             var name = _userManager.GetUserAsync(User).Result?.UserName;
-            return WishListRepository.GetAll().Where(wl => wl.CreatorName == name);
+            var wishLists =  WishListRepository.GetAll().Where(wl => wl.CreatorName == name);
+            var enumerable = wishLists as WishList[] ?? wishLists.ToArray();
+            foreach (var wishList in enumerable)
+            {
+                wishList.PendingInvites.ForEach(pi => pi.WishList = null);
+                wishList.Subscribers.ForEach(s => s.WishList = null);
+            }
+            return enumerable;
         }
 
         [HttpGet("all")]
@@ -44,6 +50,7 @@ namespace WebApplication1.Controllers
             {
                 return NotFound();
             }
+            item.PendingInvites.ForEach(pi => pi.WishList = null);
             return new ObjectResult(item);
         }
 
@@ -61,7 +68,7 @@ namespace WebApplication1.Controllers
 
             WishListRepository.Add(item);
 
-            _userManager.UpdateAsync(currentUser);
+            //_userManager.UpdateAsync(currentUser);
             WishListRepository.SaveChanges();
 
             return Created($"/api/wishlist/{item.WishListId}", item);
@@ -102,9 +109,7 @@ namespace WebApplication1.Controllers
 
             PendingInvite invite = new PendingInvite
             {
-                UserId = user.Id,
                 User = user,
-                WishListId = wishList.WishListId,
                 WishList = wishList
             };
 
@@ -116,6 +121,50 @@ namespace WebApplication1.Controllers
             return Ok();
         }
 
+        [HttpGet("invited")]
+        public IEnumerable<WishList> InvitedWishLists()
+        {
+            var id = _userManager.GetUserAsync(User).Result?.Id;
+
+            var wishLists = WishListRepository.GetAll().Where(wl => wl.PendingInvites.Any(pi => pi.UserId == id));
+            var invitedWishLists = wishLists as WishList[] ?? wishLists.ToArray();
+            foreach (var wishList in invitedWishLists)
+            {
+                wishList.PendingInvites = null;
+                wishList.Subscribers = null;
+            }
+            return invitedWishLists;
+        }
+
+        [HttpPost("{id}/accept")]
+        public IActionResult AcceptInvite(int id)
+        {
+            var user = _userManager.GetUserAsync(User).Result;
+
+            var wishList = WishListRepository.Find(id);
+
+
+            if (wishList.PendingInvites.Any(pi => pi.UserId == user?.Id))
+            {
+                return BadRequest("subscription already exists");
+            }
+
+
+            wishList.PendingInvites.RemoveAll(pi => pi.UserId == user?.Id);
+
+            var subscriber = new WishListSubscriber
+            {
+                User = _userManager.GetUserAsync(User).Result,
+                WishList = wishList
+            };
+
+            wishList.AddSubscriber(subscriber);
+
+            WishListRepository.Update(wishList);
+            _userManager.UpdateAsync(user);
+
+            return Ok();
+        }
 
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] WishList item)

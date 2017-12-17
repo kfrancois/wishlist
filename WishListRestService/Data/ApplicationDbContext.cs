@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Data.Mapping;
-using WebApplication1.Models;
+using WishListRestService.Data.Mapping;
+using WishListRestService.Models;
 
-namespace WebApplication1.Data
+namespace WishListRestService.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

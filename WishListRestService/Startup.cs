@@ -1,24 +1,20 @@
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using WebApplication1.Data;
-using WebApplication1.Models;
-using WebApplication1.Repository;
-using WebApplication1.Services;
+using WishListRestService.Data;
+using WishListRestService.Models;
+using WishListRestService.Repository;
+using WishListRestService.Services;
 
-namespace WebApplication1
+namespace WishListRestService
 {
     public class Startup
     {

@@ -1,9 +1,7 @@
 using System.Collections.Generic;
-using System.Security.Claims;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace WebApplication1.Models
+namespace WishListRestService.Models
 {
     public class ApplicationUser : IdentityUser
     {
@@ -35,6 +33,11 @@ namespace WebApplication1.Models
         public void AddInvite(PendingInvite invite)
         {
             PendingInvites.Add(invite);
+        }
+
+        public void Subscribe(WishListSubscriber subscriber)
+        {
+            SubbedWishLists.Add(subscriber);
         }
     }
 }

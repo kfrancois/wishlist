@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Data;
-using WebApplication1.Models;
+using WishListRestService.Data;
+using WishListRestService.Models;
 
-namespace WebApplication1.Repository
+namespace WishListRestService.Repository
 {
     public class WishRepository : IWishRepository
     {
@@ -49,6 +47,9 @@ namespace WebApplication1.Repository
             if (itemToUpdate != null)
             {
                 itemToUpdate.Claimed = item.Claimed; // TODO update other fields
+                itemToUpdate.Description = item.Description;
+                itemToUpdate.Name = item.Name;
+                itemToUpdate.Price = item.Price;
             }
             SaveChanges();
         }

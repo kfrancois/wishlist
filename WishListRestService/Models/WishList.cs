@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WebApplication1.Models
+namespace WishListRestService.Models
 {
     public class WishList
     {
@@ -27,6 +27,12 @@ namespace WebApplication1.Models
         {
             PendingInvites.Add(invite);
             invite.User.AddInvite(invite);
+        }
+
+        public void AddSubscriber(WishListSubscriber subscriber)
+        {
+            Subscribers.Add(subscriber);
+            subscriber.User.Subscribe(subscriber);
         }
     }
 }

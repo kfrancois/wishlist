@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
-using WebApplication1.Models;
+using WishListRestService.Models;
 
-namespace WebApplication1.Data
+namespace WishListRestService.Data
 {
     public class DataInitializer
     {

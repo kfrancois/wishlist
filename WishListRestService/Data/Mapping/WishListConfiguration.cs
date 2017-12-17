@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using WebApplication1.Models;
+using WishListRestService.Models;
 
-namespace WebApplication1.Data.Mapping
+namespace WishListRestService.Data.Mapping
 {
     public class WishListConfiguration : IEntityTypeConfiguration<WishList>
     {

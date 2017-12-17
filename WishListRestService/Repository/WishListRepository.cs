@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using WebApplication1.Models;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using WebApplication1.Data;
+using Microsoft.EntityFrameworkCore;
+using WishListRestService.Data;
+using WishListRestService.Models;
 
-
-namespace WebApplication1.Repository
+namespace WishListRestService.Repository
 {
     [Authorize]
     public class WishListRepository : IWishListRepository
@@ -52,6 +50,10 @@ namespace WebApplication1.Repository
             if (itemToUpdate != null)
             {
                 itemToUpdate.Title = item.Title; // TODO update other fields
+                itemToUpdate.CreatorName = item.CreatorName;
+                itemToUpdate.PendingInvites = item.PendingInvites;
+                itemToUpdate.Subscribers = item.Subscribers;
+                itemToUpdate.Wishes = item.Wishes;
             }
             SaveChanges();
         }

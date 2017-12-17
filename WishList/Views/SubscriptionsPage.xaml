@@ -12,7 +12,7 @@
     <ScrollViewer Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" VerticalScrollBarVisibility="Hidden">
         <StackPanel>
             <TextBlock Text="Click on a WishList to see its details" TextWrapping="WrapWholeWords" Margin="10,10,10,10"/>
-            <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10">
+            <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" Height="700px" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>

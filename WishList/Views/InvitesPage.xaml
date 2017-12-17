@@ -8,6 +8,7 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="This is the invites page"/>
+        <TextBlock Text="Pending Invites"/>
+        <TextBlock Text="Invites to Answer"/>
     </Grid>
 </Page>

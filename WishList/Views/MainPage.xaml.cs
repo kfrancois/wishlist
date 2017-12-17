@@ -5,6 +5,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Input;
+using Windows.UI.ViewManagement;
 
 namespace WishList.Views
 {
@@ -14,6 +15,7 @@ namespace WishList.Views
         {
             InitializeComponent();
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+            ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
             overviewframe.Navigate(typeof(WishListOverviewPage));
             wishlistframe.Navigate(typeof(WishListScreen));
             subscriptionframe.Navigate(typeof(SubscriptionsPage));

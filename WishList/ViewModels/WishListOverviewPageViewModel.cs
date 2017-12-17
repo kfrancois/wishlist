@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Template10.Mvvm;
+using Windows.UI.Xaml.Controls;
 using WishList.Model;
+using WishList.Views;
 
 namespace WishList.ViewModels
 {
@@ -40,5 +42,13 @@ namespace WishList.ViewModels
                 this.WishList.Add(list);
             }
         }
+
+        /*public void GotoOwnWishes()
+        {
+            NavigationService.Navigate(new Uri("/MainPage.xaml?goto=1"), UriKind.Relative));
+        }
+
+        public void GotoSubscriptions() =>
+            NavigationService.Navigate(new Uri("/MainPage.xaml?goto=2"), UriKind.Relative));*/
     }
 }

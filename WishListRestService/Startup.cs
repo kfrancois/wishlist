@@ -98,7 +98,7 @@ namespace WishListRestService
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
+                    template: "{controller=Index}/{action=Index}/{id?}");
             });
 
             dataInitializer.InitializeData().Wait();

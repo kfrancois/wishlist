@@ -1,6 +1,6 @@
 ﻿namespace WebApplication1.Models
 {
-    public class PendingInvite
+    public class WishListSubscriber
     {
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }

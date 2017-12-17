@@ -1,0 +1,96 @@
+﻿<Page
+    x:Class="WishList.Views.WishListOverviewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WishList.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" VerticalScrollBarVisibility="Hidden">
+        <StackPanel>
+            <StackPanel>
+                <TextBlock Text="Own Wishlists"/>
+                <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Name="text1" Text="{Binding Title}" Grid.Row="0" Grid.Column="0" TextWrapping="WrapWholeWords" Margin="10,0,0,0" FontWeight="Bold"/>
+                                <StackPanel  Margin="10,0,0,0" Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+                                    <TextBlock Text="Description" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Description}" TextWrapping="WrapWholeWords"/>
+                                </StackPanel>
+                            </Grid>
+                            <!--  <StackPanel Orientation="Horizontal" Margin="2">
+                        <TextBlock Name="text1" Text="{Binding Title}"/>
+                        <StackPanel Width="150" Margin="10,0,0,0" Orientation="Vertical">
+                            <TextBlock Text="Description" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Description}"/>
+                       </StackPanel>
+                        <StackPanel Width="100" Margin="10,0,0,0" Orientation="Vertical">
+                            <TextBlock Text="Price" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Price, Converter={StaticResource DateToStringFormatConverter}}" />
+                        </StackPanel>
+
+                    </StackPanel> -->
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <StackPanel>
+                    <TextBlock Text="See More? Go to Own Wishes" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="Subscriptions"/>
+                <ListBox x:Name="ListView2" ItemsSource="{Binding}" Width="Auto" HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Margin="10,10,10,10">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Name="text1" Text="{Binding Title}" Grid.Row="0" Grid.Column="0" TextWrapping="WrapWholeWords" Margin="10,0,0,0" FontWeight="Bold"/>
+                                <StackPanel  Margin="10,0,0,0" Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+                                    <TextBlock Text="Description" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Description}" TextWrapping="WrapWholeWords"/>
+                                </StackPanel>
+                            </Grid>
+                            <!--  <StackPanel Orientation="Horizontal" Margin="2">
+                        <TextBlock Name="text1" Text="{Binding Title}"/>
+                        <StackPanel Width="150" Margin="10,0,0,0" Orientation="Vertical">
+                            <TextBlock Text="Description" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Description}"/>
+                       </StackPanel>
+                        <StackPanel Width="100" Margin="10,0,0,0" Orientation="Vertical">
+                            <TextBlock Text="Price" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Price, Converter={StaticResource DateToStringFormatConverter}}" />
+                        </StackPanel>
+
+                    </StackPanel> -->
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <StackPanel>
+                    <TextBlock Text="See More? Go to Subscriptions" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</Page>
+
+<!--
+        <ListView x:Name="own" SelectionChanged="own_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    -->

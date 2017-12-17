@@ -4,6 +4,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using System.Collections.ObjectModel;
+using Windows.UI.Xaml.Input;
 
 namespace WishList.Views
 {
@@ -13,6 +14,10 @@ namespace WishList.Views
         {
             InitializeComponent();
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+            overviewframe.Navigate(typeof(WishListOverviewPage));
+            wishlistframe.Navigate(typeof(WishListScreen));
+            subscriptionframe.Navigate(typeof(SubscriptionsPage));
+            invitesframe.Navigate(typeof(InvitesPage));
         }
     }
 }

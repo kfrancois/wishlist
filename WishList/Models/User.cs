@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WishList.Model
 {
-    class User
+   public class User
     {
         private List<Wishlist> subscribedLists;
         private List<Wishlist> wishlists;

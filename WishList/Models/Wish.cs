@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WishList.Model
 {
-    class Wish
+    public class Wish
     {
         private string title;
         private string description;
@@ -42,6 +42,13 @@ namespace WishList.Model
             this.category = category; 
         }
 
+        public Wish(Category category, string title, string description, double price)
+        {
+            this.category = category;
+            this.title = title;
+            this.description = description;
+            this.price = price; 
+        }
         public string getCategoryName() {
             return this.category.Name; 
         }

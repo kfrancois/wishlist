@@ -22,7 +22,7 @@ namespace WishListRestService.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<WishList> Get()
+        public IActionResult Get()
         {
             var name = _userManager.GetUserAsync(User).Result?.UserName;
             var wishLists =  WishListRepository.GetAll().Where(wl => wl.CreatorName == name);
@@ -32,7 +32,7 @@ namespace WishListRestService.Controllers
                 wishList.PendingInvites.ForEach(pi => pi.WishList = null);
                 wishList.Subscribers.ForEach(s => s.WishList = null);
             }
-            return enumerable;
+            return Ok(enumerable);
         }
 
         [HttpGet("all")]
@@ -51,7 +51,9 @@ namespace WishListRestService.Controllers
                 return NotFound();
             }
             item.PendingInvites.ForEach(pi => pi.WishList = null);
-            return new ObjectResult(item);
+            item.Subscribers.ForEach(sub => sub.WishList = null);
+
+            return Ok(item);
         }
 
         [Authorize]
@@ -68,7 +70,7 @@ namespace WishListRestService.Controllers
 
             WishListRepository.Add(item);
 
-            //_userManager.UpdateAsync(currentUser);
+            // _userManager.UpdateAsync(currentUser);
             WishListRepository.SaveChanges();
 
             return Created($"/api/wishlist/{item.WishListId}", item);
@@ -116,7 +118,7 @@ namespace WishListRestService.Controllers
             wishList.AddInvite(invite);
 
             WishListRepository.Update(wishList);
-            _userManager.UpdateAsync(user);
+            // _userManager.UpdateAsync(user);
 
             return Ok();
         }
@@ -161,7 +163,7 @@ namespace WishListRestService.Controllers
             wishList.AddSubscriber(subscriber);
 
             WishListRepository.Update(wishList);
-            _userManager.UpdateAsync(user);
+            // _userManager.UpdateAsync(user);
 
             return Ok();
         }
@@ -192,5 +194,5 @@ namespace WishListRestService.Controllers
     public class EmailModel
     {
         public string Email { get; set; }
-    }
+    }   
 }

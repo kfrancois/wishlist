@@ -111,6 +111,7 @@
     <Compile Include="ViewModels\NewWishListViewModel.cs" />
     <Compile Include="ViewModels\NewWishPageViewModel.cs" />
     <Compile Include="ViewModels\RegisterPageViewModel.cs" />
+    <Compile Include="ViewModels\SubscriptionsDetailPageViewModel.cs" />
     <Compile Include="ViewModels\SubscriptionsPageViewModel.cs" />
     <Compile Include="ViewModels\WishListDetailPageViewModel.cs" />
     <Compile Include="ViewModels\WishListOverviewPageViewModel.cs" />
@@ -138,6 +139,9 @@
     </Compile>
     <Compile Include="Views\Splash.xaml.cs">
       <DependentUpon>Splash.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SubscriptionsDetailPage.xaml.cs">
+      <DependentUpon>SubscriptionsDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SubscriptionsPage.xaml.cs">
       <DependentUpon>SubscriptionsPage.xaml</DependentUpon>
@@ -213,7 +217,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\SubscriptionsDetailPage.DeviceFamily-Mobile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SubscriptionsDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SubscriptionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WishListDetailPage.DeviceFamily-Mobile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

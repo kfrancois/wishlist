@@ -69,12 +69,12 @@
             </PivotItem>
 
             <!--  own wishlists  -->
-            <PivotItem Header="Own wishlists">
+            <PivotItem Header="Own wishlists" x:Name="ownwishlists">
                 <Frame x:Name="wishlistframe"/>
             </PivotItem>
 
             <!--  subscripted wishlists  -->
-            <PivotItem Header="Subsciptions">
+            <PivotItem Header="Subsciptions" x:Name="subscriptions">
                 <Frame x:Name="subscriptionframe"/>
             </PivotItem>
             

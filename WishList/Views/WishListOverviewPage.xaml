@@ -51,7 +51,7 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
                 <StackPanel>
-                    <TextBlock Text="See More? Go to Own Wishes" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                    <TextBlock Text="See More? Go to Own Wishes" Foreground="DodgerBlue" TextAlignment="Center" VerticalAlignment="Center" FontSize="16" />
                 </StackPanel>
             </StackPanel>
             <StackPanel  Grid.Row="0" Grid.Column="2">
@@ -86,7 +86,7 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
                 <StackPanel>
-                    <TextBlock Text="See More? Go to Subscriptions" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                    <TextBlock Text="See More? Go to Subscriptions" Foreground="DodgerBlue" TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
@@ -94,13 +94,6 @@
 </Page>
 
     <!--
-        <ListView x:Name="own" SelectionChanged="own_SelectionChanged">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Name}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+    PointerPressed="{x:Bind ViewModel.GotoOwnWishes}"
+        PointerPressed="{x:Bind ViewModel.GotoSubscriptions}"
     -->

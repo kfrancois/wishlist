@@ -24,15 +24,16 @@ namespace WishList.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class WishListDetailPage : Page
+    public sealed partial class SubscriptionsDetailPage : Page
     {
         public ObservableCollection<Wish> WishListItem = new ObservableCollection<Wish>();
-        public WishListDetailPageViewModel WishListDetailPageViewModelItem { get; private set; }
-        public WishListDetailPage()
+        public SubscriptionsDetailsPageViewModel SubscriptionsDetailPageViewModelItem { get; private set; }
+
+        public SubscriptionsDetailPage()
         {
-            ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
             this.InitializeComponent();
-            this.WishListDetailPageViewModelItem = new WishListDetailPageViewModel();
+            ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
+            this.SubscriptionsDetailPageViewModelItem = new SubscriptionsDetailsPageViewModel();
 
             MakeHardcodeWishlist();
             ListView1.DataContext = WishListItem;
@@ -40,7 +41,7 @@ namespace WishList.Views
 
         private void MakeHardcodeWishlist()
         {
-            foreach (Wish wish in this.WishListDetailPageViewModelItem.WishListItem)
+            foreach (Wish wish in this.SubscriptionsDetailPageViewModelItem.WishListItem)
             {
                 this.WishListItem.Add(wish);
             }

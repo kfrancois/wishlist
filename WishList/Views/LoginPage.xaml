@@ -13,7 +13,7 @@
     </Page.DataContext>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ScrollViewer Background="White">
+        <ScrollViewer Background="White" VerticalScrollBarVisibility="Hidden">
             <StackPanel>
             <StackPanel Background="DodgerBlue">
                 <TextBlock Text="Wishter" FontSize="50" Margin="4" TextAlignment="Center" FocusVisualPrimaryBrush="White" FocusVisualSecondaryBrush="#99000000" Foreground="#FFF7F7F7"/>

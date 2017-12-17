@@ -8,13 +8,13 @@ using WishList.Model;
 
 namespace WishList.ViewModels
 {
-    public class WishListDetailPageViewModel : ViewModelBase
+    public class SubscriptionsDetailsPageViewModel : ViewModelBase
     {
         public string Name { get; private set; }
         private List<Wish> wishListItem = new List<Wish>();
         public List<Wish> WishListItem { get => wishListItem; set => wishListItem = value; }
 
-        public WishListDetailPageViewModel()
+        public SubscriptionsDetailsPageViewModel()
         {
             MakeHardcodeWishlist();
         }

@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:conv="using:WishList.Models" >
-  <!--  <conv:StringToPriceFormatter x:Name="DateToStringFormatConverter"/> -->
+    <!--  <conv:StringToPriceFormatter x:Name="DateToStringFormatConverter"/> -->
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
@@ -23,7 +23,9 @@
                     <Button Content="New"/>
                 </StackPanel>
             </Grid>
-            <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" Height="700px" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10">
+            <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" Height="300px"
+                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10"
+                     ScrollViewer.VerticalScrollBarVisibility="Hidden">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>

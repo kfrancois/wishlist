@@ -9,5 +9,6 @@ namespace WishList.ViewModels
 {
     public class NewWishPageViewModel : ViewModelBase
     {
+        public void GoBack() => NavigationService.GoBack();
     }
 }

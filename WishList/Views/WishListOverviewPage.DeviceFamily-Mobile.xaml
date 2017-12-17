@@ -10,8 +10,10 @@
     <ScrollViewer Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" VerticalScrollBarVisibility="Hidden">
         <StackPanel>
             <StackPanel>
-                <TextBlock Text="Own Wishlists"/>
-                <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10">
+                <TextBlock Text="Own Wishlists" FontWeight="Bold" FontSize="15px"/>
+                <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" Height="300px" 
+                         HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10"
+                         ScrollViewer.VerticalScrollBarVisibility="Hidden">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>
@@ -45,8 +47,10 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel>
-                <TextBlock Text="Subscriptions"/>
-                <ListBox x:Name="ListView2" ItemsSource="{Binding}" Width="Auto" HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Margin="10,10,10,10">
+                <TextBlock Text="Subscriptions" FontWeight="Bold" FontSize="15px"/>
+                <ListBox x:Name="ListView2" ItemsSource="{Binding}" Width="Auto" HorizontalAlignment="Stretch" 
+                         Height="300px" VerticalAlignment="Stretch" Margin="10,10,10,10"
+                         ScrollViewer.VerticalScrollBarVisibility="Hidden">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>

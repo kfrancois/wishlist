@@ -34,7 +34,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Description" FontWeight="Bold" Grid.Row="0" Grid.Column="0" TextWrapping="WrapWholeWords"/>
-            <Button Content="Add Wish" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right"/>
+            <Button Content="Add Wish" Click="{x:Bind ViewModel.GotoNewWish}" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right"/>
         </Grid>
 
         <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" HorizontalAlignment="Stretch" 

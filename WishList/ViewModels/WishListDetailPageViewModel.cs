@@ -28,5 +28,7 @@ namespace WishList.ViewModels
         }
 
         public void GoBack() => NavigationService.GoBack();
+
+        public void GotoNewWish() => NavigationService.Navigate(typeof(Views.NewWishPage));
     }
 }

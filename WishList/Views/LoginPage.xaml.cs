@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using WishList.Services;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -28,5 +29,10 @@ namespace WishList.Views
             InitializeComponent();
             ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
         }
+
+        /*public void Login()
+        {
+            WishListService.AuthenticateUser("firstUser@hogent.be", "P@ssword1");
+        }*/
     }
 }

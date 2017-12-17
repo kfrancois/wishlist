@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace WishListRestService.Models {
-    public class Wish {
-        public int WishId { get; private set; }
+﻿namespace WebApplication1.Models
+{
+    public class Wish
+    {
+        public int WishId { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
         public string Description { get; set; }

@@ -11,12 +11,12 @@ using WishList.Model;
 
 namespace WishList.Services
 {
-    class WishListService {
-        private string baseUrl = "http://localhost:60855/";
+    public class WishListService {
+        private static string baseUrl = "http://localhost:60855/";
 
-        private string _token;
+        private static string _token;
 
-        public void AuthenticateUser(string email, string password) {
+        public static void AuthenticateUser(string email, string password) {
 
             var client = new HttpClient {BaseAddress = new Uri(baseUrl)};
 
@@ -35,7 +35,7 @@ namespace WishList.Services
 
         }
 
-        public IEnumerable<Wishlist> GetWishLists() {
+        public static IEnumerable<Wishlist> GetWishLists() {
             var client = new HttpClient { BaseAddress = new Uri(baseUrl) };
 
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));

@@ -43,7 +43,7 @@
             <TextBlock Text="User to send invite to:" Grid.Row="2" Grid.Column="0" Margin="10,10,10,10" TextWrapping="WrapWholeWords"/>
             <TextBox PlaceholderText="Username" Grid.Row="2" Grid.Column="1" Margin="10,10,10,10"/>
 
-            <Button Content="Send" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="3" Grid.Column="1" Margin="10,10,10,10"/>
+            <Button Content="Send" Click="{x:Bind ViewModel.GoBack}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="3" Grid.Column="1" Margin="10,10,10,10"/>
         </Grid>
     </StackPanel>
 </Page>

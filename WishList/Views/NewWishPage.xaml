@@ -46,7 +46,7 @@
             <TextBox TextWrapping="Wrap" PlaceholderText="Category" Grid.Column="0" Grid.Row="5" Margin="10,10,10,10"/>
             <TextBlock TextWrapping="Wrap" Text="Price of the Wish" Grid.Column="0" Grid.Row="6" Margin="10,10,10,10"/>
             <TextBox TextWrapping="Wrap" PlaceholderText="Price" Grid.Column="0" Grid.Row="7" Margin="10,10,10,10"/>
-            <Button Content="Go" Grid.Column="0" Grid.Row="8" Margin="10,10,10,10"/>
+            <Button Content="Go" Click="{x:Bind ViewModel.GoBack}" Grid.Column="0" Grid.Row="8" Margin="10,10,10,10"/>
         </Grid>
     </StackPanel>
 </Page>

@@ -18,6 +18,11 @@ namespace WishListRestService.Models
             PendingInvites = new List<PendingInvite>();
         }
 
+        public WishList(string title) : this()
+        {
+            Title = title;
+        }
+
         public void AddWish(Wish item)
         {
             Wishes.Add(item);

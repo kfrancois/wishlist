@@ -39,7 +39,13 @@ namespace WishListRestService.Controllers
         public IEnumerable<WishList> GetAll()
         {
             var wishLists = WishListRepository.GetAll();
-            return wishLists;
+            var enumerable = wishLists as WishList[] ?? wishLists.ToArray();
+            foreach (var wishList in enumerable)
+            {
+                wishList.PendingInvites.ForEach(pi => pi.WishList = null);
+                wishList.Subscribers.ForEach(s => s.WishList = null);
+            }
+            return enumerable;
         }
 
         [HttpGet("{id}", Name = "GetWishLists")]
@@ -136,6 +142,23 @@ namespace WishListRestService.Controllers
                 wishList.Subscribers = null;
             }
             return invitedWishLists;
+        }
+
+        [HttpGet("subscribed")]
+        public IEnumerable<WishList> SubscribedWishLists()
+        {
+            var id = _userManager.GetUserAsync(User).Result?.Id;
+
+            var wishLists = WishListRepository.GetAll().Where(wl => wl.Subscribers.Any(s => s.UserId == id));
+
+            // var filtered = wishLists.Where(wl => wl.Subscribers.Any(s => s.UserId == id));
+            var subscribedWishLists = wishLists as WishList[] ?? wishLists.ToArray();
+            foreach (var wishList in subscribedWishLists)
+            {
+                wishList.PendingInvites = null;
+                wishList.Subscribers = null;
+            }
+            return subscribedWishLists;
         }
 
         [HttpPost("{id}/accept")]

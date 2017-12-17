@@ -108,6 +108,7 @@
     <Compile Include="ViewModels\InvitesPageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\NewInviteViewModel.cs" />
     <Compile Include="ViewModels\NewWishListViewModel.cs" />
     <Compile Include="ViewModels\NewWishPageViewModel.cs" />
     <Compile Include="ViewModels\RegisterPageViewModel.cs" />

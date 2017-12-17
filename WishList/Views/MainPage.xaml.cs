@@ -16,10 +16,6 @@ namespace WishList.Views
             InitializeComponent();
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
             ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
-            overviewframe.Navigate(typeof(WishListOverviewPage));
-            wishlistframe.Navigate(typeof(WishListScreen));
-            subscriptionframe.Navigate(typeof(SubscriptionsPage));
-            invitesframe.Navigate(typeof(InvitesPage));
         }
     }
 }

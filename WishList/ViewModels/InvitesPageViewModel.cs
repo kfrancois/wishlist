@@ -9,5 +9,8 @@ namespace WishList.ViewModels
 {
     public class InvitesPageViewModel : ViewModelBase
     {
+        public void GotoNewInvites() => NavigationService.Navigate(typeof(Views.NewInvite));
+
+        public void GoBack() => NavigationService.Navigate(typeof(Views.MainPage));
     }
 }

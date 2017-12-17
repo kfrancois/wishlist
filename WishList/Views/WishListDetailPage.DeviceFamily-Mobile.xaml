@@ -54,22 +54,9 @@
                         </StackPanel>
                         <StackPanel Margin="10,0,0,0" Orientation="Vertical" Grid.Row="2" Grid.Column="0">
                             <TextBlock Text="Price" FontWeight="Bold"/>
-                            <!--  <TextBlock Text="{Binding Price, Converter={StaticResource DateToStringFormatConverter}}" /> -->
                             <TextBlock Text="{Binding Price}" />
                         </StackPanel>
                     </Grid>
-                    <!--  <StackPanel Orientation="Horizontal" Margin="2">
-                        <TextBlock Name="text1" Text="{Binding Title}"/>
-                        <StackPanel Width="150" Margin="10,0,0,0" Orientation="Vertical">
-                            <TextBlock Text="Description" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding Description}"/>
-                       </StackPanel>
-                        <StackPanel Width="100" Margin="10,0,0,0" Orientation="Vertical">
-                            <TextBlock Text="Price" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding Price, Converter={StaticResource DateToStringFormatConverter}}" />
-                        </StackPanel>
-
-                    </StackPanel> -->
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

@@ -5,13 +5,30 @@
     xmlns:local="using:WishList.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" xmlns:vm="using:WishList.ViewModels"
+    xmlns:controls="using:Template10.Controls">
 
-    <ScrollViewer Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" VerticalScrollBarVisibility="Hidden">
+    <Page.DataContext>
+        <vm:InvitesPageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
+                             RelativePanel.AlignRightWithPanel="True"
+                             RelativePanel.AlignTopWithPanel="True" Text="Invites">
+
+            <!--  secondary commands  -->
+            <controls:PageHeader.SecondaryCommands>
+                <AppBarButton Click="{x:Bind ViewModel.GoBack}" Label="Go Back" />
+            </controls:PageHeader.SecondaryCommands>
+
+        </controls:PageHeader>
+
         <StackPanel>
             <StackPanel>
-                <TextBlock Text="Sent Invites" FontWeight="Bold" FontSize="15px"/>
-                <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" Height="300px" 
+                <TextBlock Text="Received Invites" FontWeight="Bold" FontSize="20px" Margin="10"/>
+                <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" Height="350px" 
                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -27,55 +44,11 @@
                                     <TextBlock Text="{Binding Description}" TextWrapping="WrapWholeWords"/>
                                 </StackPanel>
                             </Grid>
-                            <!--  <StackPanel Orientation="Horizontal" Margin="2">
-                        <TextBlock Name="text1" Text="{Binding Title}"/>
-                        <StackPanel Width="150" Margin="10,0,0,0" Orientation="Vertical">
-                            <TextBlock Text="Description" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding Description}"/>
-                       </StackPanel>
-                        <StackPanel Width="100" Margin="10,0,0,0" Orientation="Vertical">
-                            <TextBlock Text="Price" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding Price, Converter={StaticResource DateToStringFormatConverter}}" />
-                        </StackPanel>
-
-                    </StackPanel> -->
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-            </StackPanel>
-            <StackPanel  Grid.Row="0" Grid.Column="2">
-                <TextBlock Text="Received Invites" FontWeight="Bold" FontSize="15px"/>
-                <ListBox x:Name="ListView2" ItemsSource="{Binding}" Width="Auto" Height="300px" 
-                         HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <TextBlock Name="text1" Text="{Binding Title}" Grid.Row="0" Grid.Column="0" TextWrapping="WrapWholeWords" Margin="10,0,0,0" FontWeight="Bold"/>
-                                <StackPanel  Margin="10,0,0,0" Orientation="Vertical" Grid.Row="1" Grid.Column="0">
-                                    <TextBlock Text="Description" FontWeight="Bold"/>
-                                    <TextBlock Text="{Binding Description}" TextWrapping="WrapWholeWords"/>
-                                </StackPanel>
-                            </Grid>
-                            <!--  <StackPanel Orientation="Horizontal" Margin="2">
-                        <TextBlock Name="text1" Text="{Binding Title}"/>
-                        <StackPanel Width="150" Margin="10,0,0,0" Orientation="Vertical">
-                            <TextBlock Text="Description" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding Description}"/>
-                       </StackPanel>
-                        <StackPanel Width="100" Margin="10,0,0,0" Orientation="Vertical">
-                            <TextBlock Text="Price" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding Price, Converter={StaticResource DateToStringFormatConverter}}" />
-                        </StackPanel>
-
-                    </StackPanel> -->
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                <Button Content="New Invite" HorizontalAlignment="Stretch" Click="{x:Bind ViewModel.GotoNewInvites}" Margin="10"/>
             </StackPanel>
         </StackPanel>
-    </ScrollViewer>
+    </StackPanel>
 </Page>

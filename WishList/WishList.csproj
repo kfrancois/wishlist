@@ -115,7 +115,6 @@
     <Compile Include="ViewModels\SubscriptionsDetailPageViewModel.cs" />
     <Compile Include="ViewModels\SubscriptionsPageViewModel.cs" />
     <Compile Include="ViewModels\WishListDetailPageViewModel.cs" />
-    <Compile Include="ViewModels\WishListOverviewPageViewModel.cs" />
     <Compile Include="ViewModels\WishListScreenViewModel.cs" />
     <Compile Include="Views\InvitesPage.xaml.cs">
       <DependentUpon>InvitesPage.xaml</DependentUpon>
@@ -149,9 +148,6 @@
     </Compile>
     <Compile Include="Views\WishListDetailPage.xaml.cs">
       <DependentUpon>WishListDetailPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\WishListOverviewPage.xaml.cs">
-      <DependentUpon>WishListOverviewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WishListScreen.xaml.cs">
       <DependentUpon>WishListScreen.xaml</DependentUpon>
@@ -247,14 +243,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\WishListDetailPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\WishListOverviewPage.DeviceFamily-Mobile.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\WishListOverviewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

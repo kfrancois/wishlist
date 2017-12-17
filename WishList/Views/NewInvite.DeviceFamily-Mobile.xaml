@@ -19,7 +19,7 @@
 
             <!--  secondary commands  -->
             <controls:PageHeader.SecondaryCommands>
-                <AppBarButton Click="{x:Bind ViewModel.GoBack}" Label="Log out" />
+                <AppBarButton Click="{x:Bind ViewModel.GoBack}" Label="Go Back" />
             </controls:PageHeader.SecondaryCommands>
 
         </controls:PageHeader>

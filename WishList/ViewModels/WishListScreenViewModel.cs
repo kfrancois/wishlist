@@ -25,5 +25,11 @@ namespace WishList.ViewModels
                 this.WishListItem.Add(new Wish(new Category("Birthday"), "Title" + (i+1).ToString(), "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Mauris at eleifend augue.Cras mattis, nisi id aliquam ornare, magna leo elementum arcu, ut porttitor mi metus eget ligula.", (i+1)*2.46));
             }
         }
+
+        public void GoBack() =>
+            NavigationService.Navigate(typeof(Views.MainPage));
+
+        public void GotoNewWishList() =>
+            NavigationService.Navigate(typeof(Views.NewWishList));
     }
 }

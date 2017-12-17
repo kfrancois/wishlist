@@ -50,5 +50,11 @@ namespace WishList.ViewModels
         public void GotoLogin() =>
             NavigationService.Navigate(typeof(Views.LoginPage));
 
+        public void GotoWishLists() =>
+            NavigationService.Navigate(typeof(Views.WishListScreen));
+
+        public void GotoSubscriptions() => NavigationService.Navigate(typeof(Views.SubscriptionsPage));
+
+        public void GotoInvites() => NavigationService.Navigate(typeof(Views.InvitesPage));
     }
 }

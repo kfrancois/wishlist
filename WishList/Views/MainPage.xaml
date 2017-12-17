@@ -14,7 +14,7 @@
         <vm:MainPageViewModel x:Name="ViewModel" />
     </Page.DataContext>
 
-    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
@@ -56,32 +56,25 @@
 
         </controls:PageHeader>
 
-        <!--  content  -->
-        <Pivot x:Name="MyPivot" Grid.Row="1"
-               RelativePanel.AlignBottomWithPanel="True"
-               RelativePanel.AlignLeftWithPanel="True"
-               RelativePanel.AlignRightWithPanel="True"
-               RelativePanel.Below="pageHeader">
+        <TextBlock Text="Click on a button to view WishLists" Margin="10,10,10,10" FontWeight="Bold" FontSize="20px" TextAlignment="Center" TextWrapping="WrapWholeWords"/>
 
-            <!--  Overview  -->
-            <PivotItem Header="Overview">
-                <Frame x:Name="overviewframe"/>
-            </PivotItem>
+        <Grid Margin="10,10,10,10">
 
-            <!--  own wishlists  -->
-            <PivotItem Header="Own wishlists" x:Name="ownwishlists">
-                <Frame x:Name="wishlistframe"/>
-            </PivotItem>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-            <!--  subscripted wishlists  -->
-            <PivotItem Header="Subsciptions" x:Name="subscriptions">
-                <Frame x:Name="subscriptionframe"/>
-            </PivotItem>
-            
-            <!--  invites  -->
-            <PivotItem Header="Invites">
-                <Frame x:Name="invitesframe"/>
-            </PivotItem>
-        </Pivot>
-    </RelativePanel>
+            <Button Content="Own WishLists" Grid.Row="0" Grid.Column="0" 
+                    Margin="10,10,10,10" HorizontalAlignment="Stretch" 
+                    Click="{x:Bind ViewModel.GotoWishLists}"/>
+            <Button Content="Subscribed WishLists" Grid.Row="1" 
+                    Grid.Column="0" Margin="10,10,10,10" HorizontalAlignment="Stretch"
+                    Click="{x:Bind ViewModel.GotoSubscriptions}"/>
+            <Button Content="Invites" Grid.Row="2" Grid.Column="0" Margin="10,10,10,10"
+                    HorizontalAlignment="Stretch" Click="{x:Bind ViewModel.GotoInvites}"/>
+        </Grid>
+
+    </StackPanel>
 </Page>

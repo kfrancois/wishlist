@@ -42,5 +42,12 @@ namespace WishList.Views
                 this.WishListItem.Add(wish); 
             }
         }
+
+        public void ShowDetail(object sender, SelectionChangedEventArgs e)
+        {
+            //var selectedList = (Wishlist) ListView1.SelectedItem;
+            //Frame.Navigate(typeof(Views.WishListDetailPage), selectedList);
+            Frame.Navigate(typeof(Views.WishListDetailPage));
+        }
     }
 }

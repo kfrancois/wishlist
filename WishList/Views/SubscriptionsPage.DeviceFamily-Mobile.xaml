@@ -18,7 +18,7 @@
 
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" Text="Own WishLists">
+                             RelativePanel.AlignTopWithPanel="True" Text="Subscriptions">
 
             <!--  secondary commands  -->
             <controls:PageHeader.SecondaryCommands>
@@ -30,7 +30,9 @@
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <StackPanel>
                 <TextBlock Text="Click on a WishList to see its details" TextWrapping="WrapWholeWords" Margin="10,10,10,10"/>
-                <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" Height="350px" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10">
+                <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" Height="350px" 
+                         HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10"
+                          SelectionChanged="ShowDetail">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>

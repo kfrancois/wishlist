@@ -29,7 +29,7 @@
             <TextBlock Text="Click on a WishList to see its details" TextWrapping="WrapWholeWords" Margin="10"/>
             <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" Height="350px"
                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10"
-                     ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                     ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="ShowDetail">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>

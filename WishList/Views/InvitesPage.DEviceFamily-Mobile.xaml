@@ -35,14 +35,14 @@
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
+                                    <!--<RowDefinition Height="*"/>-->
                                 </Grid.RowDefinitions>
                                 <TextBlock Name="text1" Text="{Binding Title}" Grid.Row="0" Grid.Column="0" 
                                            TextWrapping="WrapWholeWords" Margin="10,0,0,0" FontWeight="Bold"/>
-                                <StackPanel  Margin="10,0,0,0" Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+                                <!--<StackPanel  Margin="10,0,0,0" Orientation="Vertical" Grid.Row="0" Grid.Column="0">
                                     <TextBlock Text="Description" FontWeight="Bold"/>
                                     <TextBlock Text="{Binding Description}" TextWrapping="WrapWholeWords"/>
-                                </StackPanel>
+                                </StackPanel>-->
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

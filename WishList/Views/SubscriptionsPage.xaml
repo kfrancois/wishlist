@@ -38,13 +38,13 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="2*"/>
+                                    <!--<ColumnDefinition Width="2*"/>-->
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Name="text1" Text="{Binding Title}" Grid.Row="0" Grid.Column="0" TextWrapping="WrapWholeWords"/>
-                                <StackPanel  Margin="10,0,0,0" Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+                                <TextBlock Name="text1" Text="{Binding Title}" Grid.Row="0" Grid.Column="0" TextWrapping="WrapWholeWords" FontWeight="Bold"/>
+                                <!--<StackPanel  Margin="10,0,0,0" Orientation="Vertical" Grid.Row="0" Grid.Column="1">
                                     <TextBlock Text="Description" FontWeight="Bold"/>
                                     <TextBlock Text="{Binding Description}" TextWrapping="WrapWholeWords"/>
-                                </StackPanel>
+                                </StackPanel>-->
                             </Grid>
 
                         </DataTemplate>

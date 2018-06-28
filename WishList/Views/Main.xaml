@@ -9,6 +9,7 @@
 
     <NavigationView x:Name="NavView"
                     ItemInvoked="NavView_ItemInvoked"
+                    Loaded="NavView_Loaded"
                     Background="LightGray">
 
         <NavigationView.MenuItems>

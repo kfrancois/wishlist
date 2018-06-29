@@ -9,6 +9,6 @@ namespace WishList.ViewModels
 {
     public class NewInviteViewModel : ViewModelBase
     {
-        public void GoBack() => NavigationService.GoBack();
+        
     }
 }

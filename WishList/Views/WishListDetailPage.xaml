@@ -15,18 +15,11 @@
     </Page.DataContext>
 
     <StackPanel Name="stackpanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" Width="Auto">
-        
+
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" Text="WishListName">
+                             RelativePanel.AlignTopWithPanel="True" Text="WishListName"/>
 
-            <!--  secondary commands  -->
-            <controls:PageHeader.SecondaryCommands>
-                <AppBarButton Label="Back to Overview" Click="{x:Bind ViewModel.GoBack}"/>
-            </controls:PageHeader.SecondaryCommands>
-
-        </controls:PageHeader>
-        
         <Grid Margin="10,10,10,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

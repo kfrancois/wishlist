@@ -15,16 +15,9 @@
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" Text="New WishList">
+                             RelativePanel.AlignTopWithPanel="True" Text="New WishList"/>
 
-            <!--  secondary commands  -->
-            <controls:PageHeader.SecondaryCommands>
-                <AppBarButton Click="{x:Bind ViewModel.GoBack}" Label="Go Back" />
-            </controls:PageHeader.SecondaryCommands>
-
-        </controls:PageHeader>
-
-        <Grid Margin="10,10,10,10">
+      <Grid Margin="6,10,14,10">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -34,7 +27,7 @@
 
             <TextBlock TextWrapping="Wrap" Text="Give the name of the WishList" Grid.Column="0" Grid.Row="0" Margin="10,10,10,10"/>
             <TextBox TextWrapping="Wrap" PlaceholderText="WishListName" Grid.Column="0" Grid.Row="1" Margin="10,10,10,10"/>
-            <Button Content="Go" Click="{x:Bind ViewModel.GoBack}" Grid.Column="0" Grid.Row="2" Margin="10,10,10,10"/>
+            <Button Content="Save" Click="{x:Bind ViewModel.GoBack}" Grid.Column="0" Grid.Row="2" Margin="10,10,10,10"/>
         </Grid>
     </StackPanel>
 </Page>

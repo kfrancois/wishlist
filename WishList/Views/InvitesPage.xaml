@@ -15,15 +15,7 @@
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" Text="Wishter">
-
-            <!--  secondary commands  -->
-            <controls:PageHeader.SecondaryCommands>
-                <AppBarButton Click="{x:Bind ViewModel.GoBack}" Label="Go Back" />
-            </controls:PageHeader.SecondaryCommands>
-
-        </controls:PageHeader>
-
+                             RelativePanel.AlignTopWithPanel="True" Text="Wishter"/>
         <StackPanel>
             <TextBlock Text="Received Invites" FontWeight="Bold" FontSize="20px" Margin="10,10,10,10"/>
             <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Margin="10,10,10,10">

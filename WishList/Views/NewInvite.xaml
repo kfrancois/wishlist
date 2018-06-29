@@ -15,14 +15,8 @@
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" Text="New Invite">
+                             RelativePanel.AlignTopWithPanel="True" Text="New Invite"/>
 
-            <!--  secondary commands  -->
-            <controls:PageHeader.SecondaryCommands>
-                <AppBarButton Click="{x:Bind ViewModel.GoBack}" Label="Go Back" />
-            </controls:PageHeader.SecondaryCommands>
-
-        </controls:PageHeader>
         <Grid Margin="10,10,10,10">
             
             <Grid.ColumnDefinitions>

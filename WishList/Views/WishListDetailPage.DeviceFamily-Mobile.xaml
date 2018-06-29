@@ -18,14 +18,7 @@
 
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" Text="WishListName">
-
-            <!--  secondary commands  -->
-            <controls:PageHeader.SecondaryCommands>
-                <AppBarButton Label="Back to Overview" Click="{x:Bind ViewModel.GoBack}"/>
-            </controls:PageHeader.SecondaryCommands>
-
-        </controls:PageHeader>
+                             RelativePanel.AlignTopWithPanel="True" Text="WishListName"/>
 
         <Grid Margin="10,10,10,10">
             <Grid.ColumnDefinitions>

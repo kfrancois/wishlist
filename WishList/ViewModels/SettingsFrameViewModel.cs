@@ -9,5 +9,10 @@ namespace WishList.ViewModels
 {
     public class SettingsFrameViewModel : ViewModelBase
     {
+        public void GotoLogin()
+        {
+            //WishListService.AuthenticateUser("firstUser@hogent.be", "P@ssword1");
+            NavigationService.Navigate(typeof(Views.LoginPage));
+        }
     }
 }

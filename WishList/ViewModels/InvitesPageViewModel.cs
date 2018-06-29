@@ -11,6 +11,6 @@ namespace WishList.ViewModels
     {
         public void GotoNewInvites() => NavigationService.Navigate(typeof(Views.NewInvite));
 
-        public void GoBack() => NavigationService.Navigate(typeof(Views.MainPage));
+        public void GoBack() => NavigationService.Navigate(typeof(Views.Main));
     }
 }

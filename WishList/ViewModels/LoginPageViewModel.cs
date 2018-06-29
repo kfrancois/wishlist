@@ -14,7 +14,7 @@ namespace WishList.ViewModels
         public void GotoMainPage()
         {
             //WishListService.AuthenticateUser("firstUser@hogent.be", "P@ssword1");
-            NavigationService.Navigate(typeof(Views.MainPage));
+            NavigationService.Navigate(typeof(Views.Main));
         }
 
         public void GotoRegisterPage() =>

@@ -13,6 +13,6 @@ namespace WishList.ViewModels
             NavigationService.Navigate(typeof(Views.LoginPage));
 
         public void GotoMainPage() =>
-             NavigationService.Navigate(typeof(Views.MainPage));
+             NavigationService.Navigate(typeof(Views.Main));
     }
 }

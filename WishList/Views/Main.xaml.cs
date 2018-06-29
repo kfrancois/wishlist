@@ -25,7 +25,10 @@ namespace WishList.Views
 
         private List<Tuple<string, Type>> _pages = new List<Tuple<string, Type>>
         {
-            new Tuple<string, Type>("home", typeof(HomeFrame))
+            new Tuple<string, Type>("home", typeof(HomeFrame)),
+            new Tuple<string, Type>("own", typeof(Views.WishListScreen)),
+            new Tuple<string, Type>("subs", typeof(Views.SubscriptionsPage)),
+            new Tuple<string, Type>("invites", typeof(Views.InvitesPage))
         };
 
         public Main()

@@ -12,7 +12,9 @@ namespace WishList.ViewModels
         public void GotoLogin()
         {
             //WishListService.AuthenticateUser("firstUser@hogent.be", "P@ssword1");
-            NavigationService.Navigate(typeof(Views.LoginPage));
+            //NavigationService.Navigate(typeof(Views.LoginPage));
+
+            App.Current.NavigationService.Navigate(typeof(Views.LoginPage));
         }
     }
 }

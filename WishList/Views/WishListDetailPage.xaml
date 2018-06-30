@@ -20,7 +20,9 @@
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" Text="WishListName"/>
 
-        <Grid Margin="10,10,10,10">
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="{x:Bind ViewModel.GoBack}" Margin="10"/>
+
+        <Grid Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -32,7 +34,7 @@
         </Grid>
         
         <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" HorizontalAlignment="Stretch" 
-                             Height="750px" VerticalAlignment="Stretch" Margin="10,10,10,10" 
+                             Height="750px" VerticalAlignment="Stretch" Margin="10" 
                  ScrollViewer.VerticalScrollBarVisibility="Hidden">
             <ListBox.ItemTemplate>
                 <DataTemplate>

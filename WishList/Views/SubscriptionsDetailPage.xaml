@@ -19,11 +19,13 @@
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" Text="WishListName"/>
 
-        <TextBlock Text="Wishlist from USER" Margin="10,10,10,10" TextAlignment="Center" FontWeight="Bold"/>
-        <TextBlock Text="Description" Margin="10,10,10,10" TextAlignment="Center" FontWeight="Bold"/>
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="{x:Bind ViewModel.GoBack}" Margin="10"/>
+
+        <TextBlock Text="Wishlist from USER" Margin="10" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBlock Text="Description" Margin="10" TextAlignment="Center" FontWeight="Bold"/>
 
         <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" HorizontalAlignment="Stretch" 
-                             Height="750px" VerticalAlignment="Stretch" Margin="10,10,10,10" 
+                             Height="750px" VerticalAlignment="Stretch" Margin="10" 
                  ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="ButtonShowMessageDialog_Click" >
             <ListBox.ItemTemplate>
                 <DataTemplate>

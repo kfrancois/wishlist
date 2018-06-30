@@ -45,5 +45,41 @@ namespace WishList.Views
                 this.WishListItem.Add(wish);
             }
         }
+
+        private async void ButtonShowMessageDialog_Click(object sender, RoutedEventArgs e)
+        {
+
+            var dialog = new Windows.UI.Popups.MessageDialog(
+                        "Do you want to delete or edit this wish?",
+                        "Delete/Edit this Wish");
+
+            dialog.Commands.Add(new Windows.UI.Popups.UICommand("Delete") { Id = 0 });
+            dialog.Commands.Add(new Windows.UI.Popups.UICommand("Edit") { Id = 1 });
+
+            /*if (Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily != "Windows.Mobile")
+            {
+                // Adding a 3rd command will crash the app when running on Mobile !!!
+                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Maybe later") { Id = 2 });
+            }*/
+
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 1;
+
+            var result = await dialog.ShowAsync();
+
+            /*var btn = sender as Button;
+            btn.Content = $"Result: {result.Label} ({result.Id})";*/
+
+            if((int) result.Id == 1)
+            {
+                ShowEditPage();
+            }
+
+        }
+
+        private void ShowEditPage()
+        {
+            App.Current.NavigationService.Navigate(typeof(Views.EditWish));
+        }
     }
 }

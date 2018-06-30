@@ -35,7 +35,7 @@
         
         <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" HorizontalAlignment="Stretch" 
                              Height="750px" VerticalAlignment="Stretch" Margin="10" 
-                 ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                 ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="ButtonShowMessageDialog_Click">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>

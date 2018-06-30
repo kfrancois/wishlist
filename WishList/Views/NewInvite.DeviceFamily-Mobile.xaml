@@ -17,7 +17,9 @@
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" Text="New Invite"/>
 
-      <Grid Margin="10,10,10,10">
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="{x:Bind ViewModel.GoBack}" Margin="10"/>
+        
+      <Grid>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -27,13 +29,13 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Select WishList:" Grid.Row="0" Grid.Column="0" Margin="10,10,10,10"/>
-            <ComboBox x:Name="wishlistbox" Grid.Row="1" Grid.Column="0"  Margin="10,10,10,10"/>
+            <TextBlock Text="Select WishList:" Grid.Row="0" Grid.Column="0" Margin="10"/>
+            <ComboBox x:Name="wishlistbox" Grid.Row="1" Grid.Column="0"  Margin="10"/>
 
-            <TextBlock Text="User to send invite to:" Grid.Row="2" Grid.Column="0" Margin="10,10,10,10" TextWrapping="WrapWholeWords"/>
-            <TextBox PlaceholderText="Username" Grid.Row="3" Grid.Column="0" Margin="10,10,10,10"/>
+            <TextBlock Text="User to send invite to:" Grid.Row="2" Grid.Column="0" Margin="10" TextWrapping="WrapWholeWords"/>
+            <TextBox PlaceholderText="Username" Grid.Row="3" Grid.Column="0" Margin="10"/>
 
-            <Button Content="Send" Click="{x:Bind ViewModel.GoBack}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0" Margin="10,10,10,10"/>
+            <Button Content="Send" Click="{x:Bind ViewModel.GoBack}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0" Margin="10"/>
         </Grid>
     </StackPanel>
 </Page>

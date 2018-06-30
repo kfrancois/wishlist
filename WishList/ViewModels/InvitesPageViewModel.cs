@@ -13,9 +13,7 @@ namespace WishList.ViewModels
     {
         public void GotoNewInvites()
         {
-
-            Frame rootFrame = Window.Current.Content as Frame;
-            rootFrame.Navigate(typeof(Views.NewInvite));
+            App.Current.NavigationService.Navigate(typeof(Views.NewInvite));
         }
     }
 }

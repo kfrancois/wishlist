@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Template10.Mvvm;
+using Windows.UI.Xaml;
 using WishList.Model;
 
 namespace WishList.ViewModels
@@ -27,6 +28,6 @@ namespace WishList.ViewModels
         }
 
         public void GotoNewWishList() =>
-            NavigationService.Navigate(typeof(Views.NewWishList));
+            App.Current.NavigationService.Navigate(typeof(Views.NewWishList));
     }
 }

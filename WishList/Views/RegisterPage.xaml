@@ -47,10 +47,10 @@
                         </Grid.ColumnDefinitions>
 
                         <Button x:Name="backButton" Content="Back" Background="Red" Foreground="White"
-         Width="50" Margin="5,10" Grid.Column="0" Grid.Row="0" Click="{x:Bind ViewModel.GotoLoginPage}"/>
+        Margin="5,10" Grid.Column="0" Grid.Row="0" Click="{x:Bind ViewModel.GotoLoginPage}"/>
 
-                        <Button x:Name="registerButton" Content="Start" Background="DodgerBlue" Foreground="White"
-         Width="50" Margin="5,10" Grid.Column="1" Grid.Row="0" Click="{x:Bind ViewModel.GotoMainPage}"/>
+                        <Button x:Name="registerButton" Content="Login" Background="DodgerBlue" Foreground="White"
+        Margin="5,10" Grid.Column="1" Grid.Row="0" Click="{x:Bind ViewModel.GotoMainPage}"/>
 
                     </Grid>
                 </StackPanel>

@@ -47,7 +47,10 @@ namespace WishList.Views
         {
             //var selectedList = (Wishlist) ListView1.SelectedItem;
             //Frame.Navigate(typeof(Views.WishListDetailPage), selectedList);
-            Frame.Navigate(typeof(Views.WishListDetailPage));
+            //Frame.Navigate(typeof(Views.WishListDetailPage));
+            //Frame parentFrame = Window.Current.Content as Frame;
+            //parentFrame.Navigate(typeof(Views.WishListDetailPage));
+            App.Current.NavigationService.Frame.Navigate(typeof(Views.WishListDetailPage));
         }
     }
 }

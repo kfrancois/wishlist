@@ -17,20 +17,15 @@
 
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" Text="WishListName">
+                             RelativePanel.AlignTopWithPanel="True" Text="WishListName"/>
 
-            <!--  secondary commands  -->
-            <controls:PageHeader.SecondaryCommands>
-                <AppBarButton Label="Back to Overview" Click="{x:Bind ViewModel.GoBack}"/>
-            </controls:PageHeader.SecondaryCommands>
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="{x:Bind ViewModel.GoBack}" Margin="10"/>
 
-        </controls:PageHeader>
-
-        <TextBlock Text="Wishlist from USER" Margin="10,10,10,10" TextAlignment="Center" FontWeight="Bold"/>
-        <TextBlock Text="Description" Margin="10,10,10,10" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBlock Text="Wishlist from USER" Margin="10" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBlock Text="Description" Margin="10" TextAlignment="Center" FontWeight="Bold"/>
         
         <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" HorizontalAlignment="Stretch" 
-                             Height="350px" VerticalAlignment="Stretch" Margin="10,10,10,10" 
+                             Height="350px" VerticalAlignment="Stretch" Margin="10" 
                  ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="ButtonShowMessageDialog_Click">
             <ListBox.ItemTemplate>
                 <DataTemplate>

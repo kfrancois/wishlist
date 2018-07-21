@@ -29,10 +29,5 @@ namespace WishList.Views
             InitializeComponent();
             ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
         }
-
-        /*public void Login()
-        {
-            WishListService.AuthenticateUser("firstUser@hogent.be", "P@ssword1");
-        }*/
     }
 }

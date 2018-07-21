@@ -1,20 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Newtonsoft.Json;
+using System;
 using System.Text;
-using System.Threading.Tasks;
 using Template10.Mvvm;
+using Windows.Web.Http;
 using WishList.Services;
 
 namespace WishList.ViewModels
 {
     public class LoginPageViewModel : ViewModelBase
     {
+        private ApiService apiService;
+
+        public LoginPageViewModel()
+        {
+            apiService = ApiService.Instance;
+        }
 
         public void GotoMainPage()
         {
-            //WishListService.AuthenticateUser("firstUser@hogent.be", "P@ssword1");
+            Login();
+        }
+
+        private async void Login()
+        {
+            apiService.SaveLoginDetails("firstUser@hogent.be", "P@ssword1"); // TODO
+
             NavigationService.Navigate(typeof(Views.MainPage));
+
         }
 
         public void GotoRegisterPage() =>

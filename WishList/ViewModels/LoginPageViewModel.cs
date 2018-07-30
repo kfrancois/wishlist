@@ -21,7 +21,7 @@ namespace WishList.ViewModels
             Login();
         }
 
-        private async void Login()
+        private void Login()
         {
             apiService.SaveLoginDetails("firstUser@hogent.be", "P@ssword1"); // TODO
 

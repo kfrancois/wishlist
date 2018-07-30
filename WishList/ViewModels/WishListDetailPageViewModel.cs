@@ -22,7 +22,7 @@ namespace WishList.ViewModels
         {
             for (int i = 0; i < 15; i++)
             {
-                WishListItem.Add(new Wish(new Category("Birthday"), "Title" + (i + 1).ToString(), "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Mauris at eleifend augue.Cras mattis, nisi id aliquam ornare, magna leo elementum arcu, ut porttitor mi metus eget ligula.", (i + 1) * 2.46));
+                WishListItem.Add(new Wish("Title" + (i + 1).ToString(), "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Mauris at eleifend augue.Cras mattis, nisi id aliquam ornare, magna leo elementum arcu, ut porttitor mi metus eget ligula.", (i + 1) * 2.46));
             }
         }
 

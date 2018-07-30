@@ -2,23 +2,24 @@
 
 namespace WishListRestService.Models
 {
-    public class WishList
+    public class Wishlist
     {
-        public int WishListId { get; set; }
+        public int WishlistId { get; set; }
         public string Title { get; set; }
+        public string Description { get; set; }
         public string CreatorName { get; set; }
         public List<Wish> Wishes { get; set; }
-        public List<WishListSubscriber> Subscribers { get; set; }
+        public List<WishlistSubscriber> Subscribers { get; set; }
         public List<PendingInvite> PendingInvites { get; set; }
 
-        public WishList()
+        public Wishlist()
         {
             Wishes = new List<Wish>();
-            Subscribers = new List<WishListSubscriber>();
+            Subscribers = new List<WishlistSubscriber>();
             PendingInvites = new List<PendingInvite>();
         }
 
-        public WishList(string title) : this()
+        public Wishlist(string title) : this()
         {
             Title = title;
         }
@@ -34,7 +35,7 @@ namespace WishListRestService.Models
             invite.User.AddInvite(invite);
         }
 
-        public void AddSubscriber(WishListSubscriber subscriber)
+        public void AddSubscriber(WishlistSubscriber subscriber)
         {
             Subscribers.Add(subscriber);
             subscriber.User.Subscribe(subscriber);

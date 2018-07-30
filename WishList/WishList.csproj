@@ -107,6 +107,7 @@
     <Compile Include="Services\ApiService.cs" />
     <Compile Include="Services\SettingsServices\SettingsService.cs" />
     <Compile Include="Services\WishListService.cs" />
+    <Compile Include="Services\WishService.cs" />
     <Compile Include="ViewModels\InvitesPageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />

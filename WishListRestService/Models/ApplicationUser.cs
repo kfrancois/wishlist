@@ -5,26 +5,26 @@ namespace WishListRestService.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        public ICollection<WishList> CreatedWishLists { get; set; }
+        public ICollection<Wishlist> CreatedWishLists { get; set; }
         public ICollection<PendingInvite> PendingInvites { get; set; }
-        public ICollection<WishListSubscriber> SubbedWishLists { get; set; }
+        public ICollection<WishlistSubscriber> SubbedWishLists { get; set; }
 
         public ApplicationUser()
         {
             PendingInvites = new List<PendingInvite>();
-            CreatedWishLists = new List<WishList>();
-            SubbedWishLists = new List<WishListSubscriber>();
+            CreatedWishLists = new List<Wishlist>();
+            SubbedWishLists = new List<WishlistSubscriber>();
         }
 
-        public ApplicationUser(ICollection<PendingInvite> pendingInvites, ICollection<WishList> createdWishLists,
-            ICollection<WishListSubscriber> subbedWishLists) : this()
+        public ApplicationUser(ICollection<PendingInvite> pendingInvites, ICollection<Wishlist> createdWishLists,
+            ICollection<WishlistSubscriber> subbedWishLists) : this()
         {
             PendingInvites = pendingInvites;
             CreatedWishLists = createdWishLists;
             SubbedWishLists = subbedWishLists;
         }
 
-        public void CreateWishList(WishList wishList)
+        public void CreateWishList(Wishlist wishList)
         {
             CreatedWishLists.Add(wishList);
             wishList.CreatorName = UserName;
@@ -35,7 +35,7 @@ namespace WishListRestService.Models
             PendingInvites.Add(invite);
         }
 
-        public void Subscribe(WishListSubscriber subscriber)
+        public void Subscribe(WishlistSubscriber subscriber)
         {
             SubbedWishLists.Add(subscriber);
         }

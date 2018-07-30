@@ -31,7 +31,7 @@ namespace WishListRestService.Data
         {
             var firstUser = new ApplicationUser {UserName = "firstUser@hogent.be", Email = "firstUser@hogent.be"};
 
-            var wishList = new WishList("Birthday")
+            var wishList = new Wishlist("Birthday")
             {
                 CreatorName = firstUser.UserName,
                 Wishes = new List<Wish>
@@ -46,11 +46,11 @@ namespace WishListRestService.Data
 
             firstUser.CreateWishList(wishList);
 
-            firstUser.CreateWishList(new WishList("Christmas"));
+            firstUser.CreateWishList(new Wishlist("Christmas"));
 
             var secondUser = new ApplicationUser {UserName = "secondUser@hogent.be", Email = "secondUser@hogent.be"};
 
-            var secondWishList = new WishList("Easter")
+            var secondWishList = new Wishlist("Easter")
             {
                 CreatorName = secondUser.UserName,
                 Wishes = new List<Wish>
@@ -67,7 +67,7 @@ namespace WishListRestService.Data
                 WishList = secondWishList
             };
 
-            var subscription = new WishListSubscriber
+            var subscription = new WishlistSubscriber
             {
                 User = secondUser,
                 WishList = wishList

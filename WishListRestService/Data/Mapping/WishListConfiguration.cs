@@ -4,12 +4,12 @@ using WishListRestService.Models;
 
 namespace WishListRestService.Data.Mapping
 {
-    public class WishListConfiguration : IEntityTypeConfiguration<WishList>
+    public class WishListConfiguration : IEntityTypeConfiguration<Wishlist>
     {
-        public void Configure(EntityTypeBuilder<WishList> builder)
+        public void Configure(EntityTypeBuilder<Wishlist> builder)
         {
             builder.ToTable("WishList");
-            builder.HasKey(wl => wl.WishListId);
+            builder.HasKey(wl => wl.WishlistId);
             builder.Property(wl => wl.Title);
 
             builder.HasMany(wl => wl.Wishes).WithOne();

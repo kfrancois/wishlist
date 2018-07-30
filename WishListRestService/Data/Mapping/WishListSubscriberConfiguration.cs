@@ -4,9 +4,9 @@ using WishListRestService.Models;
 
 namespace WishListRestService.Data.Mapping
 {
-    public class WishListSubscriberConfiguration : IEntityTypeConfiguration<WishListSubscriber>
+    public class WishListSubscriberConfiguration : IEntityTypeConfiguration<WishlistSubscriber>
     {
-        public void Configure(EntityTypeBuilder<WishListSubscriber> builder)
+        public void Configure(EntityTypeBuilder<WishlistSubscriber> builder)
         {
             builder.HasKey(w => new
             {

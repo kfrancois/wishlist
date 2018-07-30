@@ -17,7 +17,7 @@ namespace WishListRestService.Controllers
             WishRepository = repo;
         }
 
-        [HttpGet]
+        [HttpGet("all")]
         public IEnumerable<Wish> GetAll()
         {
             return WishRepository.GetAll();

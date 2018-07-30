@@ -1,80 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace WishList.Model
 {
-   public class User
+    public class User
     {
-        private List<Wishlist> subscribedLists;
-        private List<Wishlist> wishlists;
-        private string firstName;
-        private string lastName;
-        private List<PendingInvite> invites;
+        public string FirstName { get; set; }
 
-        public string FirstName
-        {
-            get { return firstName; }
-            set { firstName = value; }
-        }
+        public string LastName { get; set; }
 
-        public string LastName
-        {
-            get { return lastName; }
-            set { lastName = value; }
-        }
+        public List<Wishlist> SubscribedLists { get; set; }
 
-        public List<Wishlist> SubscribedLists
-        {
-            get { return subscribedLists; }
-            set { subscribedLists = value; }
-        }
+        public List<Wishlist> Wishlists { get; set; }
 
-        public List<Wishlist> Wishlists
-        {
-            get { return wishlists; }
-            set { wishlists = value; }
-        }
-        //picture 
-      
-        public List<PendingInvite> Invites
-        {
-            get { return invites; }
-            set { invites = value; }
-        }
+        public List<PendingInvite> Invites { get; set; }
 
         public User()
         {
-
-        }
-        public Wishlist invitePerson()
-        {
-            return null;
         }
 
-        public Wishlist requestJoin()
+        public void AddWishlist(Wishlist wishlist)
         {
-            return null;
+            Wishlists.Add(wishlist);
         }
 
-        public void addWishlist(Wishlist wishlist)
+        public void RemoveWishlist(Wishlist wishlist)
         {
-            this.wishlists.Add(wishlist); 
+            Wishlists.Remove(wishlist);
         }
-
-        public void removeWishlist(Wishlist wishlist)
+        public void AddWish(Wish wish, Wishlist wishlist)
         {
-            this.wishlists.Remove(wishlist); 
+            wishlist.AddWish(wish);
         }
-        public void addWish(Wish wish, Wishlist wishlist)
+        public void AddWishlist(Wish wish, Wishlist wishlist)
         {
-            wishlist.addWish(wish); 
-        }
-        public void addWishlist(Wish wish, Wishlist wishlist)
-        {
-            wishlist.removeWish(wish); 
+            wishlist.RemoveWish(wish);
         }
     }
 }

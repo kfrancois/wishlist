@@ -109,6 +109,7 @@
     <Compile Include="Services\WishListService.cs" />
     <Compile Include="ViewModels\EditWishViewModel.cs" />
     <Compile Include="ViewModels\HomeFrameViewModel.cs" />
+    <Compile Include="Services\WishService.cs" />
     <Compile Include="ViewModels\InvitesPageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\NewInviteViewModel.cs" />

@@ -34,7 +34,7 @@ namespace WishList.Services
 
         public async Task DeleteWishlist(Wishlist wishlist)
         {
-            await _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.DELETE, $"{_urlExtension}/{wishlist.WishlistId}");
+            await _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.DELETE, $"{_urlExtension}/{wishlist.WishlistId}"));
         }
 
         public async Task<Wish> CreateWish(int wishlistId, Wish wish)
@@ -45,7 +45,7 @@ namespace WishList.Services
 
         public async Task<List<Wishlist>> SubscribedWishLists()
         {
-            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.GET, $"{_urlExtension}/subscribed}"));
+            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.GET, $"{_urlExtension}/subscribed"));
             return JsonConvert.DeserializeObject<List<Wishlist>>(request.Result);
         }
 

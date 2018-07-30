@@ -40,7 +40,7 @@ namespace WishList.Services
 
         public async Task DeleteWish(Wish wish)
         {
-            await _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.DELETE, $"{_urlExtension}/{wish.WishId}");
+            await _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.DELETE, $"{_urlExtension}/{wish.WishId}"));
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,9 @@ namespace WishList.ViewModels
     {
         public string Name { get; private set; }
 
-        public List<Wishlist> WishLists { get; set; }
+        public ObservableCollection<Wishlist> WishLists { get; set; }
+
+        //public ObservableCollection<Wishlist> WishListCollection { get; set; }
 
         private ApiService apiService;
 
@@ -28,9 +31,12 @@ namespace WishList.ViewModels
         {
             var result = await apiService.GetContentFromResponse(await apiService.SendRequest(RequestType.GET, "wishlist/all"));
 
-            WishLists =  JsonConvert.DeserializeObject<List<Wishlist>>(result);
+            WishLists =  JsonConvert.DeserializeObject<ObservableCollection<Wishlist>>(result);
 
-            Console.WriteLine(WishLists);
+            //WishListCollection = new ObservableCollection<Wishlist>(WishLists);
+
+            //System.Diagnostics.Debug.WriteLine("List: " + WishLists.First().Title);
+            System.Diagnostics.Debug.WriteLine("Collection: " + WishLists.First().Title);
         }
 
         public void GotoNewWishList() =>

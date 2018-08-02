@@ -9,16 +9,16 @@ namespace WishList.Model
 {
     public class Wishlist
     {
-        [JsonProperty("wishListId")]
+        //[JsonProperty("wishListId")]
         public int WishlistId { get; set; }
         public DateTime Date { get; set; }
-        [JsonProperty("title")]
+        //[JsonProperty("title")]
         public string Title { get; set; }
-        [JsonProperty("wishes")]
+        //[JsonProperty("wishes")]
         public List<Wish> Wishes { get; private set; }
-        [JsonProperty("pendingInvites")]
+        //[JsonProperty("pendingInvites")]
         public List<PendingInvite> Invites { get; private set; }
-        [JsonProperty("description")]
+        //[JsonProperty("description")]
         public string Description { get; set; }
         public Wishlist() { }
 

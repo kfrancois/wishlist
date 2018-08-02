@@ -8,23 +8,23 @@ namespace WishList.Views
 
     public sealed partial class WishListScreen : Page
     {
-        public ObservableCollection<Wishlist> WishListItem = new ObservableCollection<Wishlist>();
+        //public ObservableCollection<Wishlist> WishListItem = new ObservableCollection<Wishlist>();
         public WishListScreenViewModel WishListScreenViewModelItem { get; private set; }
         public WishListScreen()
         {
             InitializeComponent();
             WishListScreenViewModelItem = new WishListScreenViewModel();
 
-            ListView1.DataContext = WishListItem;
+            //ListView1.DataContext = WishListItem;
         }
 
-        private void LoadWishlist()
+        /*private void LoadWishlist()
         {
             foreach (Wishlist wish in WishListScreenViewModelItem.WishLists)
             {
                 WishListItem.Add(wish);
             }
-        }
+        }*/
 
         
 

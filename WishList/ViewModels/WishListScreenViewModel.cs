@@ -18,9 +18,23 @@ namespace WishList.ViewModels
 
         public ObservableCollection<Wishlist> WishLists { get; set; }
 
-        //public ObservableCollection<Wishlist> WishListCollection { get; set; }
+        public Wishlist SelectedItem {
+            get {
+                return _selectedItem;
+            }
+            set {
+                if (value == _selectedItem)
+                    return;
 
+                _selectedItem = value;
+
+                System.Diagnostics.Debug.WriteLine(_selectedItem.Title);
+
+                NavigationService.Navigate(typeof(Views.WishListDetailPage), _selectedItem);
+            }
+        }
         private ApiService apiService;
+        private Wishlist _selectedItem;
 
         public WishListScreenViewModel()
         {
@@ -32,10 +46,7 @@ namespace WishList.ViewModels
             var result = await apiService.GetContentFromResponse(await apiService.SendRequest(RequestType.GET, "wishlist/all"));
 
             WishLists =  JsonConvert.DeserializeObject<ObservableCollection<Wishlist>>(result);
-
-            //WishListCollection = new ObservableCollection<Wishlist>(WishLists);
-
-            //System.Diagnostics.Debug.WriteLine("List: " + WishLists.First().Title);
+            
             System.Diagnostics.Debug.WriteLine("Collection: " + WishLists.First().Title);
         }
 

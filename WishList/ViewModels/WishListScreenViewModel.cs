@@ -30,22 +30,22 @@ namespace WishList.ViewModels
 
                 System.Diagnostics.Debug.WriteLine(_selectedItem.Title);
 
-                NavigationService.Navigate(typeof(Views.WishListDetailPage), _selectedItem);
+                NavigationService.Navigate(typeof(Views.WishListDetailPage), (int) _selectedItem.WishlistId);
             }
         }
-        private ApiService apiService;
+        private WishListService wishListService;
         private Wishlist _selectedItem;
 
         public WishListScreenViewModel()
         {
-            apiService = ApiService.Instance;
+            wishListService = WishListService.Instance;
         }
 
         public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> suspensionState)
         {
-            var result = await apiService.GetContentFromResponse(await apiService.SendRequest(RequestType.GET, "wishlist/all"));
+            ObservableCollection<Wishlist> ret = await wishListService.GetWishlists();
 
-            WishLists =  JsonConvert.DeserializeObject<ObservableCollection<Wishlist>>(result);
+            WishLists = ret.Count() == 0 ? new ObservableCollection<Wishlist>() : ret;
             
             System.Diagnostics.Debug.WriteLine("Collection: " + WishLists.First().Title);
         }

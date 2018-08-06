@@ -32,27 +32,11 @@ namespace WishList.Views
             this.InitializeComponent();
 
             this.SubscriptionsPageViewModelItem = new SubscriptionsPageViewModel();
-
-            MakeHardcodeWishlist();
-            ListView1.DataContext = WishListItem;
-        }
-
-        private void MakeHardcodeWishlist()
-        {
-            foreach (Wish wish in this.SubscriptionsPageViewModelItem.WishListItem)
-            {
-                this.WishListItem.Add(wish);
-            }
         }
 
         public void ShowDetail(object sender, SelectionChangedEventArgs e)
         {
-            //var selectedList = (Wishlist) ListView1.SelectedItem;
-            //Frame.Navigate(typeof(Views.WishListDetailPage), selectedList);
-            //Frame parentFrame = Window.Current.Content as Frame;
-            //parentFrame.Navigate(typeof(Views.SubscriptionsDetailPage));
-
-            App.Current.NavigationService.Frame.Navigate(typeof(Views.SubscriptionsDetailPage));
+            Frame.Navigate(typeof(Views.SubscriptionsDetailPage));
         }
     }
 }

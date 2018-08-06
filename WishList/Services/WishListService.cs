@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using WishList.Model;
 
@@ -14,10 +15,10 @@ namespace WishList.Services
         private ApiService _apiService;
         public WishListService() => _apiService = ApiService.Instance;
 
-        public async Task<List<Wishlist>> GetWishlists()
+        public async Task<ObservableCollection<Wishlist>> GetWishlists()
         {
             var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.GET, _urlExtension));
-            return JsonConvert.DeserializeObject<List<Wishlist>>(request.Result);
+            return JsonConvert.DeserializeObject<ObservableCollection<Wishlist>>(request.Result);
         }
 
         public async Task<List<Wishlist>> GetWishlist(int id)
@@ -43,10 +44,10 @@ namespace WishList.Services
             return JsonConvert.DeserializeObject<Wish>(request.Result);
         }
 
-        public async Task<List<Wishlist>> SubscribedWishLists()
+        public async Task<ObservableCollection<Wishlist>> SubscribedWishLists()
         {
             var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.GET, $"{_urlExtension}/subscribed"));
-            return JsonConvert.DeserializeObject<List<Wishlist>>(request.Result);
+            return JsonConvert.DeserializeObject<ObservableCollection<Wishlist>>(request.Result);
         }
 
         public async Task<List<Wishlist>> InvitedWishLists()

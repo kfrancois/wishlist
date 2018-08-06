@@ -50,10 +50,10 @@ namespace WishList.Services
             return JsonConvert.DeserializeObject<ObservableCollection<Wishlist>>(request.Result);
         }
 
-        public async Task<List<Wishlist>> InvitedWishLists()
+        public async Task<ObservableCollection<Wishlist>> InvitedWishLists()
         {
             var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.GET, $"{_urlExtension}/invited"));
-            return JsonConvert.DeserializeObject<List<Wishlist>>(request.Result);
+            return JsonConvert.DeserializeObject<ObservableCollection<Wishlist>>(request.Result);
         }
 
         public async Task<string> InvitePerson(int wishlistId, string email)

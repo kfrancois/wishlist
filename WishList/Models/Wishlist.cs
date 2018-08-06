@@ -20,6 +20,8 @@ namespace WishList.Model
         public List<PendingInvite> Invites { get; private set; }
         //[JsonProperty("description")]
         public string Description { get; set; }
+        //[JsonProperty("creatorName")]
+        public string CreatorName { get; set; }
         public Wishlist() { }
 
         public void AddWish(Wish wish) {

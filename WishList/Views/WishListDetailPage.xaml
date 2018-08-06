@@ -39,7 +39,7 @@
         </Grid>
         
         <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" HorizontalAlignment="Stretch" 
-                             Height="750px" VerticalAlignment="Stretch" Margin="10,10,10,10" 
+                             Height="Auto" VerticalAlignment="Stretch" Margin="10,10,10,10" 
                  ScrollViewer.VerticalScrollBarVisibility="Hidden">
             <ListBox.ItemTemplate>
                 <DataTemplate>

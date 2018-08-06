@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -26,24 +27,21 @@ namespace WishList.Views
     /// </summary>
     public sealed partial class WishListDetailPage : Page
     {
-        public ObservableCollection<Wish> WishListItem = new ObservableCollection<Wish>();
+        public ObservableCollection<Wish> WishListItem { get; set; }
         public WishListDetailPageViewModel WishListDetailPageViewModelItem { get; private set; }
         public WishListDetailPage()
         {
             ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
             this.InitializeComponent();
             this.WishListDetailPageViewModelItem = new WishListDetailPageViewModel();
-
-            MakeHardcodeWishlist();
-            ListView1.DataContext = WishListItem;
+            //ListView1.DataContext = WishListItem;
         }
 
-        private void MakeHardcodeWishlist()
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            foreach (Wish wish in this.WishListDetailPageViewModelItem.WishListItem)
-            {
-                this.WishListItem.Add(wish);
-            }
+            base.OnNavigatedTo(e);
+            var parameter = e.Parameter;
+            //this.WishListDetailPageViewModelItem.SelectedList = parameter;
         }
     }
 }

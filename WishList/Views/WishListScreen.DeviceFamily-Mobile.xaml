@@ -21,7 +21,7 @@
 
         <StackPanel>
             <TextBlock Text="Click on a WishList to see its details" TextWrapping="WrapWholeWords" Margin="10"/>
-            <ListBox x:Name="ListView1" ItemsSource="{x:Bind ViewModel.WishLists}" Width="Auto" Height="350px" 
+            <ListBox x:Name="ListView1" ItemsSource="{x:Bind ViewModel.WishLists}" Width="Auto" Height="Auto" 
                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10"
                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                 <ListBox.ItemTemplate>

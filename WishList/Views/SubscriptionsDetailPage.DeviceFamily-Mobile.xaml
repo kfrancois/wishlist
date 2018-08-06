@@ -25,7 +25,7 @@
         <TextBlock Text="Description" Margin="10" TextAlignment="Center" FontWeight="Bold"/>
         
         <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" HorizontalAlignment="Stretch" 
-                             Height="350px" VerticalAlignment="Stretch" Margin="10" 
+                             Height="Auto" VerticalAlignment="Stretch" Margin="10,10,10,10" 
                  ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="ButtonShowMessageDialog_Click">
             <ListBox.ItemTemplate>
                 <DataTemplate>

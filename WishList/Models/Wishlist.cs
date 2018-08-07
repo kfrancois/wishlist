@@ -11,7 +11,6 @@ namespace WishList.Model
     {
         //[JsonProperty("wishListId")]
         public int WishlistId { get; set; }
-        public DateTime Date { get; set; }
         //[JsonProperty("title")]
         public string Title { get; set; }
         //[JsonProperty("wishes")]
@@ -23,6 +22,14 @@ namespace WishList.Model
         //[JsonProperty("creatorName")]
         public string CreatorName { get; set; }
         public Wishlist() { }
+
+        public Wishlist(string title)
+        {
+            Title = title;
+            Description = null;
+            Wishes = new List<Wish>();
+            Invites = new List<PendingInvite>();
+        }
 
         public void AddWish(Wish wish) {
             Wishes.Add(wish); 

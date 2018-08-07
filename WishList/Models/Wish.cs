@@ -5,15 +5,15 @@ namespace WishList.Model
     public class Wish
     {
         // private Category category;
-        [JsonProperty("wishId")]
+        //[JsonProperty("wishId")]
         public int WishId { get; set; }
-        [JsonProperty("name")]
+        //[JsonProperty("name")]
         public string Name { get; set; }
-        [JsonProperty("description")]
+        //[JsonProperty("description")]
         public string Description { get; set; }
-        [JsonProperty("price")]
+        //[JsonProperty("price")]
         public double Price { get; set; }
-        [JsonProperty("claimed")]
+        //[JsonProperty("claimed")]
         public bool Claimed { get; set; }
 
         public Wish()

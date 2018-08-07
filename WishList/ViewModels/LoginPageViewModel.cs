@@ -11,6 +11,10 @@ namespace WishList.ViewModels
     {
         private ApiService apiService;
 
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string ErrorMessage { get; set; }
+
         public LoginPageViewModel()
         {
             apiService = ApiService.Instance;
@@ -21,11 +25,22 @@ namespace WishList.ViewModels
             Login();
         }
 
-        private void Login()
+        public void Login()
         {
-            apiService.SaveLoginDetails("firstUser@hogent.be", "P@ssword1"); // TODO
 
-            NavigationService.Navigate(typeof(Views.MainPage));
+            if(UserName == null)
+            {
+                ErrorMessage = "Username cannot be empty!";
+            }
+            else if (Password == null)
+            {
+                ErrorMessage = "Password cannot be empty!";
+            }
+            else
+            {
+                apiService.SaveLoginDetails(UserName, Password); // TODO
+                NavigationService.Navigate(typeof(Views.MainPage));
+            }
 
         }
 

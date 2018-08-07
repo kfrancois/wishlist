@@ -9,17 +9,19 @@ namespace WishList.Model
 {
     public class Wishlist
     {
-        //[JsonProperty("wishListId")]
+        [JsonProperty("wishListId")]
         public int WishlistId { get; set; }
-        //[JsonProperty("title")]
+        [JsonProperty("title")]
         public string Title { get; set; }
-        //[JsonProperty("wishes")]
-        public List<Wish> Wishes { get; private set; }
-        //[JsonProperty("pendingInvites")]
-        public List<PendingInvite> Invites { get; private set; }
-        //[JsonProperty("description")]
+        [JsonProperty("wishes")]
+        public List<Wish> Wishes { get; set; }
+        [JsonProperty("pendingInvites")]
+        public List<PendingInvite> Invites { get; set; }
+        /*[JsonProperty("subscribers")]
+        public List<User> Subscribers { get; set; }*/
+        [JsonProperty("description")]
         public string Description { get; set; }
-        //[JsonProperty("creatorName")]
+        [JsonProperty("creatorName")]
         public string CreatorName { get; set; }
         public Wishlist() { }
 
@@ -29,6 +31,7 @@ namespace WishList.Model
             Description = null;
             Wishes = new List<Wish>();
             Invites = new List<PendingInvite>();
+            //Subscribers = new List<User>();
         }
 
         public void AddWish(Wish wish) {

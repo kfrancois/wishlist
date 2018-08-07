@@ -34,6 +34,18 @@ namespace WishList.ViewModels
             }
         }
 
+        public InvitesPageViewModel()
+        {
+            wishListService = WishListService.Instance;
+        }
+
+        public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> suspensionState)
+        {
+            ObservableCollection<Wishlist> ret = await wishListService.InvitedWishLists();
+
+            WishLists = ret.Count() == 0 ? new ObservableCollection<Wishlist>() : ret;
+        }
+
         private async void ShowDialog(Wishlist item)
         {
             var dialog = new Windows.UI.Popups.MessageDialog(
@@ -48,20 +60,17 @@ namespace WishList.ViewModels
 
             var result = await dialog.ShowAsync();
 
+            if(result.Id.ToString() == "0")
+            {
+                AcceptInviteAsync(item);
+            }
+
             System.Diagnostics.Debug.WriteLine(result.Id);
         }
 
-        public InvitesPageViewModel()
+        private async void AcceptInviteAsync(Wishlist item)
         {
-            wishListService = WishListService.Instance;
-        }
-
-        public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> suspensionState)
-        {
-            ObservableCollection<Wishlist> ret = await wishListService.InvitedWishLists();
-
-            WishLists = ret.Count() == 0 ? new ObservableCollection<Wishlist>() : ret;
-
+            await wishListService.AcceptInvite(item.WishlistId);
         }
 
         public void GotoNewInvites() => NavigationService.Navigate(typeof(Views.NewInvite));

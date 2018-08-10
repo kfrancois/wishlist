@@ -26,7 +26,7 @@ namespace WishListRestService.Controllers
         {
             var name = _userManager.GetUserAsync(User).Result?.UserName;
             var wishLists =  WishListRepository.GetAll().Where(wl => wl.CreatorName == name);
-            var enumerable = wishLists as WishList[] ?? wishLists.ToArray();
+            var enumerable = wishLists as Wishlist[] ?? wishLists.ToArray();
             foreach (var wishList in enumerable)
             {
                 wishList.PendingInvites.ForEach(pi => pi.WishList = null);
@@ -36,10 +36,10 @@ namespace WishListRestService.Controllers
         }
 
         [HttpGet("all")]
-        public IEnumerable<WishList> GetAll()
+        public IEnumerable<Wishlist> GetAll()
         {
             var wishLists = WishListRepository.GetAll();
-            var enumerable = wishLists as WishList[] ?? wishLists.ToArray();
+            var enumerable = wishLists as Wishlist[] ?? wishLists.ToArray();
             foreach (var wishList in enumerable)
             {
                 wishList.PendingInvites.ForEach(pi => pi.WishList = null);
@@ -64,7 +64,7 @@ namespace WishListRestService.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult Create([FromBody] WishList item)
+        public IActionResult Create([FromBody] Wishlist item)
         {
             if (item == null)
             {
@@ -79,7 +79,7 @@ namespace WishListRestService.Controllers
             // _userManager.UpdateAsync(currentUser);
             WishListRepository.SaveChanges();
 
-            return Created($"/api/wishlist/{item.WishListId}", item);
+            return Created($"/api/wishlist/{item.WishlistId}", item);
         }
 
         [HttpPost("{id}/wish")]
@@ -130,12 +130,12 @@ namespace WishListRestService.Controllers
         }
 
         [HttpGet("invited")]
-        public IEnumerable<WishList> InvitedWishLists()
+        public IEnumerable<Wishlist> InvitedWishLists()
         {
             var id = _userManager.GetUserAsync(User).Result?.Id;
 
             var wishLists = WishListRepository.GetAll().Where(wl => wl.PendingInvites.Any(pi => pi.UserId == id));
-            var invitedWishLists = wishLists as WishList[] ?? wishLists.ToArray();
+            var invitedWishLists = wishLists as Wishlist[] ?? wishLists.ToArray();
             foreach (var wishList in invitedWishLists)
             {
                 wishList.PendingInvites = null;
@@ -145,14 +145,14 @@ namespace WishListRestService.Controllers
         }
 
         [HttpGet("subscribed")]
-        public IEnumerable<WishList> SubscribedWishLists()
+        public IEnumerable<Wishlist> SubscribedWishLists()
         {
             var id = _userManager.GetUserAsync(User).Result?.Id;
 
             var wishLists = WishListRepository.GetAll().Where(wl => wl.Subscribers.Any(s => s.UserId == id));
 
             // var filtered = wishLists.Where(wl => wl.Subscribers.Any(s => s.UserId == id));
-            var subscribedWishLists = wishLists as WishList[] ?? wishLists.ToArray();
+            var subscribedWishLists = wishLists as Wishlist[] ?? wishLists.ToArray();
             foreach (var wishList in subscribedWishLists)
             {
                 wishList.PendingInvites = null;
@@ -177,7 +177,7 @@ namespace WishListRestService.Controllers
 
             wishList.PendingInvites.RemoveAll(pi => pi.UserId == user?.Id);
 
-            var subscriber = new WishListSubscriber
+            var subscriber = new WishlistSubscriber
             {
                 User = _userManager.GetUserAsync(User).Result,
                 WishList = wishList
@@ -192,7 +192,7 @@ namespace WishListRestService.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] WishList item)
+        public IActionResult Update(int id, [FromBody] Wishlist item)
         {
             if (item == null)
             {

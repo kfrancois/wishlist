@@ -6,6 +6,6 @@
         public ApplicationUser User { get; set; }
 
         public int WishListId { get; set; }
-        public WishList WishList { get; set; }
+        public Wishlist WishList { get; set; }
     }
 }

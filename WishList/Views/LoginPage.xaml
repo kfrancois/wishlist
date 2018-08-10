@@ -19,15 +19,15 @@
                     <TextBlock Text="Wishter" FontSize="50" Margin="4" TextAlignment="Center" FocusVisualPrimaryBrush="White" FocusVisualSecondaryBrush="#99000000" Foreground="#FFF7F7F7"/>
                 </StackPanel>
                 <TextBlock Text="Login" FontSize="36" Margin="4" TextAlignment="Center" Foreground="Black"/>
-                <TextBlock x:Name="ErrorMessage" Text="" FontSize="20" Margin="4" Foreground="Red" TextAlignment="Center" />
+                <TextBlock x:Name="ErrorMessage"  Text="{Binding ErrorMessage, Mode=OneWay}" FontSize="20" Margin="4" Foreground="Red" TextAlignment="Center" />
                 <TextBlock Text="Enter your e-mail below" Margin="0,0,0,20"
                TextWrapping="Wrap" Width="300"
                TextAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="Black" />
-                <TextBox x:Name="UsernameTextBox" Margin="4" Width="250" PlaceholderText="E-mail adress" SelectionHighlightColor="{x:Null}" Background="{x:Null}" FocusVisualSecondaryBrush="#99000000"/>
+                <TextBox x:Name="UsernameTextBox" Margin="4" Width="250" PlaceholderText="E-mail adress" Text="{Binding UserName, Mode=TwoWay}" SelectionHighlightColor="{x:Null}" Background="{x:Null}" FocusVisualSecondaryBrush="#99000000"/>
                 <TextBlock Text="Enter your password below" Margin="0,20,0,20"
                TextWrapping="Wrap" Width="300"
                TextAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="Black"/>
-                <PasswordBox x:Name="passwordBox" Width="250" MaxLength="16"
+                <PasswordBox x:Name="passwordBox" Width="250" MaxLength="16" Password="{Binding Password, Mode=TwoWay}"
              PlaceholderText="Password" SelectionHighlightColor="{x:Null}" Background="{x:Null}" FocusVisualSecondaryBrush="#99000000"/>
                 <TextBlock x:Name="statusText" Margin="10" HorizontalAlignment="Center" />
                 <TextBlock Text="Don't have an account?"

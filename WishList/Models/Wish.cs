@@ -1,56 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace WishList.Model
 {
     public class Wish
     {
-        private string title;
-        private string description;
-        private double price; 
-        //picture  
-        private User buyer; 
-        private Category category;
+        [JsonProperty("wishId")]
+        public int WishId { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
+        [JsonProperty("price")]
+        public double Price { get; set; }
+        [JsonProperty("claimed")]
+        public bool Claimed { get; set; }
 
-        public string Title
+        public Wish()
         {
-            get { return title; }
-            set { title = value; }
-        }
-        public string Description
-        {
-            get { return description; }
-            set { description = value; }
-        }
-        public double Price
-        {
-            get { return price; }
-            set { price = value; }
+
         }
 
-        public User User
+        public Wish(string name, string description, double price)
         {
-            get { return buyer; }
-            set { buyer = value; }
+            Name = name;
+            Description = description;
+            Price = price;
+            Claimed = false;
         }
 
-        public Wish(Category category)
-        {
-            this.category = category; 
-        }
-
-        public Wish(Category category, string title, string description, double price)
-        {
-            this.category = category;
-            this.title = title;
-            this.description = description;
-            this.price = price; 
-        }
-        public string getCategoryName() {
-            return this.category.Name; 
-        }
     }
 }

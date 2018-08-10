@@ -1,12 +1,9 @@
-﻿using System;
-using Windows.UI.Xaml;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using WishList.Services.SettingsServices;
 using Windows.ApplicationModel.Activation;
-using Template10.Mvvm;
 using Template10.Common;
-using System.Linq;
 using Windows.UI.Xaml.Data;
+using WishList.Services;
 
 namespace WishList
 {
@@ -16,6 +13,7 @@ namespace WishList
     [Bindable]
     sealed partial class App : BootStrapper
     {
+
         public App()
         {
             InitializeComponent();
@@ -32,10 +30,12 @@ namespace WishList
             #endregion
         }
 
+
         public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
-            // TODO: add your long-running task here
-            await NavigationService.NavigateAsync(typeof(Views.LoginPage));
+            var apiService = ApiService.Instance;
+
+            await NavigationService.NavigateAsync(apiService.IsSaved("login") ? typeof(Views.MainPage) : typeof(Views.LoginPage));
         }
     }
 }

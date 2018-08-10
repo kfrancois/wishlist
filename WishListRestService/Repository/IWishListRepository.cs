@@ -5,11 +5,11 @@ namespace WishListRestService.Repository
 {
     public interface IWishListRepository
     {
-        void Add(WishList item);
-        IEnumerable<WishList> GetAll();
-        WishList Find(int id);
+        void Add(Wishlist item);
+        IEnumerable<Wishlist> GetAll();
+        Wishlist Find(int id);
         void Remove(int id);
-        void Update(WishList item);
+        void Update(Wishlist item);
         void SaveChanges();
     }
 }

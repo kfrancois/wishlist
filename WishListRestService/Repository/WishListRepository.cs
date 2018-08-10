@@ -11,7 +11,7 @@ namespace WishListRestService.Repository
     public class WishListRepository : IWishListRepository
     {
         private readonly ApplicationDbContext _dbContext;
-        private readonly DbSet<WishList> _wishLists;
+        private readonly DbSet<Wishlist> _wishLists;
 
         public WishListRepository(ApplicationDbContext dbContext)
         {
@@ -19,34 +19,34 @@ namespace WishListRestService.Repository
             _wishLists = dbContext.WishLists;
         }
 
-        public void Add(WishList item)
+        public void Add(Wishlist item)
         {
             _wishLists.Add(item);
             SaveChanges();
         }
 
-        public WishList Find(int id)
+        public Wishlist Find(int id)
         {
             return _wishLists.Include(wl => wl.Wishes).Include(wl => wl.PendingInvites).Include(wl => wl.Subscribers)
-                .SingleOrDefault(wl => wl.WishListId == id);
+                .SingleOrDefault(wl => wl.WishlistId == id);
         }
 
-        public IEnumerable<WishList> GetAll()
+        public IEnumerable<Wishlist> GetAll()
         {
             return _wishLists.Include(wl => wl.Wishes).Include(wl => wl.PendingInvites).Include(wl => wl.Subscribers);
         }
 
         public void Remove(int id)
         {
-            var itemToRemove = _wishLists.SingleOrDefault(wl => wl.WishListId == id);
+            var itemToRemove = _wishLists.SingleOrDefault(wl => wl.WishlistId == id);
             if (itemToRemove != null)
                 _wishLists.Remove(itemToRemove);
             SaveChanges();
         }
 
-        public void Update(WishList item)
+        public void Update(Wishlist item)
         {
-            var itemToUpdate = _wishLists.SingleOrDefault(wl => wl.WishListId == item.WishListId);
+            var itemToUpdate = _wishLists.SingleOrDefault(wl => wl.WishlistId == item.WishlistId);
             if (itemToUpdate != null)
             {
                 itemToUpdate.Title = item.Title; // TODO update other fields

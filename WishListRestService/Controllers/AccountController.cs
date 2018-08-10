@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -14,7 +15,7 @@ using WishListRestService.Models;
 
 namespace WishListRestService.Controllers
 {
-    [Route("[controller]/[action]")]
+    [Route("api/[controller]/[action]")]
     public class AccountController : Controller
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -65,6 +66,14 @@ namespace WishListRestService.Controllers
             throw new ApplicationException("UNKNOWN_ERROR");
         }
 
+        [Authorize]
+        [HttpPost]
+        public object LoginCheck()
+        {
+            return new { status = "OK" };
+        }
+
+
         private object GenerateJwtToken(string email, ApplicationUser user)
         {
             var claims = new List<Claim>
@@ -85,8 +94,8 @@ namespace WishListRestService.Controllers
                 expires: expires,
                 signingCredentials: creds
             );
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            return new { Token = new JwtSecurityTokenHandler().WriteToken(token), expiresAt = expires };
+            //return new ;
         }
 
         public class LoginDto

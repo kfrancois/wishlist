@@ -1,30 +1,53 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Template10.Mvvm;
 using Windows.UI.Xaml;
 using WishList.Model;
+using WishList.Services;
 
 namespace WishList.ViewModels
 {
-   public class WishListScreenViewModel : ViewModelBase
+    public class WishListScreenViewModel : ViewModelBase
     {
         public string Name { get; private set; }
-        private List<Wish> wishListItem = new List<Wish>();
-        public List<Wish> WishListItem { get => wishListItem; set => wishListItem = value; }
+
+        public ObservableCollection<Wishlist> WishLists { get; set; }
+
+        public Wishlist SelectedItem {
+            get {
+                return _selectedItem;
+            }
+            set {
+                if (value == _selectedItem)
+                    return;
+
+                _selectedItem = value;
+
+                System.Diagnostics.Debug.WriteLine(_selectedItem.Title);
+
+                NavigationService.Navigate(typeof(Views.WishListDetailPage), (int) _selectedItem.WishlistId);
+            }
+        }
+        private WishListService wishListService;
+        private Wishlist _selectedItem;
 
         public WishListScreenViewModel()
         {
-            MakeHardcodeWishlist(); 
+            wishListService = WishListService.Instance;
         }
 
-        private void MakeHardcodeWishlist()
+        public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> suspensionState)
         {
-            for (int i = 0; i < 10; i++) {
-                this.WishListItem.Add(new Wish(new Category("Birthday"), "Title" + (i+1).ToString(), "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Mauris at eleifend augue.Cras mattis, nisi id aliquam ornare, magna leo elementum arcu, ut porttitor mi metus eget ligula.", (i+1)*2.46));
-            }
+            ObservableCollection<Wishlist> ret = await wishListService.GetWishlists();
+
+            WishLists = ret.Count() == 0 ? new ObservableCollection<Wishlist>() : ret;
+            
+            System.Diagnostics.Debug.WriteLine("Collection: " + WishLists.First().Title);
         }
 
         public void GotoNewWishList() =>

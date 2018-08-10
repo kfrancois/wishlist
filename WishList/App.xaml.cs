@@ -35,7 +35,7 @@ namespace WishList
         {
             var apiService = ApiService.Instance;
 
-            await NavigationService.NavigateAsync(apiService.IsSaved("login") ? typeof(Views.MainPage) : typeof(Views.LoginPage));
+            await NavigationService.NavigateAsync(apiService.IsSaved("login") ? typeof(Views.Main) : typeof(Views.LoginPage));
         }
     }
 }

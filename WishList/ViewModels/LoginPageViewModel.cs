@@ -39,7 +39,7 @@ namespace WishList.ViewModels
             else
             {
                 apiService.SaveLoginDetails(UserName, Password); // TODO
-                NavigationService.Navigate(typeof(Views.MainPage));
+                NavigationService.Navigate(typeof(Views.Main));
             }
 
         }

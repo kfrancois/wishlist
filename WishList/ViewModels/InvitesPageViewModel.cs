@@ -73,8 +73,7 @@ namespace WishList.ViewModels
             await wishListService.AcceptInvite(item.WishlistId);
         }
 
-        public void GotoNewInvites() => NavigationService.Navigate(typeof(Views.NewInvite));
+        public void GotoNewInvites() => App.Current.NavigationService.Navigate(typeof(Views.NewInvite));
 
-        public void GoBack() => NavigationService.Navigate(typeof(Views.MainPage));
     }
 }

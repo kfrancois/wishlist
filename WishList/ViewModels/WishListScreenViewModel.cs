@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Template10.Mvvm;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Navigation;
 using WishList.Model;
 using WishList.Services;
 

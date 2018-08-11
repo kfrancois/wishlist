@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using WishList.Model;
+using WishList.Services;
 using WishList.ViewModels;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -27,32 +28,28 @@ namespace WishList.Views
     {
         public ObservableCollection<Wish> WishListItem = new ObservableCollection<Wish>();
         public SubscriptionsPageViewModel SubscriptionsPageViewModelItem { get; private set; }
+        public ObservableCollection<Wishlist> WishLists { get; set; }
+        private WishListService wishListService;
         public SubscriptionsPage()
         {
             this.InitializeComponent();
-
+            wishListService = WishListService.Instance;
             this.SubscriptionsPageViewModelItem = new SubscriptionsPageViewModel();
-
-            MakeHardcodeWishlist();
-            ListView1.DataContext = WishListItem;
         }
 
-        private void MakeHardcodeWishlist()
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            foreach (Wish wish in this.SubscriptionsPageViewModelItem.WishListItem)
-            {
-                this.WishListItem.Add(wish);
-            }
+            base.OnNavigatedTo(e);
+            ObservableCollection<Wishlist> ret = await wishListService.SubscribedWishLists();
+
+            WishLists = ret.Count() == 0 ? new ObservableCollection<Wishlist>() : ret;
+
+            ListView1.ItemsSource = WishLists;
         }
 
         public void ShowDetail(object sender, SelectionChangedEventArgs e)
         {
-            //var selectedList = (Wishlist) ListView1.SelectedItem;
-            //Frame.Navigate(typeof(Views.WishListDetailPage), selectedList);
-            //Frame parentFrame = Window.Current.Content as Frame;
-            //parentFrame.Navigate(typeof(Views.SubscriptionsDetailPage));
-
-            App.Current.NavigationService.Frame.Navigate(typeof(Views.SubscriptionsDetailPage));
+            Frame.Navigate(typeof(Views.SubscriptionsDetailPage));
         }
     }
 }

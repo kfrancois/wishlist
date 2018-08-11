@@ -8,16 +8,12 @@
     mc:Ignorable="d" xmlns:controls="using:Template10.Controls"
     xmlns:vm="using:WishList.ViewModels">
 
-    <Page.DataContext>
-        <vm:NewWishListViewModel x:Name="ViewModel" />
-    </Page.DataContext>
-
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" Text="New WishList"/>
 
-        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="{x:Bind ViewModel.GoBack}" Margin="10"/>
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" Margin="10"/>
 
         <Grid>
 
@@ -27,9 +23,9 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock TextWrapping="Wrap" Text="Give the name of the WishList" Grid.Column="0" Grid.Row="0" Margin="10"/>
-            <TextBox TextWrapping="Wrap" PlaceholderText="WishListName" Grid.Column="0" Grid.Row="1" Margin="10"/>
-            <Button Content="Save" Click="{x:Bind ViewModel.GoBack}" Grid.Column="0" Grid.Row="2" Margin="10"/>
+            <TextBlock TextWrapping="Wrap" Text="Give the name of the WishList" Grid.Column="0" Grid.Row="0" Margin="10,10,10,10"/>
+            <TextBox TextWrapping="Wrap" PlaceholderText="WishListName" Text="{Binding WishListName, Mode=TwoWay}" Grid.Column="0" Grid.Row="1" Margin="10,10,10,10"/>
+            <Button Content="Save" Click="SaveAsync" Grid.Column="0" Grid.Row="2" Margin="10,10,10,10"/>
         </Grid>
     </StackPanel>
 </Page>

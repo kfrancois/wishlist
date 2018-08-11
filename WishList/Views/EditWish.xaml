@@ -6,19 +6,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Template10.Controls"
-    xmlns:vm="using:WishList.ViewModels"
     mc:Ignorable="d">
-
-    <Page.DataContext>
-        <vm:EditWishViewModel x:Name="ViewModel" />
-    </Page.DataContext>
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" Text="Edit Wish"/>
 
-        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="{x:Bind ViewModel.GoBack}" Margin="10"/>
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" Margin="10"/>
 
         <Grid Margin="10">
 
@@ -42,7 +37,7 @@
             <TextBox TextWrapping="Wrap" PlaceholderText="Category" Grid.Column="0" Grid.Row="5" Margin="10"/>
             <TextBlock TextWrapping="Wrap" Text="Price of the Wish" Grid.Column="0" Grid.Row="6" Margin="10"/>
             <TextBox TextWrapping="Wrap" PlaceholderText="Price" Grid.Column="0" Grid.Row="7" Margin="10"/>
-            <Button Content="Save" Click="{x:Bind ViewModel.GoBack}" Grid.Column="0" Grid.Row="8" Margin="10"/>
+            <Button Content="Save" Click="GoBack" Grid.Column="0" Grid.Row="8" Margin="10"/>
         </Grid>
     </StackPanel>
 </Page>

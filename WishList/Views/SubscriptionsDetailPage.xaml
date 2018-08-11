@@ -9,23 +9,19 @@
     xmlns:controls="using:Template10.Controls">
     <!--  <conv:StringToPriceFormatter x:Name="DateToStringFormatConverter"/> -->
 
-    <Page.DataContext>
-        <vm:SubscriptionsDetailsPageViewModel x:Name="ViewModel" />
-    </Page.DataContext>
-
     <StackPanel Name="stackpanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" Width="Auto">
 
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" Text="WishListName"/>
 
-        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="{x:Bind ViewModel.GoBack}" Margin="10"/>
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" Margin="10"/>
 
         <TextBlock Text="Wishlist from USER" Margin="10" TextAlignment="Center" FontWeight="Bold"/>
         <TextBlock Text="Description" Margin="10" TextAlignment="Center" FontWeight="Bold"/>
 
         <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" HorizontalAlignment="Stretch" 
-                             Height="750px" VerticalAlignment="Stretch" Margin="10" 
+                             Height="Auto" VerticalAlignment="Stretch" Margin="10,10,10,10" 
                  ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="ButtonShowMessageDialog_Click" >
             <ListBox.ItemTemplate>
                 <DataTemplate>

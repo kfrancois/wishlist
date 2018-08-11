@@ -2,15 +2,15 @@
     x:Class="WishList.Views.Main"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WishList.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:WishList.ViewModels"
     mc:Ignorable="d">
 
     <NavigationView x:Name="NavView"
                     ItemInvoked="NavView_ItemInvoked"
                     Loaded="NavView_Loaded"
-                    Background="LightGray">
+                    Background="DodgerBlue">
 
         <NavigationView.MenuItems>
             <NavigationViewItem x:Uid="HomeNavItem" Content="Home" Tag="home">
@@ -25,12 +25,11 @@
 
         <NavigationView.HeaderTemplate>
             <DataTemplate>
-                <Grid Background="DodgerBlue">
+                <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Style="{StaticResource TitleTextBlockStyle}"
-                           Margin="10"
                            FontSize="28"
                            VerticalAlignment="Center"
                            Text="Wishter"

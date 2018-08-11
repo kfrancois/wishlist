@@ -1,49 +1,71 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using Windows.Security.Credentials;
-using Newtonsoft.Json;
 using WishList.Model;
 
 namespace WishList.Services
 {
-    public class WishListService {
-        private static string baseUrl = "http://localhost:60855/";
+    public class WishListService
+    {
+        public static WishListService Instance { get; } = new WishListService();
 
-        private static string _token;
+        private static readonly string _urlExtension = "wishlist";
 
-        public static void AuthenticateUser(string email, string password) {
+        private ApiService _apiService;
+        public WishListService() => _apiService = ApiService.Instance;
 
-            var client = new HttpClient {BaseAddress = new Uri(baseUrl)};
-
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            var content = new StringContent(JsonConvert.SerializeObject(new {
-                Email = email,
-                Password = password
-            }), Encoding.UTF8, "application/json");
-
-           var response = client.PostAsync("account/login", content);
-
-            var jsonResponse = response.Result.Content.ReadAsStringAsync();
-
-            _token = jsonResponse.Result;
-
+        public async Task<ObservableCollection<Wishlist>> GetWishlists()
+        {
+            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.GET, _urlExtension));
+            return JsonConvert.DeserializeObject<ObservableCollection<Wishlist>>(request.Result);
         }
 
-        public static IEnumerable<Wishlist> GetWishLists() {
-            var client = new HttpClient { BaseAddress = new Uri(baseUrl) };
+        public async Task<ObservableCollection<Wishlist>> GetWishlist(int id)
+        {
+            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.GET, $"{_urlExtension}/{id}"));
+            return JsonConvert.DeserializeObject<ObservableCollection<Wishlist>>(request.Result);
+        }
 
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
+        public async Task<Wishlist> CreateWishlist(Wishlist wishlist)
+        {
+            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.POST, $"{_urlExtension}", JsonConvert.SerializeObject(wishlist)));
+            return JsonConvert.DeserializeObject<Wishlist>(request.Result);
+        }
 
-            var response = client.GetAsync("api/wishlist");
+        public async Task DeleteWishlist(Wishlist wishlist)
+        {
+            await _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.DELETE, $"{_urlExtension}/{wishlist.WishlistId}"));
+        }
 
-            return JsonConvert.DeserializeObject<IEnumerable<Wishlist>>(response.Result.Content.ReadAsStringAsync().Result);
+        public async Task<Wish> CreateWish(int wishlistId, Wish wish)
+        {
+            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.POST, $"{_urlExtension}/{wishlistId}", JsonConvert.SerializeObject(wish)));
+            return JsonConvert.DeserializeObject<Wish>(request.Result);
+        }
+
+        public async Task<ObservableCollection<Wishlist>> SubscribedWishLists()
+        {
+            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.GET, $"{_urlExtension}/subscribed"));
+            return JsonConvert.DeserializeObject<ObservableCollection<Wishlist>>(request.Result);
+        }
+
+        public async Task<ObservableCollection<Wishlist>> InvitedWishLists()
+        {
+            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.GET, $"{_urlExtension}/invited"));
+            return JsonConvert.DeserializeObject<ObservableCollection<Wishlist>>(request.Result);
+        }
+
+        public async Task<string> InvitePerson(int wishlistId, string email)
+        {
+            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.POST, $"{_urlExtension}/{wishlistId}/invite", JsonConvert.SerializeObject(new { Email = email })));
+            return JsonConvert.DeserializeObject<string>(request.Result);
+        }
+
+        public async Task<bool> AcceptInvite(int wishlistId)
+        {
+            var request = await _apiService.SendRequest(RequestType.POST, $"{_urlExtension}/{wishlistId}/accept");
+            return request.IsSuccessStatusCode;
         }
     }
 }

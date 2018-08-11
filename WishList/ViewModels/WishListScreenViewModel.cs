@@ -1,32 +1,32 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Template10.Mvvm;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Navigation;
 using WishList.Model;
+using WishList.Services;
 
 namespace WishList.ViewModels
 {
-   public class WishListScreenViewModel : ViewModelBase
+    public class WishListScreenViewModel : ViewModelBase
     {
         public string Name { get; private set; }
-        private List<Wish> wishListItem = new List<Wish>();
-        public List<Wish> WishListItem { get => wishListItem; set => wishListItem = value; }
+
+        public ObservableCollection<Wishlist> WishLists { get; set; }
+
+        private WishListService wishListService;
+        private Wishlist _selectedItem;
 
         public WishListScreenViewModel()
         {
-            MakeHardcodeWishlist(); 
+            wishListService = WishListService.Instance;
         }
-
-        private void MakeHardcodeWishlist()
-        {
-            for (int i = 0; i < 10; i++) {
-                this.WishListItem.Add(new Wish(new Category("Birthday"), "Title" + (i+1).ToString(), "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Mauris at eleifend augue.Cras mattis, nisi id aliquam ornare, magna leo elementum arcu, ut porttitor mi metus eget ligula.", (i+1)*2.46));
-            }
-        }
-
+        
         public void GotoNewWishList() =>
             App.Current.NavigationService.Navigate(typeof(Views.NewWishList));
     }

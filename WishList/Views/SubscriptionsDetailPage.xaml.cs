@@ -71,5 +71,10 @@ namespace WishList.Views
             /*var btn = sender as Button;
             btn.Content = $"Result: {result.Label} ({result.Id})";*/
         }
+
+        public void GoBack(object sender, RoutedEventArgs e)
+        {
+            App.Current.NavigationService.GoBack();
+        }
     }
 }

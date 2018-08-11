@@ -1,20 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Newtonsoft.Json;
+using System;
 using System.Text;
-using System.Threading.Tasks;
 using Template10.Mvvm;
+using Windows.Web.Http;
 using WishList.Services;
 
 namespace WishList.ViewModels
 {
     public class LoginPageViewModel : ViewModelBase
     {
+        private ApiService apiService;
+
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string ErrorMessage { get; set; }
+
+        public LoginPageViewModel()
+        {
+            apiService = ApiService.Instance;
+        }
 
         public void GotoMainPage()
         {
-            //WishListService.AuthenticateUser("firstUser@hogent.be", "P@ssword1");
-            NavigationService.Navigate(typeof(Views.Main));
+            Login();
+        }
+
+        public void Login()
+        {
+
+            if(UserName == null)
+            {
+                ErrorMessage = "Username cannot be empty!";
+            }
+            else if (Password == null)
+            {
+                ErrorMessage = "Password cannot be empty!";
+            }
+            else
+            {
+                apiService.SaveLoginDetails(UserName, Password); // TODO
+                NavigationService.Navigate(typeof(Views.Main));
+            }
+
         }
 
         public void GotoRegisterPage() =>

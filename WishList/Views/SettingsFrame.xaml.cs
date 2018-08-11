@@ -24,7 +24,9 @@ namespace WishList.Views
     {
         public SettingsFrame()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
+
+        public void GotoLogin(object sender, RoutedEventArgs e) => App.Current.NavigationService.Navigate(typeof(LoginPage));
     }
 }

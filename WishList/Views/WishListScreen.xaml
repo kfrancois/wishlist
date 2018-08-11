@@ -10,10 +10,6 @@
     xmlns:vm="using:WishList.ViewModels">
     <!--  <conv:StringToPriceFormatter x:Name="DateToStringFormatConverter"/> -->
 
-    <Page.DataContext>
-        <vm:WishListScreenViewModel x:Name="ViewModel" />
-    </Page.DataContext>
-
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
@@ -21,7 +17,7 @@
 
         <StackPanel>
             <TextBlock Text="Click on a WishList to see its details" TextWrapping="WrapWholeWords" Margin="10"/>
-            <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" Height="700px" 
+            <ListBox x:Name="ListView1" Width="Auto" Height="Auto" 
                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10"
                      SelectionChanged="ShowDetail">
                 <ListBox.ItemTemplate>
@@ -29,18 +25,16 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Name="text1" Text="{Binding Title}" Grid.Row="0" Grid.Column="0" TextWrapping="WrapWholeWords"/>
-                            <StackPanel  Margin="10,0,0,0" Orientation="Vertical" Grid.Row="0" Grid.Column="1">
-                                <TextBlock Text="Description" FontWeight="Bold"/>
-                                <TextBlock Text="{Binding Description}" TextWrapping="WrapWholeWords"/>
+                            <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+                                <TextBlock Text="Wishlist" FontWeight="Bold"/>
+                                <TextBlock Name="text1" Text="{Binding Title}" TextWrapping="WrapWholeWords"/>
                             </StackPanel>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </StackPanel>
-        <Button Content="New WishList" Margin="10" Click="{x:Bind ViewModel.GotoNewWishList}" HorizontalAlignment="Stretch"/>
+        <Button Content="New WishList" Margin="10" Click="NewWishList" HorizontalAlignment="Stretch"/>
     </StackPanel>
 </Page>

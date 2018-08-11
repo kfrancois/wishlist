@@ -7,7 +7,7 @@ namespace WishListRestService.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<WishList> WishLists { get; set; }
+        public DbSet<Wishlist> WishLists { get; set; }
         public DbSet<Wish> Wishes { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)

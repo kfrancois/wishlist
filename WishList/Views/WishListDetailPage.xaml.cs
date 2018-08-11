@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -26,24 +27,22 @@ namespace WishList.Views
     /// </summary>
     public sealed partial class WishListDetailPage : Page
     {
-        public ObservableCollection<Wish> WishListItem = new ObservableCollection<Wish>();
+        public ObservableCollection<Wish> WishListItem { get; set; }
         public WishListDetailPageViewModel WishListDetailPageViewModelItem { get; private set; }
         public WishListDetailPage()
         {
             ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
             this.InitializeComponent();
             this.WishListDetailPageViewModelItem = new WishListDetailPageViewModel();
-
-            MakeHardcodeWishlist();
-            ListView1.DataContext = WishListItem;
+            //ListView1.DataContext = WishListItem;
         }
 
-        private void MakeHardcodeWishlist()
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            foreach (Wish wish in this.WishListDetailPageViewModelItem.WishListItem)
-            {
-                this.WishListItem.Add(wish);
-            }
+            base.OnNavigatedTo(e);
+            var parameter = e.Parameter;
+            System.Diagnostics.Debug.WriteLine(parameter);
+            //this.WishListDetailPageViewModelItem.SelectedList = parameter;
         }
 
         private async void ButtonShowMessageDialog_Click(object sender, RoutedEventArgs e)
@@ -75,6 +74,16 @@ namespace WishList.Views
                 ShowEditPage();
             }
 
+        }
+
+        public void GoBack(object sender, RoutedEventArgs e)
+        {
+            App.Current.NavigationService.GoBack();
+        }
+
+        public void NewWish(object sender, RoutedEventArgs e)
+        {
+            App.Current.NavigationService.Navigate(typeof(NewWishPage));
         }
 
         private void ShowEditPage()

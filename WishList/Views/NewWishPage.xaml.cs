@@ -25,8 +25,13 @@ namespace WishList.Views
     {
         public NewWishPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
+        }
+
+        public void GoBack(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
         }
     }
 }

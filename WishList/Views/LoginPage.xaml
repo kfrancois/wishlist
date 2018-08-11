@@ -30,7 +30,7 @@
                 TextAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="Black"/>
                 <TextBlock x:Name="RegisterButtonTextBlock" Text="Register now"
                Foreground="DodgerBlue"
-               TextAlignment="Center" VerticalAlignment="Center" FontSize="16" PointerPressed="EnterRegisterPage"/>
+               TextAlignment="Center" VerticalAlignment="Center" FontSize="16" PointerPressed="RegisterButtonTextBlock_PointerPressed"/>
                 <Button x:Name="PassportSignInButton" Content="Login" Background="DodgerBlue" Foreground="White"
          Width="80" HorizontalAlignment="Center" Margin="0,20" FocusVisualSecondaryBrush="DodgerBlue" FocusVisualPrimaryBrush="DodgerBlue" Click="Login"/>
             </StackPanel>

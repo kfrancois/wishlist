@@ -53,7 +53,9 @@ namespace WishList.Views
 
         }
             
-        public void GotoRegisterPage(object sender, RoutedEventArgs e) =>
+        private void RegisterButtonTextBlock_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
             App.Current.NavigationService.Navigate(typeof(Views.RegisterPage));
+        }
     }
 }

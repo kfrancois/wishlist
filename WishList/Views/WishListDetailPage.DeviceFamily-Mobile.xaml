@@ -16,7 +16,7 @@
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" Text="WishListName"/>
 
-        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="{x:Bind ViewModel.GoBack}" Margin="10"/>
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" Margin="10"/>
 
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
@@ -25,7 +25,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Description" FontWeight="Bold" Grid.Row="0" Grid.Column="0" TextWrapping="WrapWholeWords"/>
-            <Button Content="Add Wish" Click="{x:Bind ViewModel.GotoNewWish}" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right"/>
+            <Button Content="Add Wish" Click="NewWish" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right"/>
         </Grid>
 
         <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" HorizontalAlignment="Stretch" 

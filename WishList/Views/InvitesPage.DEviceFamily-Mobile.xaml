@@ -17,7 +17,7 @@
         <StackPanel>
             <StackPanel>
                 <TextBlock Text="Received Invites" FontWeight="Bold" FontSize="20px" Margin="10"/>
-                <ListBox x:Name="ListView1" ItemsSource="{x:Bind ViewModel.WishLists}" Width="Auto" 
+                <ListBox x:Name="ListView1" Width="Auto" 
                          HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Margin="10"
                          SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                     <ListBox.ItemTemplate>
@@ -39,7 +39,7 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <Button Content="New Invite" HorizontalAlignment="Stretch" Click="{x:Bind ViewModel.GotoNewInvites}" Margin="10"/>
+                <Button Content="New Invite" HorizontalAlignment="Stretch" Click="NewInvite" Margin="10"/>
             </StackPanel>
         </StackPanel>
     </StackPanel>

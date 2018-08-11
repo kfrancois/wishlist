@@ -27,7 +27,7 @@
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBlock Text="Welcome" Margin="10,10,10,10" FontWeight="Bold" FontSize="20px" TextAlignment="Center" TextWrapping="WrapWholeWords"/>
             <TextBlock Text="e-mail" Margin="10,10,10,10" FontWeight="Bold" FontSize="20px" TextAlignment="Center" TextWrapping="WrapWholeWords"/>
-            <Image Source="http://passage.org.uk/wp-content/uploads/2016/12/present.png" Margin="5" Height="200px" Width="200px"/>
+            <Image Source="/Assets/icon.png" Margin="5" Height="150px" Width="150px"/>
         </StackPanel>
         
     </Grid>

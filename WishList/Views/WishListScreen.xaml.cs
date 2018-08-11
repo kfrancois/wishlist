@@ -14,6 +14,7 @@ namespace WishList.Views
     {
         public ObservableCollection<Wishlist> WishLists { get; set; }
         private WishListService wishListService;
+        public int SelectedId { get; set; }
         public WishListScreen()
         {
             InitializeComponent();
@@ -33,8 +34,8 @@ namespace WishList.Views
         public void ShowDetail(object sender, SelectionChangedEventArgs e)
         {
             var selectedWishList = (Wishlist)ListView1.SelectedItem;
-            //Frame.Navigate(typeof(WishListDetailPage), selectedWishList);
-            App.Current.NavigationService.Navigate(typeof(WishListDetailPage), selectedWishList);
+            SelectedId = selectedWishList.WishlistId;
+            App.Current.NavigationService.Navigate(typeof(WishListDetailPage), SelectedId);
         }
 
         public void NewWishList(object sender, RoutedEventArgs e)

@@ -19,7 +19,7 @@
                 <TextBlock Text="Received Invites" FontWeight="Bold" FontSize="20px" Margin="10"/>
                 <ListBox x:Name="ListView1" Width="Auto" 
                          HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Margin="10"
-                         SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                         SelectionChanged="ButtonShowMessageDialog_Click">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>

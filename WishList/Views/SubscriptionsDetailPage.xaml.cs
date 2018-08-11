@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using WishList.Model;
+using WishList.Services;
 using WishList.ViewModels;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -26,25 +27,26 @@ namespace WishList.Views
     /// </summary>
     public sealed partial class SubscriptionsDetailPage : Page
     {
-        public ObservableCollection<Wish> WishListItem = new ObservableCollection<Wish>();
-        public SubscriptionsDetailsPageViewModel SubscriptionsDetailPageViewModelItem { get; private set; }
+        public ObservableCollection<Wish> Wishes { get; set; }
+        private WishListService wishListService;
 
         public SubscriptionsDetailPage()
         {
             this.InitializeComponent();
             ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
-            this.SubscriptionsDetailPageViewModelItem = new SubscriptionsDetailsPageViewModel();
 
-            MakeHardcodeWishlist();
-            ListView1.DataContext = WishListItem;
+            wishListService = WishListService.Instance;
         }
 
-        private void MakeHardcodeWishlist()
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            foreach (Wish wish in this.SubscriptionsDetailPageViewModelItem.WishListItem)
-            {
-                this.WishListItem.Add(wish);
-            }
+            base.OnNavigatedTo(e);
+            var parameter = e.Parameter;
+            int id = Int32.Parse(parameter.ToString().Split(':')[2].Split('"')[1]);
+            Wishlist list = await wishListService.GetWishlist(id);
+            Wishes = new ObservableCollection<Wish>(list.Wishes);
+            System.Diagnostics.Debug.WriteLine(Wishes.Count() == 0 ? "empty" : Wishes.First().Name);
+            ListView1.ItemsSource = Wishes;
         }
 
         private async void ButtonShowMessageDialog_Click(object sender, RoutedEventArgs e)

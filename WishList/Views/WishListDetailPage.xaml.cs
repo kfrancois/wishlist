@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using WishList.Model;
+using WishList.Services;
 using WishList.ViewModels;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -27,22 +28,24 @@ namespace WishList.Views
     /// </summary>
     public sealed partial class WishListDetailPage : Page
     {
-        public ObservableCollection<Wish> WishListItem { get; set; }
-        public WishListDetailPageViewModel WishListDetailPageViewModelItem { get; private set; }
+        public ObservableCollection<Wish> Wishes { get; set; }
+        private WishListService wishListService;
         public WishListDetailPage()
         {
             ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
             this.InitializeComponent();
-            this.WishListDetailPageViewModelItem = new WishListDetailPageViewModel();
-            //ListView1.DataContext = WishListItem;
+            wishListService = WishListService.Instance;
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             var parameter = e.Parameter;
-            System.Diagnostics.Debug.WriteLine(parameter);
-            //this.WishListDetailPageViewModelItem.SelectedList = parameter;
+            int id = Int32.Parse(parameter.ToString().Split(':')[2].Split('"')[1]);
+            Wishlist list = await wishListService.GetWishlist(id);
+            Wishes = new ObservableCollection<Wish>(list.Wishes);
+            System.Diagnostics.Debug.WriteLine(Wishes.Count() == 0 ? "empty" : Wishes.First().Name);
+            ListView1.ItemsSource = Wishes;
         }
 
         private async void ButtonShowMessageDialog_Click(object sender, RoutedEventArgs e)
@@ -69,7 +72,7 @@ namespace WishList.Views
             /*var btn = sender as Button;
             btn.Content = $"Result: {result.Label} ({result.Id})";*/
 
-            if((int) result.Id == 1)
+            if ((int)result.Id == 1)
             {
                 ShowEditPage();
             }

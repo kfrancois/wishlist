@@ -47,15 +47,20 @@ namespace WishList.Views
             }
             else
             {*/
-                apiService.SaveLoginDetails("firstUser@hogent.be", "P@ssword1"); // TODO
-                App.Current.NavigationService.Navigate(typeof(Views.Main));
+            apiService.SaveLoginDetails("firstUser@hogent.be", "P@ssword1"); // TODO
+            App.Current.NavigationService.Navigate(typeof(Views.Main));
             //}
 
         }
-            
+
         private void RegisterButtonTextBlock_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
             App.Current.NavigationService.Navigate(typeof(Views.RegisterPage));
+        }
+
+        private void Image_Loaded(object sender, RoutedEventArgs e)
+        {
+            Opacity = 1;
         }
     }
 }

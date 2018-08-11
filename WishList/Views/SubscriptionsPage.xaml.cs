@@ -30,6 +30,7 @@ namespace WishList.Views
         public SubscriptionsPageViewModel SubscriptionsPageViewModelItem { get; private set; }
         public ObservableCollection<Wishlist> WishLists { get; set; }
         private WishListService wishListService;
+        public int SelectedId { get; set; }
         public SubscriptionsPage()
         {
             this.InitializeComponent();
@@ -49,7 +50,9 @@ namespace WishList.Views
 
         public void ShowDetail(object sender, SelectionChangedEventArgs e)
         {
-            Frame.Navigate(typeof(Views.SubscriptionsDetailPage));
+            var selectedWishList = (Wishlist)ListView1.SelectedItem;
+            SelectedId = selectedWishList.WishlistId;
+            App.Current.NavigationService.Navigate(typeof(SubscriptionsDetailPage), SelectedId);
         }
     }
 }

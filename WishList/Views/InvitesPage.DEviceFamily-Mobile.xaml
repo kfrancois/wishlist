@@ -4,13 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WishList.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" xmlns:vm="using:WishList.ViewModels"
-    xmlns:controls="using:Template10.Controls">
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
+        <TextBlock x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" Text="Invites"/>
 

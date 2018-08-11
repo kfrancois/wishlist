@@ -26,5 +26,7 @@ namespace WishList.Views
         {
             this.InitializeComponent();
         }
+
+        public void GoBack(object sender, RoutedEventArgs e) => Frame.GoBack();
     }
 }

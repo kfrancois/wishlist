@@ -8,10 +8,6 @@
     xmlns:vm="using:WishList.ViewModels"
     mc:Ignorable="d">
 
-    <Page.DataContext>
-        <vm:RegisterPageViewModel x:Name="ViewModel" />
-    </Page.DataContext>
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer  VerticalScrollBarVisibility="Hidden">
             <StackPanel>
@@ -47,10 +43,10 @@
                         </Grid.ColumnDefinitions>
 
                         <Button x:Name="backButton" Content="Back" Background="Red" Foreground="White"
-        Margin="5,10" Grid.Column="0" Grid.Row="0" Click="{x:Bind ViewModel.GotoLoginPage}"/>
+        Margin="5,10" Grid.Column="0" Grid.Row="0" Click="GotoLoginPage"/>
 
                         <Button x:Name="registerButton" Content="Login" Background="DodgerBlue" Foreground="White"
-        Margin="5,10" Grid.Column="1" Grid.Row="0" Click="{x:Bind ViewModel.GotoMainPage}"/>
+        Margin="5,10" Grid.Column="1" Grid.Row="0" Click="GotoMainPage"/>
 
                     </Grid>
                 </StackPanel>

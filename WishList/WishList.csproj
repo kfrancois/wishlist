@@ -106,16 +106,11 @@
     <Compile Include="Services\ApiService.cs" />
     <Compile Include="Services\SettingsServices\SettingsService.cs" />
     <Compile Include="Services\WishListService.cs" />
-    <Compile Include="ViewModels\EditWishViewModel.cs" />
-    <Compile Include="ViewModels\HomeFrameViewModel.cs" />
     <Compile Include="Services\WishService.cs" />
     <Compile Include="ViewModels\InvitesPageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\NewInviteViewModel.cs" />
     <Compile Include="ViewModels\NewWishListViewModel.cs" />
-    <Compile Include="ViewModels\NewWishPageViewModel.cs" />
-    <Compile Include="ViewModels\RegisterPageViewModel.cs" />
-    <Compile Include="ViewModels\SettingsFrameViewModel.cs" />
     <Compile Include="ViewModels\SubscriptionsDetailPageViewModel.cs" />
     <Compile Include="ViewModels\SubscriptionsPageViewModel.cs" />
     <Compile Include="ViewModels\WishListDetailPageViewModel.cs" />
@@ -288,7 +283,7 @@
       <Version>1.1.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.1.5</Version>
+      <Version>6.1.7</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>11.0.2</Version>

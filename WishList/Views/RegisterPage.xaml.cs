@@ -25,8 +25,12 @@ namespace WishList.Views
     {
         public RegisterPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
         }
+
+        public void GotoLoginPage(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(LoginPage));
+
+        public void GotoMainPage(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(Main));
     }
 }

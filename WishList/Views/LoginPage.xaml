@@ -8,10 +8,6 @@
     xmlns:vm="using:WishList.ViewModels"
     mc:Ignorable="d">
 
-    <Page.DataContext>
-        <vm:LoginPageViewModel x:Name="ViewModel" />
-    </Page.DataContext>
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer Background="White" VerticalScrollBarVisibility="Hidden">
             <StackPanel>
@@ -34,9 +30,9 @@
                 TextAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="Black"/>
                 <TextBlock x:Name="RegisterButtonTextBlock" Text="Register now"
                Foreground="DodgerBlue"
-               TextAlignment="Center" VerticalAlignment="Center" FontSize="16" PointerPressed="{x:Bind ViewModel.GotoRegisterPage}"/>
+               TextAlignment="Center" VerticalAlignment="Center" FontSize="16" PointerPressed="EnterRegisterPage"/>
                 <Button x:Name="PassportSignInButton" Content="Login" Background="DodgerBlue" Foreground="White"
-         Width="80" HorizontalAlignment="Center" Margin="0,20" FocusVisualSecondaryBrush="DodgerBlue" FocusVisualPrimaryBrush="DodgerBlue" Click="{x:Bind ViewModel.GotoMainPage}"/>
+         Width="80" HorizontalAlignment="Center" Margin="0,20" FocusVisualSecondaryBrush="DodgerBlue" FocusVisualPrimaryBrush="DodgerBlue" Click="Login"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

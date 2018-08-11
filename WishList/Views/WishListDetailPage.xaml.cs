@@ -41,6 +41,7 @@ namespace WishList.Views
         {
             base.OnNavigatedTo(e);
             var parameter = e.Parameter;
+            System.Diagnostics.Debug.WriteLine(parameter);
             //this.WishListDetailPageViewModelItem.SelectedList = parameter;
         }
 
@@ -73,6 +74,16 @@ namespace WishList.Views
                 ShowEditPage();
             }
 
+        }
+
+        public void GoBack(object sender, RoutedEventArgs e)
+        {
+            App.Current.NavigationService.GoBack();
+        }
+
+        public void NewWish(object sender, RoutedEventArgs e)
+        {
+            App.Current.NavigationService.Navigate(typeof(NewWishPage));
         }
 
         private void ShowEditPage()

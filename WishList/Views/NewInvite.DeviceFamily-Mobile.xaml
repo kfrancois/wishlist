@@ -8,16 +8,12 @@
     mc:Ignorable="d" xmlns:controls="using:Template10.Controls"
     xmlns:vm="using:WishList.ViewModels">
 
-    <Page.DataContext>
-        <vm:NewInviteViewModel x:Name="ViewModel" />
-    </Page.DataContext>
-
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" Text="New Invite"/>
 
-        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="{x:Bind ViewModel.GoBack}" Margin="10"/>
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" Margin="10"/>
         
       <Grid>
 
@@ -30,12 +26,12 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="Select WishList:" Grid.Row="0" Grid.Column="0" Margin="10,10,10,10"/>
-            <ComboBox x:Name="wishlistbox" ItemsSource="{x:Bind ViewModel.WishListNames}" SelectedItem="{Binding WishList, Mode=TwoWay}" Grid.Row="1" Grid.Column="0"  Margin="10,10,10,10"/>
+            <ComboBox x:Name="wishlistbox" SelectedItem="{Binding WishList, Mode=TwoWay}" Grid.Row="1" Grid.Column="0"  Margin="10,10,10,10"/>
 
             <TextBlock Text="User to send invite to:" Grid.Row="2" Grid.Column="0" Margin="10,10,10,10" TextWrapping="WrapWholeWords"/>
             <TextBox PlaceholderText="Username" Text="{Binding Username, Mode=TwoWay}" Grid.Row="3" Grid.Column="0" Margin="10,10,10,10"/>
 
-            <Button Content="Send" Click="{x:Bind ViewModel.Send}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0" Margin="10,10,10,10"/>
+            <Button Content="Send" Click="Send" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0" Margin="10,10,10,10"/>
         </Grid>
     </StackPanel>
 </Page>

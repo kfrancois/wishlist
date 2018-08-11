@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using WishList.Model;
+using WishList.Services;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -23,10 +25,28 @@ namespace WishList.Views
     /// </summary>
     public sealed partial class NewWishList : Page
     {
+
+        private WishListService wishListService;
+
         public NewWishList()
         {
             this.InitializeComponent();
             ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
+            wishListService = WishListService.Instance;
+        }
+
+       //public async void SaveAsync(object sender, RoutedEventArgs e)
+            public  void SaveAsync(object sender, RoutedEventArgs e)
+        {
+            /*Wishlist newList = new Wishlist(WishListName);
+            newList.CreatorName = null;
+            await wishListService.CreateWishlist(newList);*/
+            Frame.GoBack();
+        }
+
+        public void GoBack(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
         }
     }
 }

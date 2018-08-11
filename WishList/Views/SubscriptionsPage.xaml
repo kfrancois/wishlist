@@ -10,10 +10,6 @@
     xmlns:vm="using:WishList.ViewModels">
     <!--  <conv:StringToPriceFormatter x:Name="DateToStringFormatConverter"/> -->
 
-    <Page.DataContext>
-        <vm:SubscriptionsPageViewModel x:Name="ViewModel" />
-    </Page.DataContext>
-
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
 
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"

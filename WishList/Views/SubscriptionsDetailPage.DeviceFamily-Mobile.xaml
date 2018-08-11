@@ -9,10 +9,6 @@
     mc:Ignorable="d"
     xmlns:conv="using:WishList.Models"  xmlns:vm="using:WishList.ViewModels" >
 
-    <Page.DataContext>
-        <vm:SubscriptionsDetailsPageViewModel x:Name="ViewModel" />
-    </Page.DataContext>
-    
     <StackPanel Name="stackpanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" Width="Auto">
 
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"

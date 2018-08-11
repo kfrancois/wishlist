@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using WishList.Model;
+using WishList.Services;
 using WishList.ViewModels;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -27,11 +28,23 @@ namespace WishList.Views
     {
         public ObservableCollection<Wish> WishListItem = new ObservableCollection<Wish>();
         public SubscriptionsPageViewModel SubscriptionsPageViewModelItem { get; private set; }
+        public ObservableCollection<Wishlist> WishLists { get; set; }
+        private WishListService wishListService;
         public SubscriptionsPage()
         {
             this.InitializeComponent();
-
+            wishListService = WishListService.Instance;
             this.SubscriptionsPageViewModelItem = new SubscriptionsPageViewModel();
+        }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            ObservableCollection<Wishlist> ret = await wishListService.SubscribedWishLists();
+
+            WishLists = ret.Count() == 0 ? new ObservableCollection<Wishlist>() : ret;
+
+            ListView1.ItemsSource = WishLists;
         }
 
         public void ShowDetail(object sender, SelectionChangedEventArgs e)

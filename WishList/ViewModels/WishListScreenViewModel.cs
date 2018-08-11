@@ -19,21 +19,6 @@ namespace WishList.ViewModels
 
         public ObservableCollection<Wishlist> WishLists { get; set; }
 
-        public Wishlist SelectedItem {
-            get {
-                return _selectedItem;
-            }
-            set {
-                if (value == _selectedItem)
-                    return;
-
-                _selectedItem = value;
-
-                System.Diagnostics.Debug.WriteLine(_selectedItem.Title);
-
-                NavigationService.Navigate(typeof(Views.WishListDetailPage), (int) _selectedItem.WishlistId);
-            }
-        }
         private WishListService wishListService;
         private Wishlist _selectedItem;
 
@@ -41,16 +26,7 @@ namespace WishList.ViewModels
         {
             wishListService = WishListService.Instance;
         }
-
-        public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> suspensionState)
-        {
-            ObservableCollection<Wishlist> ret = await wishListService.GetWishlists();
-
-            WishLists = ret.Count() == 0 ? new ObservableCollection<Wishlist>() : ret;
-            
-            System.Diagnostics.Debug.WriteLine("Collection: " + WishLists.First().Title);
-        }
-
+        
         public void GotoNewWishList() =>
             App.Current.NavigationService.Navigate(typeof(Views.NewWishList));
     }

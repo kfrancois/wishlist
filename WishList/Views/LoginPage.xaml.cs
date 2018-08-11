@@ -24,10 +24,36 @@ namespace WishList.Views
     /// </summary>
     public sealed partial class LoginPage : Page
     {
+
+        private ApiService apiService;
+
         public LoginPage()
         {
             InitializeComponent();
             ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
+            apiService = ApiService.Instance;
         }
+
+        public void Login(object sender, RoutedEventArgs e)
+        {
+
+            /*if (UserName == null)
+            {
+                ErrorMessage = "Username cannot be empty!";
+            }
+            else if (Password == null)
+            {
+                ErrorMessage = "Password cannot be empty!";
+            }
+            else
+            {*/
+                apiService.SaveLoginDetails("firstUser@hogent.be", "P@ssword1"); // TODO
+                App.Current.NavigationService.Navigate(typeof(Views.Main));
+            //}
+
+        }
+            
+        public void GotoRegisterPage(object sender, RoutedEventArgs e) =>
+            App.Current.NavigationService.Navigate(typeof(Views.RegisterPage));
     }
 }

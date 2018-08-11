@@ -8,10 +8,6 @@
     mc:Ignorable="d" xmlns:vm="using:WishList.ViewModels"
     xmlns:controls="using:Template10.Controls">
 
-    <Page.DataContext>
-        <vm:InvitesPageViewModel x:Name="ViewModel" />
-    </Page.DataContext>
-
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"

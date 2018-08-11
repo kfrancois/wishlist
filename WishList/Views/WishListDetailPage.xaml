@@ -28,29 +28,32 @@
             <Button Content="Add New Wish" VerticalAlignment="Stretch" 
                     Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Click="NewWish"/>
         </Grid>
-        
-        <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" HorizontalAlignment="Stretch" 
+
+        <ListBox x:Name="ListView1" Width="Auto" HorizontalAlignment="Stretch" 
                              Height="Auto" VerticalAlignment="Stretch" Margin="10,10,10,10" 
                  ScrollViewer.VerticalScrollBarVisibility="Hidden">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="5*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Name="text1" Text="{Binding Title}" TextWrapping="WrapWholeWords" Grid.Row="0" Grid.Column="0"/>
-                        <StackPanel  Margin="10,0,0,0" Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+                        <StackPanel  Margin="10" Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+                            <TextBlock Text="Name" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Name}" TextWrapping="WrapWholeWords"/>
+                        </StackPanel>
+                        <StackPanel  Margin="10" Orientation="Vertical" Grid.Row="0" Grid.Column="1">
                             <TextBlock Text="Description" FontWeight="Bold"/>
                             <TextBlock Text="{Binding Description}" TextWrapping="WrapWholeWords"/>
                         </StackPanel>
-                        <StackPanel Margin="10,0,0,0" Orientation="Vertical" Grid.Row="0" Grid.Column="2">
+                        <StackPanel Margin="10" Orientation="Vertical" Grid.Row="0" Grid.Column="2">
                             <TextBlock Text="Price" FontWeight="Bold"/>
                             <TextBlock Text="{Binding Price}" />
                         </StackPanel>
                     </Grid>
-               </DataTemplate>
+                </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
     </StackPanel>

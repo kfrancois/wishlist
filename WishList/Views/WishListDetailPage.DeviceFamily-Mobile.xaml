@@ -34,17 +34,20 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Name="text1" Text="{Binding Title}" Grid.Row="0" Grid.Column="0" TextWrapping="WrapWholeWords" Margin="10,0,0,0" FontWeight="Bold"/>
-                        <StackPanel  Margin="10,0,0,0" Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel  Margin="10" Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+                            <TextBlock Text="Name" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Name}" TextWrapping="WrapWholeWords"/>
+                        </StackPanel>
+                        <StackPanel  Margin="10" Orientation="Vertical" Grid.Row="0" Grid.Column="1">
                             <TextBlock Text="Description" FontWeight="Bold"/>
                             <TextBlock Text="{Binding Description}" TextWrapping="WrapWholeWords"/>
                         </StackPanel>
-                        <StackPanel Margin="10,0,0,0" Orientation="Vertical" Grid.Row="2" Grid.Column="0">
+                        <StackPanel Margin="10" Orientation="Vertical" Grid.Row="0" Grid.Column="2">
                             <TextBlock Text="Price" FontWeight="Bold"/>
                             <TextBlock Text="{Binding Price}" />
                         </StackPanel>

@@ -33,7 +33,7 @@ namespace WishList.Views
         {
             var selectedWishList = (Wishlist)listBox.SelectedItem;
             //Frame.Navigate(typeof(WishListDetailPage), selectedWishList);
-            Frame.Navigate(typeof(WishListDetailPage), selectedWishList);
+            (Window.Current.Content as Frame).Navigate(typeof(WishListDetailPage), selectedWishList);
         }
 
         public void NewWishList(object sender, RoutedEventArgs e)

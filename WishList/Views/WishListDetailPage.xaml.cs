@@ -11,7 +11,7 @@ namespace WishList.Views
 
     public sealed partial class WishListDetailPage : Page
     {
-        public ObservableCollection<Wish> WishListItem { get; set; }
+        public ObservableCollection<Wish> Wishes { get; set; }
         public WishListDetailPage()
         {
             ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
@@ -21,9 +21,9 @@ namespace WishList.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            var parameter = e.Parameter;
-            System.Diagnostics.Debug.WriteLine(parameter);
-            //this.WishListDetailPageViewModelItem.SelectedList = parameter;
+            var parameter = (Wishlist) e.Parameter;
+            Wishes = new ObservableCollection<Wish>(parameter.Wishes);
+            ListView1.ItemsSource = Wishes;
         }
 
         private async void ButtonShowMessageDialog_Click(object sender, RoutedEventArgs e)

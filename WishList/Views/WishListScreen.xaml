@@ -7,9 +7,12 @@
     mc:Ignorable="d">
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Background="SteelBlue">
         <TextBlock x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" Text="Own WishLists"/>
+                             RelativePanel.AlignTopWithPanel="True" Text="Own WishLists"
+                             Margin="15"/>
+        </StackPanel>
 
         <StackPanel>
             <TextBlock Text="Click on a WishList to see its details" TextWrapping="WrapWholeWords" Margin="10"/>

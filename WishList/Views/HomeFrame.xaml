@@ -6,27 +6,28 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Background="SteelBlue">
+            <TextBlock x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" Text="Home"
-                             Grid.ColumnSpan="3"/>
-        
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBlock Text="Welcome" Margin="10,10,10,10" FontWeight="Bold" FontSize="20px" TextAlignment="Center" TextWrapping="WrapWholeWords"/>
-            <TextBlock Text="e-mail" Margin="10,10,10,10" FontWeight="Bold" FontSize="20px" TextAlignment="Center" TextWrapping="WrapWholeWords"/>
-            <Image Source="http://passage.org.uk/wp-content/uploads/2016/12/present.png" Margin="5" Height="200px" Width="200px"/>
+                             RelativePanel.AlignTopWithPanel="True" Text="Home" Margin="15"/>
         </StackPanel>
-        
-    </Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Row="1" Grid.Column="1">
+                <TextBlock Text="Welcome" Foreground="Black" Margin="10" FontWeight="Bold" FontSize="20px" TextAlignment="Center" TextWrapping="WrapWholeWords"/>
+                <TextBlock Text="e-mail" Foreground="Black" Margin="10" FontWeight="Bold" FontSize="20px" TextAlignment="Center" TextWrapping="WrapWholeWords"/>
+                <Image Source="http://passage.org.uk/wp-content/uploads/2016/12/present.png" Margin="5" Height="200px" Width="200px"/>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
 </Page>

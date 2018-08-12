@@ -8,12 +8,15 @@
     <!--  <conv:StringToPriceFormatter x:Name="DateToStringFormatConverter"/> -->
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
+        <StackPanel Background="SteelBlue">
+            <TextBlock x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" Text="Own WishLists"/>
+                             RelativePanel.AlignTopWithPanel="True" Text="Own WishLists"
+                             Margin="10"/>
+        </StackPanel>
 
         <StackPanel>
-            <TextBlock Text="Click on a WishList to see its details" TextWrapping="WrapWholeWords" Margin="10"/>
+            <TextBlock Text="Click on a WishList to see its details" Foreground="Black" TextWrapping="WrapWholeWords" Margin="10"/>
             <ListBox x:Name="ListView1" Width="Auto" Height="Auto" 
                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10"
                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}">

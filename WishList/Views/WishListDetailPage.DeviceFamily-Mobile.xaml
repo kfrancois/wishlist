@@ -9,43 +9,36 @@
 
     <StackPanel Name="stackpanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" Width="Auto">
 
-        <TextBlock x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
+        <StackPanel Background="SteelBlue">
+            <Grid>
+                <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" Margin="10"/>
+                <TextBlock x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" Text="WishListName"/>
+                             RelativePanel.AlignTopWithPanel="True" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10"/>
+            </Grid>
 
-        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" Margin="10"/>
-
+        </StackPanel>
+        
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Description" FontWeight="Bold" Grid.Row="0" Grid.Column="0" TextWrapping="WrapWholeWords"/>
+            <TextBlock Text="Click to edit, check if it's claimed"  Foreground="Black" TextWrapping="WrapWholeWords" Grid.Row="0" Grid.Column="0" Margin="10"/>
             <Button Content="Add Wish" Click="NewWish" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right"/>
         </Grid>
 
         <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" HorizontalAlignment="Stretch" 
-                             Height="Auto" VerticalAlignment="Stretch" Margin="10,10,10,10" 
-                 ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                             Height="Auto" VerticalAlignment="Stretch" Margin="10" 
+                 ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="ButtonShowMessageDialog_Click">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Name="text1" Text="{Binding Title}" Grid.Row="0" Grid.Column="0" TextWrapping="WrapWholeWords" Margin="10,0,0,0" FontWeight="Bold"/>
-                        <StackPanel  Margin="10,0,0,0" Orientation="Vertical" Grid.Row="1" Grid.Column="0">
-                            <TextBlock Text="Description" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding Description}" TextWrapping="WrapWholeWords"/>
-                        </StackPanel>
-                        <StackPanel Margin="10,0,0,0" Orientation="Vertical" Grid.Row="2" Grid.Column="0">
-                            <TextBlock Text="Price" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding Price}" />
-                        </StackPanel>
-                    </Grid>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" Foreground="Black" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Price}" Foreground="Black"/>
+                        <TextBlock Text="{Binding Description}" Foreground="Black" FontStyle="Italic"/>
+                    </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

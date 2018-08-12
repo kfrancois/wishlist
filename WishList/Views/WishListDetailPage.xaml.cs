@@ -22,6 +22,7 @@ namespace WishList.Views
         {
             base.OnNavigatedTo(e);
             var parameter = (Wishlist) e.Parameter;
+            pageHeader.Text = parameter.Title;
             Wishes = new ObservableCollection<Wish>(parameter.Wishes);
             ListView1.ItemsSource = Wishes;
         }
@@ -29,30 +30,37 @@ namespace WishList.Views
         private async void ButtonShowMessageDialog_Click(object sender, RoutedEventArgs e)
         {
 
-            var dialog = new Windows.UI.Popups.MessageDialog(
-                        "Do you want to delete or edit this wish?",
-                        "Delete/Edit this Wish");
+            Wish selected = (Wish)ListView1.SelectedItem;
 
-            dialog.Commands.Add(new Windows.UI.Popups.UICommand("Delete") { Id = 0 });
-            dialog.Commands.Add(new Windows.UI.Popups.UICommand("Edit") { Id = 1 });
-
-            /*if (Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily != "Windows.Mobile")
+            if (selected.Claimed == false)
             {
-                // Adding a 3rd command will crash the app when running on Mobile !!!
-                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Maybe later") { Id = 2 });
-            }*/
+                var dialog = new Windows.UI.Popups.MessageDialog(
+                            "Do you want to edit this wish?",
+                            "Edit this Wish");
 
-            dialog.DefaultCommandIndex = 0;
-            dialog.CancelCommandIndex = 1;
+                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Edit") { Id = 0 });
+                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Cancel") { Id = 1 });
 
-            var result = await dialog.ShowAsync();
+                dialog.DefaultCommandIndex = 0;
+                dialog.CancelCommandIndex = 1;
 
-            /*var btn = sender as Button;
-            btn.Content = $"Result: {result.Label} ({result.Id})";*/
+                var result = await dialog.ShowAsync();
 
-            if((int) result.Id == 1)
+                if ((int)result.Id == 0)
+                {
+                    ShowEditPage();
+                }
+            } else
             {
-                ShowEditPage();
+                var dialog = new Windows.UI.Popups.MessageDialog(
+                            "This wish is already claimed",
+                            "Claimed");
+
+                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Cancel") { Id = 1 });
+
+                dialog.CancelCommandIndex = 1;
+
+                var result = await dialog.ShowAsync();
             }
 
         }

@@ -22,9 +22,9 @@ namespace WishList.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ObservableCollection<Wishlist> ret = await wishListService.GetWishlists();
+            ObservableCollection<Wishlist> ret1 = await wishListService.GetWishlists();
 
-            WishLists = ret.Count() == 0 ? new ObservableCollection<Wishlist>() : ret;
+            WishLists = ret1.Count() == 0 ? new ObservableCollection<Wishlist>() : ret1;
 
             listBox.ItemsSource = WishLists;
         }
@@ -38,7 +38,7 @@ namespace WishList.Views
 
         public void NewWishList(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(NewWishList));
+            (Window.Current.Content as Frame).Navigate(typeof(NewWishList));
         }
     }
 }

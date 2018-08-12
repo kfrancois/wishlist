@@ -15,7 +15,7 @@
         </StackPanel>
 
         <StackPanel>
-            <TextBlock Text="Click on a WishList to see its details" TextWrapping="WrapWholeWords" Margin="10"/>
+            <TextBlock Text="Click on a WishList to see its details" TextWrapping="WrapWholeWords" Margin="10" Foreground="Black"/>
             <ListBox x:Name="listBox" Width="Auto" Height="Auto" 
                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10"
                      SelectionChanged="ShowDetail">

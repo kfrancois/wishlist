@@ -14,7 +14,7 @@
                              Margin="15"/>
         </StackPanel>
         <StackPanel>
-            <TextBlock Text="Received Invites" FontWeight="Bold" FontSize="20px" Margin="10"/>
+            <TextBlock Text="Received Invites" FontWeight="Bold" FontSize="20px" Margin="10" Foreground="Black"/>
             <ListBox x:Name="ListView1" Width="Auto" 
                      HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Margin="10"
                      SelectionChanged="ListView1_SelectionChanged">

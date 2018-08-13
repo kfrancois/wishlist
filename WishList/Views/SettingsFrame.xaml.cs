@@ -27,6 +27,6 @@ namespace WishList.Views
             InitializeComponent();
         }
 
-        public void GotoLogin(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(LoginPage));
+        public void GotoLogin(object sender, RoutedEventArgs e) => (Window.Current.Content as Frame).Navigate(typeof(LoginPage));
     }
 }

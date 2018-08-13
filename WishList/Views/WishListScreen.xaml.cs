@@ -24,10 +24,9 @@ namespace WishList.Views
             base.OnNavigatedTo(e);
             ObservableCollection<Wishlist> ret1 = await wishListService.GetWishlists();
 
-            WishLists = ret1;
+            WishLists = ret1.Count() == 0 ? new ObservableCollection<Wishlist>() : ret1;
 
-            if (WishLists.Count() > 0)
-                ListView1.ItemsSource = WishLists;
+            listBox.ItemsSource = WishLists;
         }
 
         public void ShowDetail(object sender, SelectionChangedEventArgs e)

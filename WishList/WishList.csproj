@@ -158,8 +158,11 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\icon.png" />
     <Content Include="Assets\ic_add_circle_black_24dp_1x.png" />
     <Content Include="Assets\ic_add_circle_black_24dp_2x.png" />
+    <Content Include="Assets\logo.png" />
+    <Content Include="Assets\logo_cropped.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

@@ -4,12 +4,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
+        <StackPanel Background="SteelBlue">
+            <Grid>
+                <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" Margin="10"/>
+                <TextBlock x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" Text="New Invite"/>
+                             RelativePanel.AlignTopWithPanel="True" VerticalAlignment="Center" 
+                           HorizontalAlignment="Right" Margin="10" Text="New invite"/>
+            </Grid>
 
-        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" Margin="10"/>
-        
+        </StackPanel>
       <Grid>
 
             <Grid.RowDefinitions>
@@ -20,13 +24,13 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Select WishList:" Grid.Row="0" Grid.Column="0" Margin="10,10,10,10"/>
-            <ComboBox x:Name="wishlistbox" SelectedItem="{Binding WishList, Mode=TwoWay}" Grid.Row="1" Grid.Column="0"  Margin="10,10,10,10"/>
+            <TextBlock Text="Select WishList:" Foreground="Black" Grid.Row="0" Grid.Column="0" Margin="10"/>
+            <ComboBox x:Name="wishlistbox" Grid.Row="1" Grid.Column="0"  Margin="10" PlaceholderText="-- Wishlist --"/>
 
-            <TextBlock Text="User to send invite to:" Grid.Row="2" Grid.Column="0" Margin="10,10,10,10" TextWrapping="WrapWholeWords"/>
-            <TextBox PlaceholderText="Username" Text="{Binding Username, Mode=TwoWay}" Grid.Row="3" Grid.Column="0" Margin="10,10,10,10"/>
+            <TextBlock Text="User to send invite to:" Foreground="Black" Grid.Row="2" Grid.Column="0" Margin="10" TextWrapping="WrapWholeWords"/>
+            <TextBox x:Name="User" PlaceholderText="Username" Grid.Row="3" Grid.Column="0" Margin="10"/>
 
-            <Button Content="Send" Click="Send" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0" Margin="10,10,10,10"/>
+            <Button Content="Send" Click="Send" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="4" Grid.Column="0" Margin="10"/>
         </Grid>
     </StackPanel>
 </Page>

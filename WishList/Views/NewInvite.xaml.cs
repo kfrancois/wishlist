@@ -29,8 +29,6 @@ namespace WishList.Views
 
         public ObservableCollection<Wishlist> WishLists { get; set; }
         public ObservableCollection<string> WishListNames { get; set; }
-        /*public string WishList { get; set; }
-        public string Username { get; set; }*/
         private WishListService wishListService;
 
         public NewInvite()

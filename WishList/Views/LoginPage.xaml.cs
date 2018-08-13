@@ -42,5 +42,10 @@ namespace WishList.Views
         {
             Frame.Navigate(typeof(RegisterPage));
         }
+
+        private void Image_Loaded(object sender, RoutedEventArgs e)
+        {
+            Opacity = 1;
+        }
     }
 }

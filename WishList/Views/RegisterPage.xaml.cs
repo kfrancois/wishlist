@@ -32,5 +32,10 @@ namespace WishList.Views
         public void GotoLoginPage(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(LoginPage));
 
         public void GotoMainPage(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(Main));
+
+        private void Image_Loaded(object sender, RoutedEventArgs e)
+        {
+            Opacity = 1;
+        }
     }
 }

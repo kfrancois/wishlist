@@ -32,9 +32,9 @@ namespace WishList.Services
             return JsonConvert.DeserializeObject<Wish>(request.Result);
         }
 
-        public async Task<Wish> PutWish(Wish wish)
+        public async Task<Wish> PutWish(int id, Wish wish)
         {
-            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.PUT, $"{_urlExtension}", JsonConvert.SerializeObject(wish)));
+            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.PUT, $"{_urlExtension}/{id}", JsonConvert.SerializeObject(wish)));
             return JsonConvert.DeserializeObject<Wish>(request.Result);
         }
 

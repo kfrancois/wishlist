@@ -9,7 +9,7 @@
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
         <StackPanel Background="SteelBlue">
-            <TextBlock x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
+            <TextBlock x:Name="PageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" Text="Subscriptions"
                              Margin="15"/>
@@ -17,7 +17,7 @@
 
         <StackPanel>
             <TextBlock Text="Click on a WishList to see its details" TextWrapping="WrapWholeWords" Margin="10" Foreground="Black"/>
-            <ListBox x:Name="listBox" Width="Auto" Height="Auto" 
+            <ListBox x:Name="ListBox" Width="Auto" Height="Auto" 
                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10"
                      SelectionChanged="ShowDetail">
                 <ListBox.ItemTemplate>
@@ -28,7 +28,7 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
                                 <TextBlock Text="Wishlist" FontWeight="Bold"/>
-                                <TextBlock Name="text1" Text="{Binding Title}" TextWrapping="WrapWholeWords"/>
+                                <TextBlock Name="Text1" Text="{Binding Title}" TextWrapping="WrapWholeWords"/>
                             </StackPanel>
                         </Grid>
                     </DataTemplate>

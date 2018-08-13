@@ -34,9 +34,11 @@ namespace WishList.Views
         private async void ListView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+            var item = (Wishlist)ListView1.SelectedItem;
+
             var dialog = new Windows.UI.Popups.MessageDialog(
-                        "Are you sure you want to accept this wishlist?",
-                        "Accept this invite");
+                        "Are you sure you want to accept wishlist \"" + item.Title + "\" from " + item.CreatorName + "?",
+                        "Accept invite");
 
             dialog.Commands.Add(new Windows.UI.Popups.UICommand("Yes") { Id = 0 });
             dialog.Commands.Add(new Windows.UI.Popups.UICommand("No") { Id = 1 });
@@ -46,15 +48,15 @@ namespace WishList.Views
 
             var result = await dialog.ShowAsync();
 
-            /*if (result.Id.ToString() == "0")
+            if (result.Id.ToString() == "0")
             {
-                AcceptInviteAsync(item);
-            }*/
+                AcceptInvite(item);
+            }
 
             System.Diagnostics.Debug.WriteLine(result.Id);
         }
 
-        private async void AcceptInviteAsync(Wishlist item)
+        private async void AcceptInvite(Wishlist item)
         {
             await wishListService.AcceptInvite(item.WishlistId);
         }

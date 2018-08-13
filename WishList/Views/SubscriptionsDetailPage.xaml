@@ -7,7 +7,7 @@
         <StackPanel Background="SteelBlue">
             <Grid>
                 <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" Margin="15"/>
-                <TextBlock x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
+                <TextBlock x:Name="PageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15"/>
             </Grid>
@@ -23,7 +23,7 @@
             <TextBlock Text="{Binding CreatorName}" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right"/>
         </Grid>
 
-        <ListBox x:Name="ListView1" ItemsSource="{Binding}" Width="Auto" HorizontalAlignment="Stretch" 
+        <ListBox x:Name="ListView1"  Width="Auto" HorizontalAlignment="Stretch" 
                              Height="Auto" VerticalAlignment="Stretch" Margin="10" 
                  ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="ButtonShowMessageDialog_Click">
             <ListBox.ItemTemplate>

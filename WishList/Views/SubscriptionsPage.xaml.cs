@@ -41,12 +41,12 @@ namespace WishList.Views
 
             WishLists = ret.Count() == 0 ? new ObservableCollection<Wishlist>() : ret;
 
-            listBox.ItemsSource = WishLists;
+            ListBox.ItemsSource = WishLists;
         }
 
         public void ShowDetail(object sender, SelectionChangedEventArgs e)
         {
-            var selectedWishList = (Wishlist)listBox.SelectedItem;
+            var selectedWishList = (Wishlist)ListBox.SelectedItem;
             (Window.Current.Content as Frame).Navigate(typeof(SubscriptionsDetailPage), selectedWishList);
         }
     }

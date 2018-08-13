@@ -8,7 +8,7 @@
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Background="SteelBlue">
-            <TextBlock x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
+            <TextBlock x:Name="PageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" Text="Home" Margin="15"/>
         </StackPanel>

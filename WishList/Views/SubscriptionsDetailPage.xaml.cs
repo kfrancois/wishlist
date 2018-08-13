@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 using WishList.Model;
 using WishList.Services;
 
@@ -10,7 +11,7 @@ namespace WishList.Views
 {
     public sealed partial class SubscriptionsDetailPage : Page
     {
-        public ObservableCollection<Wish> WishListItem = new ObservableCollection<Wish>();
+        public ObservableCollection<Wish> Wishes = new ObservableCollection<Wish>();
         private WishService wishService;
 
         public SubscriptionsDetailPage()
@@ -20,6 +21,14 @@ namespace WishList.Views
             wishService = WishService.Instance;
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            var parameter = (Wishlist)e.Parameter;
+            PageHeader.Text = parameter.Title;
+            Wishes = new ObservableCollection<Wish>(parameter.Wishes);
+            ListView1.ItemsSource = Wishes;
+        }
 
         private async void ButtonShowMessageDialog_Click(object sender, RoutedEventArgs e)
         {

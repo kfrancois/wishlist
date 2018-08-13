@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -35,13 +36,20 @@ namespace WishList.Views
             wishListService = WishListService.Instance;
         }
 
-       //public async void SaveAsync(object sender, RoutedEventArgs e)
-            public  void SaveAsync(object sender, RoutedEventArgs e)
+        public async void SaveAsync(object sender, RoutedEventArgs e)
         {
-            /*Wishlist newList = new Wishlist(WishListName);
-            newList.CreatorName = null;
-            await wishListService.CreateWishlist(newList);*/
-            Frame.GoBack();
+            if (NameBox.Text == null ||NameBox.Text == "")
+            {
+                NameErr.Text = "Name cannot be empty";
+                NameBox.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+            else
+            {
+                Wishlist newList = new Wishlist(NameBox.Text);
+                NameErr.Text = "";
+                await wishListService.CreateWishlist(newList);
+                Frame.GoBack();
+            }
         }
 
         public void GoBack(object sender, RoutedEventArgs e)

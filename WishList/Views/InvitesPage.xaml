@@ -8,7 +8,7 @@
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Background="SteelBlue">
-            <TextBlock x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
+            <TextBlock x:Name="PageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" Text="Invites"
                              Margin="15"/>
@@ -27,11 +27,11 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Margin="10">
                                 <TextBlock Text="Wishlist" FontWeight="Bold"/>
-                                <TextBlock Name="text1" Text="{Binding Title}" TextWrapping="WrapWholeWords"/>
+                                <TextBlock Name="Text1" Text="{Binding Title}" TextWrapping="WrapWholeWords"/>
                             </StackPanel>
                             <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1" Margin="10">
                                 <TextBlock Text="From" FontWeight="Bold"/>
-                                <TextBlock Name="text2" Text="{Binding CreatorName}" TextWrapping="WrapWholeWords"/>
+                                <TextBlock Name="Text2" Text="{Binding CreatorName}" TextWrapping="WrapWholeWords"/>
                             </StackPanel>
                         </Grid>
                     </DataTemplate>

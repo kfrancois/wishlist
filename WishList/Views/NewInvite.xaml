@@ -10,7 +10,7 @@
         <StackPanel Background="SteelBlue">
             <Grid>
                 <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" Margin="15"/>
-                <TextBlock x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
+                <TextBlock x:Name="PageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" VerticalAlignment="Center" 
                              HorizontalAlignment="Right" Margin="15" Text="New invite"/>
@@ -22,6 +22,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
+                
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -29,15 +30,19 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <TextBlock Text="Select WishList:" Foreground="Black" Grid.Row="0" Grid.Column="0" Margin="10"/>
-            <ComboBox x:Name="wishlistbox" Grid.Row="0" Grid.Column="1"  Margin="10" PlaceholderText="-- Wishlist --"/>
+            <ComboBox x:Name="Wishlistbox" Grid.Row="0" Grid.Column="1"  Margin="10" PlaceholderText="-- Wishlist --"/>
+            <TextBlock x:Name="ListErr" Foreground="Red" Grid.Row="1" Grid.Column="1" Margin="10" TextWrapping="WrapWholeWords"/>
 
             <TextBlock Text="User to send invite to:" Foreground="Black" Grid.Row="2" Grid.Column="0" Margin="10" TextWrapping="WrapWholeWords"/>
             <TextBox x:Name="User" PlaceholderText="Username" Grid.Row="2" Grid.Column="1" Margin="10"/>
+            <TextBlock x:Name="UserErr" Foreground="Red" Grid.Row="3" Grid.Column="1" Margin="10" TextWrapping="WrapWholeWords"/>
 
-            <Button Content="Send" Click="Send" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="3" Grid.Column="1" Margin="10"/>
+            <Button Content="Send" Click="Send" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="4" Grid.Column="1" Margin="10"/>
         </Grid>
     </StackPanel>
 </Page>

@@ -39,14 +39,16 @@ namespace WishList.Views
             base.OnNavigatedTo(e);
             ObservableCollection<Wishlist> ret = await wishListService.SubscribedWishLists();
 
-            WishLists = ret.Count() == 0 ? new ObservableCollection<Wishlist>() : ret;
+            WishLists = ret;
 
-            ListView1.ItemsSource = WishLists;
+            if(WishLists.Count() > 0)
+                ListView1.ItemsSource = WishLists;
         }
 
         public void ShowDetail(object sender, SelectionChangedEventArgs e)
         {
-            Frame.Navigate(typeof(Views.SubscriptionsDetailPage));
+            var selectedWishList = (Wishlist)listBox.SelectedItem;
+            (Window.Current.Content as Frame).Navigate(typeof(SubscriptionsDetailPage), selectedWishList);
         }
     }
 }

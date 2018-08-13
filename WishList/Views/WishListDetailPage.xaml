@@ -32,7 +32,7 @@
         </Grid>
         
         <ListBox x:Name="ListView1" Width="Auto" HorizontalAlignment="Stretch" 
-                             Height="Auto" VerticalAlignment="Stretch" Margin="10,10,10,10" 
+                             Height="Auto" VerticalAlignment="Stretch" Margin="10" 
                  ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="ButtonShowMessageDialog_Click">
             <ListBox.ItemTemplate>
                 <DataTemplate>

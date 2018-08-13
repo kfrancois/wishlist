@@ -24,15 +24,15 @@ namespace WishList.Views
             base.OnNavigatedTo(e);
             ObservableCollection<Wishlist> ret1 = await wishListService.GetWishlists();
 
-            WishLists = ret1.Count() == 0 ? new ObservableCollection<Wishlist>() : ret1;
+            WishLists = ret1;
 
-            listBox.ItemsSource = WishLists;
+            if (WishLists.Count() > 0)
+                ListView1.ItemsSource = WishLists;
         }
 
         public void ShowDetail(object sender, SelectionChangedEventArgs e)
         {
             var selectedWishList = (Wishlist)listBox.SelectedItem;
-            //Frame.Navigate(typeof(WishListDetailPage), selectedWishList);
             (Window.Current.Content as Frame).Navigate(typeof(WishListDetailPage), selectedWishList);
         }
 

@@ -18,8 +18,7 @@
         <StackPanel>
             <TextBlock Text="Click on a WishList to see its details" Foreground="Black" TextWrapping="WrapWholeWords" Margin="10"/>
             <ListBox x:Name="ListView1" Width="Auto" Height="Auto" 
-                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10"
-                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" SelectionChanged="ShowDetail">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>

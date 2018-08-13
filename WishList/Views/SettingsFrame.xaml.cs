@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using WishList.Services;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,9 +23,19 @@ namespace WishList.Views
     /// </summary>
     public sealed partial class SettingsFrame : Page
     {
+
+        private ApiService apiService;
+
         public SettingsFrame()
         {
             InitializeComponent();
+            apiService = ApiService.Instance;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            User.Text = apiService.GetUser();
         }
 
         public void GotoLogin(object sender, RoutedEventArgs e) => (Window.Current.Content as Frame).Navigate(typeof(LoginPage));

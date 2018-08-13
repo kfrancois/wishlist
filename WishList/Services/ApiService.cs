@@ -122,5 +122,11 @@ namespace WishList.Services
         {
             return await response.Content.ReadAsStringAsync();
         }
+
+        public string GetUser()
+        {
+            var login = _vault.FindAllByResource("login").FirstOrDefault();
+            return login.UserName;
+        }
     }
 }

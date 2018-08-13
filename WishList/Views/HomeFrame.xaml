@@ -25,7 +25,7 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Row="1" Grid.Column="1">
                 <TextBlock Text="Welcome" Foreground="Black" Margin="10" FontWeight="Bold" FontSize="20px" TextAlignment="Center" TextWrapping="WrapWholeWords"/>
-                <TextBlock Text="e-mail" Foreground="Black" Margin="10" FontWeight="Bold" FontSize="20px" TextAlignment="Center" TextWrapping="WrapWholeWords"/>
+                <TextBlock x:Name="User" Foreground="Black" Margin="10" FontWeight="Bold" FontSize="20px" TextAlignment="Center" TextWrapping="WrapWholeWords"/>
                 <Image Source="/Assets/icon.png" Margin="5" Height="200px" Width="200px"/>
             </StackPanel>
         </Grid>

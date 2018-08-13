@@ -76,7 +76,7 @@ namespace WishList.Views
                     NameErr.Text = "";
                     SelectedWish.Description = DescriptionBox.Text;
                     DescrErr.Text = "";
-                    SelectedWish.Price = Int32.Parse(PriceBox.Text);
+                    SelectedWish.Price = Double.Parse(PriceBox.Text);
                     PriceErr.Text = "";
                     Edit(SelectedWish);
                 } catch(FormatException ex)

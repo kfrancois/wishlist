@@ -34,15 +34,15 @@
             </Grid.RowDefinitions>
 
             <TextBlock TextWrapping="Wrap" Text="Name the Wish" Grid.Column="0" Grid.Row="0" Margin="10" Foreground="Black"/>
-            <TextBlock x:Name="NameErr" TextWrapping="Wrap" Grid.Column="0" Grid.Row="1" Margin="10" Foreground="Red"/>
-            <TextBox x:Name="NameBox" TextWrapping="Wrap" PlaceholderText="Wish" Grid.Column="0" Grid.Row="2" Margin="10"/>
+            <TextBox x:Name="NameBox" TextWrapping="Wrap" PlaceholderText="Wish" Grid.Column="0" Grid.Row="1" Margin="10"/>
+            <TextBlock x:Name="NameErr" TextWrapping="Wrap" Grid.Column="0" Grid.Row="2" Margin="10" Foreground="Red"/>
             <TextBlock TextWrapping="Wrap" Text="Give a description" Grid.Column="0" Grid.Row="3" Margin="10" Foreground="Black"/>
-            <TextBlock x:Name="DescrErr" TextWrapping="Wrap" Grid.Column="0" Grid.Row="4" Margin="10" Foreground="Red"/>
-            <TextBox x:Name="DescriptionBox" TextWrapping="Wrap" PlaceholderText="Description" Grid.Column="0" Grid.Row="5" Margin="10"/>
+            <TextBox x:Name="DescriptionBox" TextWrapping="Wrap" PlaceholderText="Description" Grid.Column="0" Grid.Row="4" Margin="10"/>
+            <TextBlock x:Name="DescrErr" TextWrapping="Wrap" Grid.Column="0" Grid.Row="5" Margin="10" Foreground="Red"/>
             <TextBlock TextWrapping="Wrap" Text="Price of the Wish" Grid.Column="0" Grid.Row="6" Margin="10" Foreground="Black"/>
-            <TextBlock x:Name="PriceErr" TextWrapping="Wrap" Grid.Column="0" Grid.Row="7" Margin="10" Foreground="Red"/>
-            <TextBox x:Name="PriceBox" TextWrapping="Wrap" PlaceholderText="Price" Grid.Column="0" Grid.Row="8" Margin="10"/>
-            <Button Content="Save" Click="GoBack" Grid.Column="0" Grid.Row="9" Margin="10"/>
+            <TextBox x:Name="PriceBox" TextWrapping="Wrap" PlaceholderText="Price" Grid.Column="0" Grid.Row="7" Margin="10"/>
+            <TextBlock x:Name="PriceErr" TextWrapping="Wrap" Grid.Column="0" Grid.Row="8" Margin="10" Foreground="Red"/>
+            <Button Content="Save" Click="Button_Click" Grid.Column="0" Grid.Row="9" Margin="10"/>
         </Grid>
     </StackPanel>
 </Page>

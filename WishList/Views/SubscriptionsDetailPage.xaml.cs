@@ -66,11 +66,10 @@ namespace WishList.Views
 
         }
 
-        private void Claime(Wish selected)
+        private async void Claime(Wish selected)
         {
             selected.Claimed = true;
-
-            //await wishService.put(selected)
+            await wishService.PutWish(selected.WishId, selected);
         }
 
         public void GoBack(object sender, RoutedEventArgs e)

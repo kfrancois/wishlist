@@ -7,14 +7,17 @@
     mc:Ignorable="d">
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
+        <StackPanel Background="SteelBlue">
+            <TextBlock x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" Text="Invites"/>
+                             RelativePanel.AlignTopWithPanel="True" Text="Invites"
+                             Margin="15"/>
+        </StackPanel>
         <StackPanel>
-            <TextBlock Text="Received Invites" FontWeight="Bold" FontSize="20px" Margin="10,10,10,10"/>
+            <TextBlock Text="Received Invites" FontWeight="Bold" FontSize="20px" Margin="10"/>
             <ListBox x:Name="ListView1" Width="Auto" 
-                     HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Margin="10,10,10,10"
-                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                     HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Margin="10"
+                     SelectionChanged="ListView1_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>

@@ -9,11 +9,11 @@
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Background="SteelBlue">
             <Grid>
-                <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" Margin="10"/>
+                <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" Margin="15"/>
                 <TextBlock x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" VerticalAlignment="Center" 
-                             HorizontalAlignment="Right" Margin="0,22,14,22" Text="New invite"/>
+                             HorizontalAlignment="Right" Margin="15" Text="New invite"/>
             </Grid>
 
         </StackPanel>

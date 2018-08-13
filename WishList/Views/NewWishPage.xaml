@@ -6,14 +6,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="-8,0,8,0">
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Background="SteelBlue">
             <Grid>
-                <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" Margin="10"/>
+                <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" Margin="15"/>
                 <TextBlock x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" VerticalAlignment="Center" 
-                             HorizontalAlignment="Right" Margin="10" Text="New Wish"/>
+                             HorizontalAlignment="Right" Margin="15" Text="New Wish"/>
             </Grid>
 
         </StackPanel>

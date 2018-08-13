@@ -31,7 +31,7 @@ namespace WishList.Views
             ListView1.ItemsSource = WishLists;
         }
 
-        private async void ButtonShowMessageDialog_Click(object sender, RoutedEventArgs e)
+        private async void ListView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
             var dialog = new Windows.UI.Popups.MessageDialog(
@@ -61,7 +61,8 @@ namespace WishList.Views
 
         public void NewInvite(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(NewInvite));
+            (Window.Current.Content as Frame).Navigate(typeof(NewInvite));
         }
+
     }
 }

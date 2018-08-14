@@ -21,5 +21,7 @@
     <SmallTileSource>C:\Users\koenf\Desktop\price-tag.png</SmallTileSource>
     <WideTileSource>C:\Users\koenf\Desktop\price-tag.png</WideTileSource>
     <LargeTileSource>C:\Users\koenf\Desktop\price-tag.png</LargeTileSource>
+    <Source>C:\Users\koenf\Desktop\price-tag.png</Source>
+    <PackageLogoSource>C:\Users\koenf\Desktop\price-tag.png</PackageLogoSource>
   </PropertyGroup>
 </Project>

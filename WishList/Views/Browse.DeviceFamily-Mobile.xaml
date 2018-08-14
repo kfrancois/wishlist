@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="WishList.Views.Browse"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WishList.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" Width="Auto">
+        <StackPanel Background="SteelBlue">
+            <TextBlock x:Name="PageHeader" RelativePanel.AlignLeftWithPanel="True"
+                             RelativePanel.AlignRightWithPanel="True"
+                             RelativePanel.AlignTopWithPanel="True" Text="Browse"
+                             Margin="10"/>
+        </StackPanel>
+
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Browse all wishlists"  Foreground="Black" TextWrapping="WrapWholeWords" Grid.Row="0" Grid.Column="0" Margin="10"/>
+        </Grid>
+
+        <ListBox x:Name="ListView1" Width="Auto" HorizontalAlignment="Stretch" 
+                             Height="Auto" VerticalAlignment="Stretch" Margin="10" 
+                 ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="ListBox_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Title}" Foreground="Black" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding CreatorName}" Foreground="Black"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
+</Page>

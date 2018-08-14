@@ -41,6 +41,29 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
                 <Button Content="New Invite" HorizontalAlignment="Stretch" Click="NewInvite" Margin="10"/>
+                <TextBlock Text="Received Requests" FontWeight="Bold" FontSize="20px" Margin="10" Foreground="Black"/>
+                <ListBox x:Name="ListView2" Width="Auto" 
+                         HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Margin="10"
+                         SelectionChanged="ListView2_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Margin="10">
+                                    <TextBlock Text="Wishlist" FontWeight="Bold"/>
+                                    <TextBlock Name="Text1" Text="{Binding Wishlist.Title}" TextWrapping="WrapWholeWords"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1" Margin="10">
+                                    <TextBlock Text="From" FontWeight="Bold"/>
+                                    <TextBlock Name="Text2" Text="{Binding User.UserName}" TextWrapping="WrapWholeWords"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </StackPanel>
         </StackPanel>
     </StackPanel>

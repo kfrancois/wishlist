@@ -7,11 +7,13 @@ namespace WishListRestService.Models
     {
         public ICollection<Wishlist> CreatedWishLists { get; set; }
         public ICollection<PendingInvite> PendingInvites { get; set; }
+        public ICollection<PendingRequest> PendingRequests { get; set; }
         public ICollection<WishlistSubscriber> SubbedWishLists { get; set; }
 
         public ApplicationUser()
         {
             PendingInvites = new List<PendingInvite>();
+            PendingRequests = new List<PendingRequest>();
             CreatedWishLists = new List<Wishlist>();
             SubbedWishLists = new List<WishlistSubscriber>();
         }
@@ -33,6 +35,11 @@ namespace WishListRestService.Models
         public void AddInvite(PendingInvite invite)
         {
             PendingInvites.Add(invite);
+        }
+
+        public void AddRequest(PendingRequest request)
+        {
+            PendingRequests.Add(request);
         }
 
         public void Subscribe(WishlistSubscriber subscriber)

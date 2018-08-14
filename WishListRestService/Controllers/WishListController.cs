@@ -21,16 +21,18 @@ namespace WishListRestService.Controllers
             _userManager = userManager;
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Get()
         {
             var name = _userManager.GetUserAsync(User).Result?.UserName;
-            var wishLists =  WishListRepository.GetAll().Where(wl => wl.CreatorName == name);
+            var wishLists = WishListRepository.GetAll().Where(wl => wl.CreatorName == name);
             var enumerable = wishLists as Wishlist[] ?? wishLists.ToArray();
             foreach (var wishList in enumerable)
             {
                 wishList.PendingInvites.ForEach(pi => pi.WishList = null);
                 wishList.Subscribers.ForEach(s => s.WishList = null);
+                wishList.PendingRequests.ForEach(pr => pr.WishList = null);
             }
             return Ok(enumerable);
         }
@@ -44,8 +46,20 @@ namespace WishListRestService.Controllers
             {
                 wishList.PendingInvites.ForEach(pi => pi.WishList = null);
                 wishList.Subscribers.ForEach(s => s.WishList = null);
+                wishList.PendingRequests.ForEach(pr => pr.WishList = null);
             }
             return enumerable;
+        }
+
+        [Authorize]
+        [ProducesResponseType(201, Type = typeof(IList<PendingRequest>))]
+        [HttpGet("requests")]
+        public IActionResult GetRequests()
+        {
+            var name = _userManager.GetUserAsync(User).Result?.UserName;
+            var requests = WishListRepository.GetAll().Where(wl => wl.CreatorName == name && wl.PendingRequests.Count > 0).SelectMany(wl => wl.PendingRequests).ToArray();
+            foreach (var request in requests) request.WishList = null;
+            return Ok(requests);
         }
 
         [HttpGet("{id}", Name = "GetWishLists")]
@@ -58,6 +72,7 @@ namespace WishListRestService.Controllers
             }
             item.PendingInvites.ForEach(pi => pi.WishList = null);
             item.Subscribers.ForEach(sub => sub.WishList = null);
+            item.PendingRequests.ForEach(pr => pr.WishList = null);
 
             return Ok(item);
         }
@@ -82,6 +97,7 @@ namespace WishListRestService.Controllers
             return Created($"/api/wishlist/{item.WishlistId}", item);
         }
 
+        [Authorize]
         [HttpPost("{id}/wish")]
         public IActionResult CreateWish(int id, [FromBody] Wish item)
         {
@@ -99,6 +115,7 @@ namespace WishListRestService.Controllers
             return Created($"/api/wish/{item.WishId}", item);
         }
 
+        [Authorize]
         [HttpPost("{id}/invite")]
         public IActionResult InvitePerson(int id, [FromBody] EmailModel email)
         {
@@ -144,6 +161,7 @@ namespace WishListRestService.Controllers
             return invitedWishLists;
         }
 
+        [Authorize]
         [HttpGet("subscribed")]
         public IEnumerable<Wishlist> SubscribedWishLists()
         {
@@ -161,6 +179,7 @@ namespace WishListRestService.Controllers
             return subscribedWishLists;
         }
 
+        [Authorize]
         [HttpPost("{id}/accept")]
         public IActionResult AcceptInvite(int id)
         {
@@ -191,6 +210,75 @@ namespace WishListRestService.Controllers
             return Ok();
         }
 
+        [Authorize]
+        [HttpPost("{id}/request")]
+        public IActionResult RequestAccess(int id)
+        {
+            var user = _userManager.GetUserAsync(User).Result;
+
+            var wishList = WishListRepository.Find(id);
+
+            if (wishList.CreatorName == user.Email)
+            {
+                return BadRequest("not possible to request access to own wishlist");
+            }
+            if (wishList.Subscribers.Any(sub => sub.UserId == user?.Id))
+            {
+                return BadRequest("already subscribed to wishlist");
+            }
+            if (wishList.PendingRequests.Any(pi => pi.UserId == user?.Id))
+            {
+                return BadRequest("access already requested");
+            }
+
+            var request = new PendingRequest
+            {
+                User = user,
+                WishList = wishList
+            };
+
+            wishList.AddRequest(request);
+
+            WishListRepository.Update(wishList);
+
+            return Ok();
+        }
+
+        [HttpPost("{id}/grant")]
+        public IActionResult GrantAccess(int id, [FromBody] EmailModel email)
+        {
+            var user = _userManager.GetUserAsync(User).Result;
+
+            var wishList = WishListRepository.Find(id);
+
+            if (wishList.CreatorName != user.Email)
+            {
+                return BadRequest("only owner of wishlist can grant access");
+            }
+
+            var requestUser = _userManager.FindByEmailAsync(email.Email).Result;
+
+            if (!wishList.PendingRequests.Any(pr => pr.UserId == requestUser?.Id))
+            {
+                return BadRequest("user with given email did not request access");
+            }
+
+            wishList.PendingRequests.RemoveAll(pr => pr.UserId == requestUser.Id);
+
+            var subscriber = new WishlistSubscriber
+            {
+                User = requestUser,
+                WishList = wishList
+            };
+
+            wishList.Subscribers.Add(subscriber);
+
+            WishListRepository.Update(wishList);
+
+            return Ok();
+        }
+
+        [Authorize]
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] Wishlist item)
         {
@@ -207,6 +295,7 @@ namespace WishListRestService.Controllers
             return new NoContentResult();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
@@ -217,5 +306,5 @@ namespace WishListRestService.Controllers
     public class EmailModel
     {
         public string Email { get; set; }
-    }   
+    }
 }

@@ -27,13 +27,13 @@ namespace WishListRestService.Repository
 
         public Wishlist Find(int id)
         {
-            return _wishLists.Include(wl => wl.Wishes).Include(wl => wl.PendingInvites).Include(wl => wl.Subscribers)
+            return _wishLists.Include(wl => wl.Wishes).Include(wl => wl.PendingInvites).Include(wl => wl.Subscribers).Include(wl => wl.PendingRequests)
                 .SingleOrDefault(wl => wl.WishlistId == id);
         }
 
         public IEnumerable<Wishlist> GetAll()
         {
-            return _wishLists.Include(wl => wl.Wishes).Include(wl => wl.PendingInvites).Include(wl => wl.Subscribers);
+            return _wishLists.Include(wl => wl.Wishes).Include(wl => wl.PendingInvites).Include(wl => wl.Subscribers).Include(wl => wl.PendingRequests);
         }
 
         public void Remove(int id)
@@ -54,6 +54,7 @@ namespace WishListRestService.Repository
                 itemToUpdate.PendingInvites = item.PendingInvites;
                 itemToUpdate.Subscribers = item.Subscribers;
                 itemToUpdate.Wishes = item.Wishes;
+                itemToUpdate.PendingRequests = item.PendingRequests;
             }
             SaveChanges();
         }

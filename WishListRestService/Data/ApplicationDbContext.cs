@@ -20,6 +20,7 @@ namespace WishListRestService.Data
 
             builder.ApplyConfiguration(new ApplicationUserConfiguration());
             builder.ApplyConfiguration(new PendingInviteConfiguration());
+            builder.ApplyConfiguration(new PendingRequestConfiguration());
             builder.ApplyConfiguration(new WishConfiguration());
             builder.ApplyConfiguration(new WishListConfiguration());
             builder.ApplyConfiguration(new WishListSubscriberConfiguration());

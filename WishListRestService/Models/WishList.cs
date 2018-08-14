@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace WishListRestService.Models
 {
@@ -11,12 +12,14 @@ namespace WishListRestService.Models
         public List<Wish> Wishes { get; set; }
         public List<WishlistSubscriber> Subscribers { get; set; }
         public List<PendingInvite> PendingInvites { get; set; }
+        public List<PendingRequest> PendingRequests { get; set; }
 
         public Wishlist()
         {
             Wishes = new List<Wish>();
             Subscribers = new List<WishlistSubscriber>();
             PendingInvites = new List<PendingInvite>();
+            PendingRequests= new List<PendingRequest>();
         }
 
         public Wishlist(string title) : this()
@@ -39,6 +42,12 @@ namespace WishListRestService.Models
         {
             Subscribers.Add(subscriber);
             subscriber.User.Subscribe(subscriber);
+        }
+
+        public void AddRequest(PendingRequest request)
+        {
+            PendingRequests.Add(request);
+            request.User.AddRequest(request);
         }
     }
 }

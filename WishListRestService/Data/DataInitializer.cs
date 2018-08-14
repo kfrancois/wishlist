@@ -29,7 +29,7 @@ namespace WishListRestService.Data
 
         private async Task InitializeUsers()
         {
-            var firstUser = new ApplicationUser {UserName = "firstUser@hogent.be", Email = "firstUser@hogent.be"};
+            var firstUser = new ApplicationUser { UserName = "firstUser@hogent.be", Email = "firstUser@hogent.be" };
 
             var wishList = new Wishlist("Birthday")
             {
@@ -44,11 +44,10 @@ namespace WishListRestService.Data
                 }
             };
 
+
             firstUser.CreateWishList(wishList);
 
-            firstUser.CreateWishList(new Wishlist("Christmas"));
-
-            var secondUser = new ApplicationUser {UserName = "secondUser@hogent.be", Email = "secondUser@hogent.be"};
+            var secondUser = new ApplicationUser { UserName = "secondUser@hogent.be", Email = "secondUser@hogent.be" };
 
             var secondWishList = new Wishlist("Easter")
             {
@@ -60,6 +59,10 @@ namespace WishListRestService.Data
             };
 
             secondUser.CreateWishList(secondWishList);
+
+            var thirdWishList = new Wishlist("Christmas");
+
+            firstUser.CreateWishList(thirdWishList);
 
             var invite = new PendingInvite
             {
@@ -74,8 +77,15 @@ namespace WishListRestService.Data
             };
 
 
+            var request = new PendingRequest
+            {
+                User = secondUser,
+                WishList = thirdWishList
+            };
+
             secondWishList.AddInvite(invite);
             secondUser.Subscribe(subscription);
+            secondUser.AddRequest(request);
 
             await _userManager.CreateAsync(firstUser, "P@ssword1");
             await _userManager.CreateAsync(secondUser, "P@ssword1");

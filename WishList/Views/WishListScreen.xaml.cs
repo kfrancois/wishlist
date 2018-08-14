@@ -11,12 +11,16 @@ namespace WishList.Views
 
     public sealed partial class WishListScreen : Page
     {
-        public ObservableCollection<Wishlist> WishLists { get; set; }
         private WishListService wishListService;
+
+        public ObservableCollection<Wishlist> WishLists { get; set; }
         public int SelectedId { get; set; }
+
+
+
         public WishListScreen()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             wishListService = WishListService.Instance;
         }
 

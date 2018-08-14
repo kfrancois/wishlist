@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vm="using:WishList.ViewModels"
     mc:Ignorable="d">
 
     <NavigationView x:Name="NavView"
@@ -25,7 +24,7 @@
 
         <NavigationView.HeaderTemplate>
             <DataTemplate>
-                <Image Source="/Assets/logo.png" VerticalAlignment="Center" Height="100px" Width="200px"/>
+                <Image Source="/Assets/icon.png" HorizontalAlignment="Right" Height="24px" Width="24px" Margin="0,0,10,0"/>
             </DataTemplate>
         </NavigationView.HeaderTemplate>
 

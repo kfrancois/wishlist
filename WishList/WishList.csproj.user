@@ -13,4 +13,13 @@
     <DeviceId>47FF8CA8-6CE4-4B6F-8CD3-91936EBF1534</DeviceId>
     <UseEmulator>false</UseEmulator>
   </PropertyGroup>
+  <PropertyGroup>
+    <AppIconSource>C:\Users\koenf\Desktop\price-tag.png</AppIconSource>
+    <MediumTileSource>C:\Users\koenf\Desktop\price-tag.png</MediumTileSource>
+    <SplashScreenSource>C:\Users\koenf\Desktop\price-tag.png</SplashScreenSource>
+    <BadgeLogoSource>C:\Users\koenf\Desktop\price-tag.png</BadgeLogoSource>
+    <SmallTileSource>C:\Users\koenf\Desktop\price-tag.png</SmallTileSource>
+    <WideTileSource>C:\Users\koenf\Desktop\price-tag.png</WideTileSource>
+    <LargeTileSource>C:\Users\koenf\Desktop\price-tag.png</LargeTileSource>
+  </PropertyGroup>
 </Project>

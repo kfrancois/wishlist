@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -29,8 +30,6 @@ namespace WishList.Views
 
         public ObservableCollection<Wishlist> WishLists { get; set; }
         public ObservableCollection<string> WishListNames { get; set; }
-        /*public string WishList { get; set; }
-        public string Username { get; set; }*/
         private WishListService wishListService;
 
         public NewInvite()
@@ -52,16 +51,29 @@ namespace WishList.Views
             foreach (Wishlist w in WishLists)
                 WishListNames.Add(w.Title);
 
-            wishlistbox.ItemsSource = WishListNames;
+            Wishlistbox.ItemsSource = WishListNames;
         }
 
-       // public async void Send(object sender, RoutedEventArgs e)
-        public void Send(object sender, RoutedEventArgs e)
+        public async void Send(object sender, RoutedEventArgs e)
         {
-            /*int SelectedWishList = WishLists.First(wl => wl.Title == WishList).WishlistId;
-            await wishListService.InvitePerson(SelectedWishList, Username);*/
+            if(Wishlistbox.SelectedItem == null)
+            {
+                ListErr.Text = "You must select a wishlist!";
+                Wishlistbox.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
 
-            Frame.GoBack();
+            if (User.Text == null || User.Text == "")
+            {
+                UserErr.Text = "Username cannot be empty";
+                User.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+
+            if (Wishlistbox.SelectedItem != null && User.Text != null && User.Text != "")
+            {
+                int selectedWishlist = WishLists.First(wl => wl.Title == (String)Wishlistbox.SelectedItem).WishlistId;
+                await wishListService.InvitePerson(selectedWishlist, User.Text);
+                Frame.GoBack();
+            }
         }
 
         public void GoBack(object sender, RoutedEventArgs e)

@@ -5,7 +5,6 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using WishList.Model;
 using WishList.Services;
-using WishList.ViewModels;
 
 namespace WishList.Views
 {
@@ -17,30 +16,29 @@ namespace WishList.Views
         public int SelectedId { get; set; }
         public WishListScreen()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             wishListService = WishListService.Instance;
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ObservableCollection<Wishlist> ret = await wishListService.GetWishlists();
+            ObservableCollection<Wishlist> ret1 = await wishListService.GetWishlists();
 
-            WishLists = ret.Count() == 0 ? new ObservableCollection<Wishlist>() : ret;
+            WishLists = ret1.Count() == 0 ? new ObservableCollection<Wishlist>() : ret1;
 
-            ListView1.ItemsSource = WishLists;
+            ListBox.ItemsSource = WishLists;
         }
 
         public void ShowDetail(object sender, SelectionChangedEventArgs e)
         {
-            var selectedWishList = (Wishlist)ListView1.SelectedItem;
-            SelectedId = selectedWishList.WishlistId;
-            App.Current.NavigationService.Navigate(typeof(WishListDetailPage), SelectedId);
+            var selectedWishList = (Wishlist)ListBox.SelectedItem;
+            (Window.Current.Content as Frame).Navigate(typeof(WishListDetailPage), selectedWishList);
         }
 
         public void NewWishList(object sender, RoutedEventArgs e)
         {
-            App.Current.NavigationService.Navigate(typeof(NewWishList));
+            (Window.Current.Content as Frame).Navigate(typeof(NewWishList));
         }
     }
 }

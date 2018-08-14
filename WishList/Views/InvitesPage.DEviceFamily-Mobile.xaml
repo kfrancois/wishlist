@@ -4,22 +4,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WishList.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" xmlns:vm="using:WishList.ViewModels"
-    xmlns:controls="using:Template10.Controls">
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
+        <StackPanel Background="SteelBlue">
+            <TextBlock x:Name="PageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" Text="Invites"/>
+                             RelativePanel.AlignTopWithPanel="True" Text="Invites"
+                             Margin="10"/>
+        </StackPanel>
 
         <StackPanel>
             <StackPanel>
-                <TextBlock Text="Received Invites" FontWeight="Bold" FontSize="20px" Margin="10"/>
+                <TextBlock Text="Received Invites" FontWeight="Bold" FontSize="20px" Margin="10" Foreground="Black"/>
                 <ListBox x:Name="ListView1" Width="Auto" 
                          HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Margin="10"
-                         SelectionChanged="ButtonShowMessageDialog_Click">
+                         SelectionChanged="ListView1_SelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>
@@ -29,11 +30,11 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Margin="10">
                                     <TextBlock Text="Wishlist" FontWeight="Bold"/>
-                                    <TextBlock Name="text1" Text="{Binding Title}" TextWrapping="WrapWholeWords"/>
+                                    <TextBlock Name="Text1" Text="{Binding Title}" TextWrapping="WrapWholeWords"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1" Margin="10">
                                     <TextBlock Text="From" FontWeight="Bold"/>
-                                    <TextBlock Name="text2" Text="{Binding CreatorName}" TextWrapping="WrapWholeWords"/>
+                                    <TextBlock Name="Text2" Text="{Binding CreatorName}" TextWrapping="WrapWholeWords"/>
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>

@@ -1,28 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using WishList.Model;
 using WishList.Services;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace WishList.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+
     public sealed partial class InvitesPage : Page
     {
         public ObservableCollection<Wishlist> WishLists { get; set; }
@@ -44,12 +31,14 @@ namespace WishList.Views
             ListView1.ItemsSource = WishLists;
         }
 
-        private async void ButtonShowMessageDialog_Click(object sender, RoutedEventArgs e)
+        private async void ListView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+            var item = (Wishlist)ListView1.SelectedItem;
+
             var dialog = new Windows.UI.Popups.MessageDialog(
-                        "Are you sure you want to accept this wishlist?",
-                        "Accept this invite");
+                        "Are you sure you want to accept wishlist \"" + item.Title + "\" from " + item.CreatorName + "?",
+                        "Accept invite");
 
             dialog.Commands.Add(new Windows.UI.Popups.UICommand("Yes") { Id = 0 });
             dialog.Commands.Add(new Windows.UI.Popups.UICommand("No") { Id = 1 });
@@ -59,22 +48,23 @@ namespace WishList.Views
 
             var result = await dialog.ShowAsync();
 
-            /*if (result.Id.ToString() == "0")
+            if (result.Id.ToString() == "0")
             {
-                AcceptInviteAsync(item);
-            }*/
+                AcceptInvite(item);
+            }
 
             System.Diagnostics.Debug.WriteLine(result.Id);
         }
 
-        private async void AcceptInviteAsync(Wishlist item)
+        private async void AcceptInvite(Wishlist item)
         {
             await wishListService.AcceptInvite(item.WishlistId);
         }
 
         public void NewInvite(object sender, RoutedEventArgs e)
         {
-            App.Current.NavigationService.Navigate(typeof(Views.NewInvite));
+            (Window.Current.Content as Frame).Navigate(typeof(NewInvite));
         }
+
     }
 }

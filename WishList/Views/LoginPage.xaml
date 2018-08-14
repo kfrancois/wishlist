@@ -15,7 +15,7 @@
                     <Image Source="/Assets/logo.png" ImageOpened="Image_Loaded" Width="200px" Height="100px"/>
                 </StackPanel>
                 <TextBlock Text="Login" FontSize="36" Margin="4" TextAlignment="Center" Foreground="Black"/>
-                <TextBlock x:Name="ErrorMessage"  Text="{Binding ErrorMessage, Mode=OneWay}" FontSize="20" Margin="4" Foreground="Red" TextAlignment="Center" />
+                <TextBlock x:Name="ErrorMessage" FontSize="20" Margin="4" Foreground="Red" TextAlignment="Center"/>
                 <TextBlock Text="Enter your e-mail below" Margin="0,0,0,20"
                TextWrapping="Wrap" Width="300"
                TextAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="Black" />

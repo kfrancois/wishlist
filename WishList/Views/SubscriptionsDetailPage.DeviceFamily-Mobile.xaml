@@ -2,45 +2,42 @@
     x:Class="WishList.Views.SubscriptionsDetailPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WishList"
-    xmlns:controls="using:Template10.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    xmlns:conv="using:WishList.Models"  xmlns:vm="using:WishList.ViewModels" >
+    mc:Ignorable="d">
 
     <StackPanel Name="stackpanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" Width="Auto">
 
-        <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
+        <StackPanel Background="SteelBlue">
+            <Grid>
+                <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" Margin="10"/>
+                <TextBlock x:Name="PageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" Text="WishListName"/>
+                             RelativePanel.AlignTopWithPanel="True" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10"/>
+            </Grid>
 
-        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" Margin="10"/>
+        </StackPanel>
 
-        <TextBlock Text="Wishlist from USER" Margin="10" TextAlignment="Center" FontWeight="Bold"/>
-        <TextBlock Text="Description" Margin="10" TextAlignment="Center" FontWeight="Bold"/>
-        
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Click to fulfill"  Foreground="Black" TextWrapping="WrapWholeWords" Grid.Row="0" Grid.Column="0" Margin="10"/>
+            <TextBlock Text="{Binding CreatorName}" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right"/>
+        </Grid>
+
         <ListBox x:Name="ListView1" Width="Auto" HorizontalAlignment="Stretch" 
-                             Height="Auto" VerticalAlignment="Stretch" Margin="10,10,10,10" 
+                             Height="Auto" VerticalAlignment="Stretch" Margin="10" 
                  ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="ButtonShowMessageDialog_Click">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Name="text1" Text="{Binding Title}" Grid.Row="0" Grid.Column="0" TextWrapping="WrapWholeWords" Margin="10,0,0,0" FontWeight="Bold"/>
-                        <StackPanel  Margin="10,0,0,0" Orientation="Vertical" Grid.Row="1" Grid.Column="0">
-                            <TextBlock Text="Description" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding Description}" TextWrapping="WrapWholeWords"/>
-                        </StackPanel>
-                        <StackPanel Margin="10,0,0,0" Orientation="Vertical" Grid.Row="2" Grid.Column="0">
-                            <TextBlock Text="Price" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding Price}" />
-                        </StackPanel>
-                    </Grid>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" Foreground="Black" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Price}" Foreground="Black"/>
+                        <TextBlock Text="{Binding Description}" Foreground="Black" FontStyle="Italic"/>
+                    </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

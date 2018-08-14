@@ -2,30 +2,34 @@
     x:Class="WishList.Views.NewWishList"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WishList.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" xmlns:controls="using:Template10.Controls"
-    xmlns:vm="using:WishList.ViewModels">
+    mc:Ignorable="d">
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
+        <StackPanel Background="SteelBlue">
+            <Grid>
+                <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" Margin="15"/>
+                <TextBlock x:Name="PageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignTopWithPanel="True" Text="New WishList"/>
+                             RelativePanel.AlignTopWithPanel="True" VerticalAlignment="Center" 
+                             HorizontalAlignment="Right" Margin="15" Text="New Wishlist"/>
+            </Grid>
 
-        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource NavigationBackButtonNormalStyle}" Click="GoBack" Margin="10"/>
-
+        </StackPanel>
         <Grid>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock TextWrapping="Wrap" Text="Give the name of the WishList" Grid.Column="0" Grid.Row="0" Margin="10,10,10,10"/>
-            <TextBox TextWrapping="Wrap" PlaceholderText="WishListName" Text="{Binding WishListName, Mode=TwoWay}" Grid.Column="0" Grid.Row="1" Margin="10,10,10,10"/>
-            <Button Content="Save" Click="SaveAsync" Grid.Column="0" Grid.Row="2" Margin="10,10,10,10"/>
+            <TextBlock TextWrapping="Wrap" Foreground="Black" Text="Give the name of the WishList" Grid.Column="0" Grid.Row="0" Margin="10"/>
+            <TextBox x:Name="NameBox" TextWrapping="Wrap" PlaceholderText="WishListName" Grid.Column="0" Grid.Row="1" Margin="10"/>
+            <TextBlock x:Name="NameErr" TextWrapping="Wrap" Foreground="Red" Grid.Column="0" Grid.Row="2" Margin="10"/>
+            <Button Content="Save" Click="SaveAsync" Grid.Column="0" Grid.Row="3" Margin="10"/>
         </Grid>
     </StackPanel>
 </Page>

@@ -1,41 +1,36 @@
-﻿using System.Threading.Tasks;
-using WishList.Services.SettingsServices;
+﻿using System;
 using Windows.ApplicationModel.Activation;
-using Template10.Common;
-using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using WishList.Services;
 
 namespace WishList
 {
-    /// Documentation on APIs used in this page:
-    /// https://github.com/Windows-XAML/Template10/wiki
-
-    [Bindable]
-    sealed partial class App : BootStrapper
+    public partial class App
     {
 
         public App()
         {
             InitializeComponent();
-            SplashFactory = (e) => new Views.Splash(e);
-
-            #region app settings
-
-            // some settings must be set in app.constructor
-            var settings = SettingsService.Instance;
-            RequestedTheme = settings.AppTheme;
-            CacheMaxDuration = settings.CacheMaxDuration;
-            ShowShellBackButton = settings.UseShellBackButton;
-
-            #endregion
         }
 
-
-        public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
+        protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
-            var apiService = ApiService.Instance;
 
-            await NavigationService.NavigateAsync(apiService.IsSaved("login") ? typeof(Views.Main) : typeof(Views.LoginPage));
+            var apiService = ApiService.Instance;
+            var rootFrame = Window.Current.Content as Frame;
+            if (rootFrame == null)
+            {
+                rootFrame = new Frame();
+                Window.Current.Content = rootFrame;
+            }
+
+            if (rootFrame.Content == null)
+            {
+                rootFrame.Navigate(apiService.IsSaved("login") ? typeof(Views.Main) : typeof(Views.LoginPage));
+            }
+
+            Window.Current.Activate();
         }
     }
 }

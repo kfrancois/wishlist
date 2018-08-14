@@ -40,9 +40,9 @@ namespace WishList.Views
             base.OnNavigatedTo(e);
             var parameter = (Wish)e.Parameter;
             SelectedWish = parameter;
-            NameBox.Text = SelectedWish.Name;
-            DescriptionBox.Text = SelectedWish.Description;
-            PriceBox.Text = SelectedWish.Price.ToString();
+            NameBox.Text = SelectedWish.Name ?? "";
+            DescriptionBox.Text = SelectedWish.Description ?? "";
+            PriceBox.Text = SelectedWish.Price.ToString() ?? "";
         }
 
         public void GoBack(object sender, RoutedEventArgs e) => Frame.GoBack();
@@ -79,7 +79,8 @@ namespace WishList.Views
                     SelectedWish.Price = Double.Parse(PriceBox.Text);
                     PriceErr.Text = "";
                     Edit(SelectedWish);
-                } catch(FormatException ex)
+                }
+                catch (FormatException)
                 {
                     PriceErr.Text = "Give a valid price";
                 }

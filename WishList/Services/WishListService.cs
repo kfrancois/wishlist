@@ -29,7 +29,7 @@ namespace WishList.Services
 
         public async Task<Wishlist> CreateWishlist(Wishlist wishlist)
         {
-            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.POST, $"{_urlExtension}", JsonConvert.SerializeObject(wishlist)));
+            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.POST, $"{_urlExtension}", wishlist));
             return JsonConvert.DeserializeObject<Wishlist>(request.Result);
         }
 
@@ -40,7 +40,7 @@ namespace WishList.Services
 
         public async Task<Wish> CreateWish(int wishlistId, Wish wish)
         {
-            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.POST, $"{_urlExtension}/{wishlistId}", JsonConvert.SerializeObject(wish)));
+            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.POST, $"{_urlExtension}/{wishlistId}", wish));
             return JsonConvert.DeserializeObject<Wish>(request.Result);
         }
 
@@ -58,7 +58,7 @@ namespace WishList.Services
 
         public async Task<string> InvitePerson(int wishlistId, string email)
         {
-            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.POST, $"{_urlExtension}/{wishlistId}/invite", JsonConvert.SerializeObject(new { Email = email })));
+            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.POST, $"{_urlExtension}/{wishlistId}/invite", new { Email = email }));
             return JsonConvert.DeserializeObject<string>(request.Result);
         }
 

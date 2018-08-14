@@ -16,7 +16,7 @@
         </StackPanel>
         <TextBlock Text="You are logged in as: " Margin="10" Foreground="Black"/>
         <TextBlock x:Name="User" Margin="10" Foreground="Black"/>
-        <Button x:Name="SignOut" Margin="10"  Click="GotoLogin">
+        <Button x:Name="SignOut" Margin="10"  Click="LogOut">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

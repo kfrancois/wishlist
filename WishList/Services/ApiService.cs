@@ -6,6 +6,8 @@ using Windows.Web.Http.Headers;
 using Windows.Storage.Streams;
 using Windows.Security.Credentials;
 using System.Linq;
+using Windows.UI.Popups;
+using Windows.UI.Xaml;
 
 namespace WishList.Services
 {
@@ -58,29 +60,39 @@ namespace WishList.Services
         {
             HttpResponseMessage httpResponse;
 
-            switch (requestType)
+            try
             {
-                case RequestType.GET:
-                    httpResponse = await _httpClient.GetAsync(new Uri($"{baseUrl}/{endpoint}"));
-                    break;
-                case RequestType.POST:
-                    httpResponse = await _httpClient.PostAsync(new Uri($"{baseUrl}/{endpoint}"), new HttpStringContent(JsonConvert.SerializeObject(body), UnicodeEncoding.Utf8, "application/json"));
-                    break;
-                case RequestType.PUT:
-                    httpResponse = await _httpClient.PutAsync(new Uri($"{baseUrl}/{endpoint}"), new HttpStringContent(JsonConvert.SerializeObject(body), UnicodeEncoding.Utf8, "application/json"));
-                    break;
-                case RequestType.DELETE:
-                    httpResponse = await _httpClient.DeleteAsync(new Uri($"{baseUrl}/{endpoint}"));
-                    break;
-                default: throw new Exception("Need a RequestType");
-            }
+                switch (requestType)
+                {
+                    case RequestType.GET:
+                        httpResponse = await _httpClient.GetAsync(new Uri($"{baseUrl}/{endpoint}"));
+                        break;
+                    case RequestType.POST:
+                        httpResponse = await _httpClient.PostAsync(new Uri($"{baseUrl}/{endpoint}"), new HttpStringContent(JsonConvert.SerializeObject(body), UnicodeEncoding.Utf8, "application/json"));
+                        break;
+                    case RequestType.PUT:
+                        httpResponse = await _httpClient.PutAsync(new Uri($"{baseUrl}/{endpoint}"), new HttpStringContent(JsonConvert.SerializeObject(body), UnicodeEncoding.Utf8, "application/json"));
+                        break;
+                    case RequestType.DELETE:
+                        httpResponse = await _httpClient.DeleteAsync(new Uri($"{baseUrl}/{endpoint}"));
+                        break;
+                    default: throw new Exception("Need a RequestType");
+                }
 
-            if (httpResponse.StatusCode == HttpStatusCode.Unauthorized) // If token expired, fetch token and retry request once
-            {
-                await FetchToken();
-                return await SendRequest(requestType, endpoint, body, false);
+                if (httpResponse.StatusCode == HttpStatusCode.Unauthorized) // If token expired, fetch token and retry request once
+                {
+                    await FetchToken();
+                    return await SendRequest(requestType, endpoint, body, false);
+                }
+                return httpResponse;
             }
-            return httpResponse;
+            catch (Exception e)
+            {
+                var serverIsDown = e.Message.Contains("A connection with the server could not be established");
+                await new MessageDialog("No connection could be made to the server. Please try again later.", "Connection error").ShowAsync();
+                Application.Current.Exit();
+                return null;
+            }
         }
 
         public async Task FetchToken()
@@ -103,27 +115,40 @@ namespace WishList.Services
         public async Task Register(string username, string password)
         {
             var response = await SendRequest(RequestType.POST, "account/register", new { Email = username, Password = password });
-            SaveLoginDetails(username, password);
+            var content = await GetContentFromResponse(response);
+
+            _vault.Add(new PasswordCredential("login", username, password));
+            Token = JsonConvert.DeserializeObject<Token>(content).Value; // Token is returned on register call
         }
 
-        public void SaveLoginDetails(string username, string password)
+        public async Task SaveLoginDetails(string username, string password)
         {
-            _vault.Add(new PasswordCredential("login", username, password));
-            FetchToken();
-
+            try
+            {
+                _vault.Add(new PasswordCredential("login", username, password));
+            }
+            catch (ArgumentException)
+            {
+                RemoveCredential("login");
+                _vault.Add(new PasswordCredential("login", username, password));
+            }
+            await FetchToken(); // When login in again, new token is necessary
         }
 
         public void LogOut()
         {
-            var login = _vault.FindAllByResource("login").FirstOrDefault();
-            _vault.FindAllByResource("login").FirstOrDefault().RetrievePassword();
-            _vault.Remove(login);
+            RemoveCredential("login");
+            RemoveCredential("token");
+            Application.Current.Exit();
+        }
 
-            try // Only delete token if it exists, ignore exception if token is not saved for whatever reason
+        private void RemoveCredential(string key)
+        {
+            try // Only credential if it exists, ignore exception
             {
-                var token = _vault.FindAllByResource("token").FirstOrDefault();
-                _vault.FindAllByResource("token").FirstOrDefault().RetrievePassword();
-                _vault.Remove(token);
+                var credential = _vault.FindAllByResource(key).FirstOrDefault();
+                credential.RetrievePassword();
+                _vault.Remove(new PasswordCredential(key, credential.UserName, credential.Password));
             }
             catch (Exception) { }
         }

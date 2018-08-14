@@ -38,11 +38,24 @@ namespace WishList.Views
             User.Text = apiService.GetUser();
         }
 
-        public void GotoLogin(object sender, RoutedEventArgs e)
+        public async void LogOut(object sender, RoutedEventArgs e)
         {
-            apiService.LogOut();
+            var dialog = new Windows.UI.Popups.MessageDialog(
+                            "This will exit the application",
+                            "Log Out?");
 
-            (Window.Current.Content as Frame).Navigate(typeof(LoginPage));
+            dialog.Commands.Add(new Windows.UI.Popups.UICommand("Log Out") { Id = 0 });
+            dialog.Commands.Add(new Windows.UI.Popups.UICommand("Cancel") { Id = 1 });
+
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 1;
+
+            var result = await dialog.ShowAsync();
+
+            if ((int)result.Id == 0)
+            {
+                apiService.LogOut();
+            }
         }
     }
 }

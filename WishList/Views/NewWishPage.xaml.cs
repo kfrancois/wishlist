@@ -78,7 +78,7 @@ namespace WishList.Views
                     PriceErr.Text = "";
                     Save(wish);
                 }
-                catch (FormatException ex)
+                catch (FormatException)
                 {
                     PriceErr.Text = "Give a valid price";
                 }

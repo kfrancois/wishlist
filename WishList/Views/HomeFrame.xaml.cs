@@ -39,7 +39,7 @@ namespace WishList.Views
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
+            base.OnNavigatedTo(e); // TODO Uncomment
             //User.Text = apiService.GetUser();
             //ObservableCollection<Wishlist> WishLists = await wishListService.InvitedWishLists();
             //SendToast("You have got " + WishLists.Count() + " invite(s).");

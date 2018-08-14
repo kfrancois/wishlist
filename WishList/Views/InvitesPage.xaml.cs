@@ -33,8 +33,9 @@ namespace WishList.Views
 
         private async void ListView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
             var item = (Wishlist)ListView1.SelectedItem;
+
+            if (item == null) return;
 
             var dialog = new Windows.UI.Popups.MessageDialog(
                         "Are you sure you want to accept wishlist \"" + item.Title + "\" from " + item.CreatorName + "?",
@@ -59,6 +60,7 @@ namespace WishList.Views
         private async void AcceptInvite(Wishlist item)
         {
             await wishListService.AcceptInvite(item.WishlistId);
+            WishLists.Remove(item);
         }
 
         public void NewInvite(object sender, RoutedEventArgs e)

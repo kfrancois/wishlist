@@ -19,10 +19,10 @@ namespace WishList.Views
             InitializeComponent();
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            WishList = (Wishlist) e.Parameter;
+            WishList = (Wishlist)e.Parameter;
             PageHeader.Text = WishList.Title;
             Wishes = new ObservableCollection<Wish>(WishList.Wishes);
             ListView1.ItemsSource = Wishes;
@@ -30,6 +30,7 @@ namespace WishList.Views
 
         private async void ButtonShowMessageDialog_Click(object sender, RoutedEventArgs e)
         {
+            if (ListView1.SelectedIndex == -1) return;
 
             Wish selected = (Wish)ListView1.SelectedItem;
 
@@ -51,7 +52,12 @@ namespace WishList.Views
                 {
                     ShowEditPage(selected);
                 }
-            } else
+                else
+                {
+                    ListView1.SelectedItem = null;
+                }
+            }
+            else
             {
                 var dialog = new Windows.UI.Popups.MessageDialog(
                             "This wish is already claimed",

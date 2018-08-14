@@ -1,4 +1,5 @@
-﻿using Windows.UI.ViewManagement;
+﻿using Windows.UI.Core;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -19,26 +20,40 @@ namespace WishList.Views
             apiService = ApiService.Instance;
         }
 
-        public void Login(object sender, RoutedEventArgs e)
+        public async void Login()
         {
+            var Email = EmailField.Text;
+            var Password = PasswordField.Password;
 
-            /*if (UserName == null)
+            if (string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Password))
             {
-                ErrorMessage = "Username cannot be empty!";
-            }
-            else if (Password == null)
-            {
-                ErrorMessage = "Password cannot be empty!";
+                // TODO: Enable 
+                // ErrorMessage.Text = "Please fill in both e-mail and password";
+                await apiService.SaveLoginDetails("firstUser@hogent.be", "P@ssword1"); // TODO: Disable this
+                Frame.Navigate(typeof(Main));
             }
             else
-            {*/
-            apiService.SaveLoginDetails("firstUser@hogent.be", "P@ssword1");
-            Frame.Navigate(typeof(Main));
-            //}
-
+            {
+                await apiService.SaveLoginDetails(Email, Password);
+                Frame.Navigate(typeof(Main));
+            }
         }
 
-        private void RegisterButtonTextBlock_PointerPressed(object sender, PointerRoutedEventArgs e)
+        private void OnKeyDownHandler(object sender, KeyRoutedEventArgs e)
+        {
+            ErrorMessage.Text = "";
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                Login();
+            }
+        }
+
+        public void LoginClicked(object sender, RoutedEventArgs e)
+        {
+            Login();
+        }
+
+        private void RegisterClicked(object sender, PointerRoutedEventArgs e)
         {
             Frame.Navigate(typeof(RegisterPage));
         }

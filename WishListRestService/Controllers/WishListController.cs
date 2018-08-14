@@ -169,7 +169,7 @@ namespace WishListRestService.Controllers
             var wishList = WishListRepository.Find(id);
 
 
-            if (wishList.PendingInvites.Any(pi => pi.UserId == user?.Id))
+            if (wishList.Subscribers.Any(pi => pi.UserId == user?.Id))
             {
                 return BadRequest("subscription already exists");
             }

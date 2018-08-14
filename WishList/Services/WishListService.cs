@@ -26,6 +26,12 @@ namespace WishList.Services
             return JsonConvert.DeserializeObject<ObservableCollection<Wishlist>>(request.Result);
         }
 
+        public async Task<ObservableCollection<Wishlist>> BrowseWishlists()
+        {
+            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.GET, $"{_urlExtension}/browse"));
+            return JsonConvert.DeserializeObject<ObservableCollection<Wishlist>>(request.Result);
+        }
+
         public async Task<Wishlist> GetWishlist(int id)
         {
             var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.GET, $"{_urlExtension}/{id}"));

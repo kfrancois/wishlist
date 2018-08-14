@@ -68,10 +68,13 @@ namespace WishList.Views
             }
             else
             {
-                var item = _pages.First(p => p.Item2 == e.SourcePageType);
-                NavView.SelectedItem = NavView.MenuItems
-                    .OfType<NavigationViewItem>()
-                    .First(n => n.Tag.Equals(item.Item1));
+                var item = _pages.FirstOrDefault(p => p.Item2 == e.SourcePageType);
+                if (item != null)
+                {
+                    NavView.SelectedItem = NavView.MenuItems
+                        .OfType<NavigationViewItem>()
+                        .First(n => n.Tag.Equals(item.Item1));
+                }
             }
         }
     }

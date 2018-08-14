@@ -38,6 +38,11 @@ namespace WishList.Views
             User.Text = apiService.GetUser();
         }
 
-        public void GotoLogin(object sender, RoutedEventArgs e) => (Window.Current.Content as Frame).Navigate(typeof(LoginPage));
+        public void GotoLogin(object sender, RoutedEventArgs e)
+        {
+            apiService.LogOut();
+
+            (Window.Current.Content as Frame).Navigate(typeof(LoginPage));
+        }
     }
 }

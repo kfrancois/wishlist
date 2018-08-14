@@ -32,7 +32,7 @@ namespace WishList.Views
             }
             else
             {*/
-            apiService.SaveLoginDetails("firstUser@hogent.be", "P@ssword1"); // TODO
+            apiService.SaveLoginDetails("firstUser@hogent.be", "P@ssword1");
             Frame.Navigate(typeof(Main));
             //}
 
@@ -41,11 +41,6 @@ namespace WishList.Views
         private void RegisterButtonTextBlock_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
             Frame.Navigate(typeof(RegisterPage));
-        }
-
-        private void Image_Loaded(object sender, RoutedEventArgs e)
-        {
-            Opacity = 1;
         }
 
         private void Image_Loaded(object sender, RoutedEventArgs e)

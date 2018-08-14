@@ -28,14 +28,13 @@ namespace WishList.Services
 
         public async Task<Wish> CreateWish(Wish wish)
         {
-            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.POST, $"{_urlExtension}", JsonConvert.SerializeObject(wish)));
+            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.POST, $"{_urlExtension}", wish));
             return JsonConvert.DeserializeObject<Wish>(request.Result);
         }
 
         public async Task<Wish> PutWish(int id, Wish wish)
         {
-            var jsonWish = JsonConvert.SerializeObject(wish);
-            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.PUT, $"{_urlExtension}/{id}", jsonWish));
+            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.PUT, $"{_urlExtension}/{id}", wish));
             return JsonConvert.DeserializeObject<Wish>(request.Result);
         }
 

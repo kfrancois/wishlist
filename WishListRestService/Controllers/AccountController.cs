@@ -44,7 +44,7 @@ namespace WishListRestService.Controllers
                 return GenerateJwtToken(model.Email, appUser);
             }
 
-            throw new ApplicationException("INVALID_LOGIN_ATTEMPT");
+            return BadRequest("Invalid e-mail or password");
         }
 
         [HttpPost]
@@ -55,6 +55,11 @@ namespace WishListRestService.Controllers
                 UserName = model.Email,
                 Email = model.Email
             };
+            var userExists = await _userManager.FindByEmailAsync(model.Email) != null;
+            if (userExists)
+            {
+                return BadRequest("");
+            }
             var result = await _userManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)

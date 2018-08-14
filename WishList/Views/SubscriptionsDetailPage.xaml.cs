@@ -11,13 +11,8 @@ namespace WishList.Views
 {
     public sealed partial class SubscriptionsDetailPage : Page
     {
-<<<<<<< HEAD
         public ObservableCollection<Wish> Wishes = new ObservableCollection<Wish>();
         private WishService wishService;
-=======
-        public ObservableCollection<Wish> Wishes { get; set; }
-        private WishListService wishListService;
->>>>>>> a682471b19f971aef47428c31cbe6036ddda1179
 
         public SubscriptionsDetailPage()
         {

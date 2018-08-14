@@ -11,29 +11,13 @@
             <TextBlock x:Name="PageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" Text="Home"
-                             Grid.ColumnSpan="3"/>
+                             Margin="15"/>
+        </StackPanel>
         
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBlock Text="Welcome" Margin="10,10,10,10" FontWeight="Bold" FontSize="20px" TextAlignment="Center" TextWrapping="WrapWholeWords"/>
             <TextBlock Text="e-mail" Margin="10,10,10,10" FontWeight="Bold" FontSize="20px" TextAlignment="Center" TextWrapping="WrapWholeWords"/>
             <Image Source="/Assets/icon.png" Margin="5" Height="150px" Width="150px"/>
         </StackPanel>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Row="1" Grid.Column="1">
-                <TextBlock Text="Welcome" Foreground="Black" Margin="10" FontWeight="Bold" FontSize="20px" TextAlignment="Center" TextWrapping="WrapWholeWords"/>
-                <TextBlock x:Name="User" Foreground="Black" Margin="10" FontWeight="Bold" FontSize="20px" TextAlignment="Center" TextWrapping="WrapWholeWords"/>
-                <Image Source="/Assets/icon.png" Margin="5" Height="200px" Width="200px"/>
-            </StackPanel>
-        </Grid>
     </StackPanel>
 </Page>

@@ -90,7 +90,7 @@ namespace WishList.Services
 
             var response = await SendRequest(RequestType.POST, "account/login", new { Email = login.UserName, login.Password });
             var content = await GetContentFromResponse(response);
-            Token = JsonConvert.DeserializeAnonymousType(content, new { token = "" }).token;
+            Token = JsonConvert.DeserializeObject<Token>(content).Value;
         }
 
         public async Task<bool> TokenCheck()
@@ -100,11 +100,35 @@ namespace WishList.Services
             return response.StatusCode != HttpStatusCode.Unauthorized;
         }
 
+        public async Task Register(string username, string password)
+        {
+            var response = await SendRequest(RequestType.POST, "account/register", new { Email = username, Password = password });
+            SaveLoginDetails(username, password);
+        }
+
         public void SaveLoginDetails(string username, string password)
         {
             _vault.Add(new PasswordCredential("login", username, password));
+            FetchToken();
 
         }
+
+        public void LogOut()
+        {
+            var login = _vault.FindAllByResource("login").FirstOrDefault();
+            _vault.FindAllByResource("login").FirstOrDefault().RetrievePassword();
+            _vault.Remove(login);
+
+            try // Only delete token if it exists, ignore exception if token is not saved for whatever reason
+            {
+                var token = _vault.FindAllByResource("token").FirstOrDefault();
+                _vault.FindAllByResource("token").FirstOrDefault().RetrievePassword();
+                _vault.Remove(token);
+            }
+            catch (Exception) { }
+        }
+
+
 
         public bool IsSaved(string resource)
         {
@@ -128,5 +152,13 @@ namespace WishList.Services
             var login = _vault.FindAllByResource("login").FirstOrDefault();
             return login.UserName;
         }
+    }
+
+    class Token
+    {
+        [JsonProperty("token")]
+        public string Value { get; set; }
+        [JsonProperty("expiresAt")]
+        public DateTime ExpiresAt { get; set; }
     }
 }

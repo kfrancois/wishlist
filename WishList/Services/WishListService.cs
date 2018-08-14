@@ -51,7 +51,7 @@ namespace WishList.Services
 
         public async Task<Wish> CreateWish(int wishlistId, Wish wish)
         {
-            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.POST, $"{_urlExtension}/{wishlistId}", wish));
+            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.POST, $"{_urlExtension}/{wishlistId}/wish", wish));
             return JsonConvert.DeserializeObject<Wish>(request.Result);
         }
 

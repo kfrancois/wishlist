@@ -19,6 +19,9 @@ namespace WishList.Model
         public List<PendingInvite> Invites { get; set; }
         /*[JsonProperty("subscribers")]
         public List<User> Subscribers { get; set; }*/
+        [JsonProperty("pendingRequests")]
+        public List<PendingRequest> Requests { get; set; }
+
         [JsonProperty("description")]
         public string Description { get; set; }
         [JsonProperty("creatorName")]
@@ -31,14 +34,17 @@ namespace WishList.Model
             Description = null;
             Wishes = new List<Wish>();
             Invites = new List<PendingInvite>();
+            Requests = new List<PendingRequest>();
             //Subscribers = new List<User>();
         }
 
-        public void AddWish(Wish wish) {
-            Wishes.Add(wish); 
+        public void AddWish(Wish wish)
+        {
+            Wishes.Add(wish);
         }
-        public void RemoveWish(Wish wish) {
-            Wishes.Remove(wish); 
+        public void RemoveWish(Wish wish)
+        {
+            Wishes.Remove(wish);
         }
     }
 }

@@ -107,6 +107,9 @@
     <Compile Include="Services\ApiService.cs" />
     <Compile Include="Services\WishListService.cs" />
     <Compile Include="Services\WishService.cs" />
+    <Compile Include="Views\Browse.xaml.cs">
+      <DependentUpon>Browse.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditWish.xaml.cs">
       <DependentUpon>EditWish.xaml</DependentUpon>
     </Compile>
@@ -224,6 +227,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Views\Browse.DeviceFamily-Mobile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Browse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EditWish.xaml">
       <SubType>Designer</SubType>

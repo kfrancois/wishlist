@@ -20,7 +20,8 @@ namespace WishList.Views
             new Tuple<string, Type>("home", typeof(HomeFrame)),
             new Tuple<string, Type>("own", typeof(WishListScreen)),
             new Tuple<string, Type>("subs", typeof(SubscriptionsPage)),
-            new Tuple<string, Type>("invites", typeof(InvitesPage))
+            new Tuple<string, Type>("invites", typeof(InvitesPage)),
+            new Tuple<string, Type>("browse", typeof(Browse))
         };
 
         public Main()

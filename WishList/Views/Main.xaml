@@ -20,6 +20,11 @@
             <NavigationViewItem x:Uid="OwnWishLists" Icon="List" Content="Own WishLists" Tag="own"/>
             <NavigationViewItem x:Uid="SubscribedWishLists" Content="Subscribed WishLists" Tag="subs" Icon="Favorite"/>
             <NavigationViewItem x:Uid="Invites" Content="Invites" Tag="invites" Icon="Mail"/>
+            <NavigationViewItem x:Uid="Browse" Content="Browse" Tag="browse">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE721;"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
         </NavigationView.MenuItems>
 
         <NavigationView.HeaderTemplate>

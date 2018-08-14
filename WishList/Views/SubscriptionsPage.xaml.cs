@@ -28,6 +28,7 @@ namespace WishList.Views
         public ObservableCollection<Wish> WishListItem = new ObservableCollection<Wish>();
         public ObservableCollection<Wishlist> WishLists { get; set; }
         private WishListService wishListService;
+        public int SelectedId { get; set; }
         public SubscriptionsPage()
         {
             InitializeComponent();

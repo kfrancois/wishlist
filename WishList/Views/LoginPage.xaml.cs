@@ -47,5 +47,10 @@ namespace WishList.Views
         {
             Opacity = 1;
         }
+
+        private void Image_Loaded(object sender, RoutedEventArgs e)
+        {
+            Opacity = 1;
+        }
     }
 }

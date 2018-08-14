@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -49,6 +50,32 @@ namespace WishListRestService.Controllers
                 wishList.PendingRequests.ForEach(pr => pr.WishList = null);
             }
             return enumerable;
+        }
+
+        [Authorize]
+        [ProducesResponseType(201, Type = typeof(IList<Wishlist>))]
+        [HttpGet("browse")]
+        public async Task<IActionResult> BrowseWishlists()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var name = user.UserName;
+
+            var wishlists = WishListRepository.GetAll();
+
+            var filteredWishlists = wishlists.Where(wl => wl.CreatorName != name
+                && !wl.Subscribers.Any(sub => sub.UserId == user.Id)
+                && !wl.PendingInvites.Any(sub => sub.UserId == user.Id)
+                && !wl.PendingRequests.Any(sub => sub.UserId == user.Id)
+                ).ToArray();
+
+            foreach (var wishlist in wishlists)
+            {
+                wishlist.PendingInvites = new List<PendingInvite>();
+                wishlist.Subscribers = new List<WishlistSubscriber>();
+                wishlist.PendingRequests = new List<PendingRequest>();
+            }
+
+            return Ok(filteredWishlists);
         }
 
         [Authorize]

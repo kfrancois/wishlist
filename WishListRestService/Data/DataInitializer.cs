@@ -87,8 +87,11 @@ namespace WishListRestService.Data
             secondUser.Subscribe(subscription);
             secondUser.AddRequest(request);
 
+            var thirdUser = new ApplicationUser { UserName = "thirdUser@hogent.be", Email = "thirdUser@hogent.be" };
+
             await _userManager.CreateAsync(firstUser, "P@ssword1");
             await _userManager.CreateAsync(secondUser, "P@ssword1");
+            await _userManager.CreateAsync(thirdUser, "P@ssword1");
         }
     }
 }

@@ -20,7 +20,7 @@ namespace WishList.Views
 
         public async void Register(object sender, RoutedEventArgs e)
         {
-            await apiService.Register("thirdUser@hogent.be", "P@ssword1");
+            await apiService.Register("fourthUser@hogent.be", "P@ssword1");
             Frame.Navigate(typeof(Main));
         }
 

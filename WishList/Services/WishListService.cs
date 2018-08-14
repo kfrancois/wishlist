@@ -15,6 +15,12 @@ namespace WishList.Services
         private ApiService _apiService;
         public WishListService() => _apiService = ApiService.Instance;
 
+        public async Task<ObservableCollection<Wishlist>> GetAllWishlists()
+        {
+            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.GET, $"{_urlExtension}/all"));
+            return JsonConvert.DeserializeObject<ObservableCollection<Wishlist>>(request.Result);
+        }
+
         public async Task<ObservableCollection<Wishlist>> GetWishlists()
         {
             var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.GET, _urlExtension));
@@ -65,6 +71,18 @@ namespace WishList.Services
         public async Task<bool> AcceptInvite(int wishlistId)
         {
             var request = await _apiService.SendRequest(RequestType.POST, $"{_urlExtension}/{wishlistId}/accept");
+            return request.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> RequestAccess(int wishlistId)
+        {
+            var request = await _apiService.SendRequest(RequestType.POST, $"{_urlExtension}/{wishlistId}/request");
+            return request.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> GrantAccess(int wishlistId, string email)
+        {
+            var request = await _apiService.SendRequest(RequestType.POST, $"{_urlExtension}/{wishlistId}/grant", new { Email = email });
             return request.IsSuccessStatusCode;
         }
     }

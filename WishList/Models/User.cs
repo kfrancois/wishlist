@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace WishList.Model
 {
     public class User
     {
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
+        [JsonProperty("userName")]
+        public string UserName { get; set; }
 
         public List<Wishlist> SubscribedLists { get; set; }
 

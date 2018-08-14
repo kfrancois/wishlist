@@ -57,8 +57,23 @@ namespace WishListRestService.Controllers
         public IActionResult GetRequests()
         {
             var name = _userManager.GetUserAsync(User).Result?.UserName;
-            var requests = WishListRepository.GetAll().Where(wl => wl.CreatorName == name && wl.PendingRequests.Count > 0).SelectMany(wl => wl.PendingRequests).ToArray();
-            foreach (var request in requests) request.WishList = null;
+            var wishlists = WishListRepository.GetAll();
+            var requests = wishlists.Where(wl => wl.CreatorName == name && wl.PendingRequests.Count > 0).SelectMany(wl => wl.PendingRequests).ToArray();
+            foreach (var request in requests)
+            {
+                var wishlist = wishlists.Single(wl => wl.WishlistId == request.WishListId);
+                wishlist.PendingInvites.ForEach(pi => pi.WishList = null);
+                wishlist.Subscribers.ForEach(s => s.WishList = null);
+                wishlist.PendingRequests = new List<PendingRequest>();
+
+                var user = _userManager.FindByIdAsync(request.UserId).Result;
+
+                request.WishList = wishlist;
+                request.User = new ApplicationUser
+                {
+                    UserName = user.UserName
+                };
+            }
             return Ok(requests);
         }
 

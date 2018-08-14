@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using WishList.Model;
+using WishList.Models;
 
 namespace WishList.Services
 {
@@ -72,6 +73,12 @@ namespace WishList.Services
         {
             var request = await _apiService.SendRequest(RequestType.POST, $"{_urlExtension}/{wishlistId}/accept");
             return request.IsSuccessStatusCode;
+        }
+
+        public async Task<ObservableCollection<PendingRequest>> GetRequests()
+        {
+            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.POST, "{_urlExtension}/requests"));
+            return JsonConvert.DeserializeObject<ObservableCollection<PendingRequest>>(request.Result);
         }
 
         public async Task<bool> RequestAccess(int wishlistId)

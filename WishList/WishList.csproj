@@ -98,6 +98,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\PendingInvite.cs" />
+    <Compile Include="Models\PendingRequest.cs" />
     <Compile Include="Models\StringToPriceFormatter.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Wish.cs" />

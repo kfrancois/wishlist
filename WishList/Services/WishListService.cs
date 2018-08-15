@@ -81,7 +81,7 @@ namespace WishList.Services
 
         public async Task<ObservableCollection<PendingRequest>> GetRequests()
         {
-            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.POST, "{_urlExtension}/requests"));
+            var request = _apiService.GetContentFromResponse(await _apiService.SendRequest(RequestType.GET, $"{_urlExtension}/requests"));
             return JsonConvert.DeserializeObject<ObservableCollection<PendingRequest>>(request.Result);
         }
 

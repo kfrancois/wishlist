@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -25,31 +26,26 @@ namespace WishList.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ObservableCollection<Wishlist> ret = await wishListService.InvitedWishLists();
 
-            WishLists = ret.Count() == 0 ? new ObservableCollection<Wishlist>() : ret;
+            ObservableCollection<Wishlist> invites = await wishListService.InvitedWishLists();
+            InvitesListBox.ItemsSource = invites.Count() == 0 ? new ObservableCollection<Wishlist>() : invites;
 
-            ListView1.ItemsSource = WishLists;
-
-            ObservableCollection<PendingRequest> ret1 = await wishListService.GetRequests();
-
-            Requests = ret1.Count() == 0 ? new ObservableCollection<PendingRequest>() : ret1;
-
-            ListView2.ItemsSource = Requests;
+            ObservableCollection<PendingRequest> requests = await wishListService.GetRequests();
+            RequestsListBox.ItemsSource = requests.Count() == 0 ? new ObservableCollection<PendingRequest>() : requests;
         }
 
-        private async void ListView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void InviteSelected(object sender, SelectionChangedEventArgs e)
         {
-            var item = (Wishlist)ListView1.SelectedItem;
+            var item = (Wishlist)InvitesListBox.SelectedItem;
 
             if (item == null) return;
 
-            var dialog = new Windows.UI.Popups.MessageDialog(
+            var dialog = new MessageDialog(
                         "Are you sure you want to accept wishlist \"" + item.Title + "\" from " + item.CreatorName + "?",
                         "Accept invite");
 
-            dialog.Commands.Add(new Windows.UI.Popups.UICommand("Yes") { Id = 0 });
-            dialog.Commands.Add(new Windows.UI.Popups.UICommand("No") { Id = 1 });
+            dialog.Commands.Add(new UICommand("Yes") { Id = 0 });
+            dialog.Commands.Add(new UICommand("No") { Id = 1 });
 
             dialog.DefaultCommandIndex = 0;
             dialog.CancelCommandIndex = 1;
@@ -75,16 +71,16 @@ namespace WishList.Views
             (Window.Current.Content as Frame).Navigate(typeof(NewInvite));
         }
 
-        private async void ListView2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void RequestSelected(object sender, SelectionChangedEventArgs e)
         {
-            var item = (PendingRequest)ListView2.SelectedItem;
+            var item = (PendingRequest)RequestsListBox.SelectedItem;
 
-            var dialog = new Windows.UI.Popups.MessageDialog(
+            var dialog = new MessageDialog(
                         "Do you want to grant access?",
                         "Accept Request");
 
-            dialog.Commands.Add(new Windows.UI.Popups.UICommand("Yes") { Id = 0 });
-            dialog.Commands.Add(new Windows.UI.Popups.UICommand("No") { Id = 1 });
+            dialog.Commands.Add(new UICommand("Yes") { Id = 0 });
+            dialog.Commands.Add(new UICommand("No") { Id = 1 });
 
             dialog.DefaultCommandIndex = 0;
             dialog.CancelCommandIndex = 1;

@@ -15,9 +15,9 @@
         </StackPanel>
         <StackPanel>
             <TextBlock Text="Received Invites" FontWeight="Bold" FontSize="20px" Margin="10" Foreground="Black"/>
-            <ListBox x:Name="ListView1" Width="Auto" 
+            <ListBox x:Name="InvitesListBox" Width="Auto" 
                      HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Margin="10"
-                     SelectionChanged="ListView1_SelectionChanged">
+                     SelectionChanged="InviteSelected">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -39,9 +39,9 @@
             </ListBox>
             <Button Content="New Invite" HorizontalAlignment="Stretch" Click="NewInvite" Margin="10"/>
             <TextBlock Text="Received Requests" FontWeight="Bold" FontSize="20px" Margin="10" Foreground="Black"/>
-            <ListBox x:Name="ListView2" Width="Auto" 
+            <ListBox x:Name="RequestsListBox" Width="Auto" 
                      HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Margin="10"
-                     SelectionChanged="ListView2_SelectionChanged">
+                     SelectionChanged="RequestSelected">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>

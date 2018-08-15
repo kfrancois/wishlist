@@ -5,6 +5,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using WishList.Model;
+using WishList.Services;
 
 namespace WishList.Views
 {
@@ -13,16 +14,18 @@ namespace WishList.Views
     {
         public ObservableCollection<Wish> Wishes { get; set; }
         public Wishlist WishList { get; set; }
+        private WishListService wishListService;
         public WishListDetailPage()
         {
             ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
             InitializeComponent();
+            wishListService = WishListService.Instance;
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            WishList = (Wishlist)e.Parameter;
+            WishList = await wishListService.GetWishlist(((Wishlist)e.Parameter).WishlistId);
             PageHeader.Text = WishList.Title;
             Wishes = new ObservableCollection<Wish>(WishList.Wishes);
             ListView1.ItemsSource = Wishes;

@@ -27,10 +27,7 @@ namespace WishList.Views
 
             if (string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Password))
             {
-                // TODO: Enable 
-                // ErrorMessage.Text = "Please fill in both e-mail and password";
-                await apiService.SaveLoginDetails("firstUser@hogent.be", "P@ssword1"); // TODO: Disable this
-                Frame.Navigate(typeof(Main));
+                ErrorMessage.Text = "Please fill in both e-mail and password";
             }
             else
             {

@@ -37,8 +37,10 @@ namespace WishList.Views
         public void ShowDetail(object sender, SelectionChangedEventArgs e)
         {
             var selectedWishList = (Wishlist)ListBox.SelectedItem;
-            if (selectedWishList == null) return;
-            (Window.Current.Content as Frame).Navigate(typeof(WishListDetailPage), selectedWishList);
+            if (selectedWishList != null)
+            {
+                (Window.Current.Content as Frame).Navigate(typeof(WishListDetailPage), selectedWishList.WishlistId);
+            }
         }
 
         public void NewWishList(object sender, RoutedEventArgs e)

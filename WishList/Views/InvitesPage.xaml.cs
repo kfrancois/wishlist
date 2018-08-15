@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -13,13 +14,13 @@ namespace WishList.Views
 
     public sealed partial class InvitesPage : Page
     {
-        public ObservableCollection<Wishlist> WishLists { get; set; }
+        public ObservableCollection<Wishlist> Invites { get; set; }
         public ObservableCollection<PendingRequest> Requests { get; set; }
         private WishListService wishListService;
 
         public InvitesPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             wishListService = WishListService.Instance;
         }
 
@@ -27,11 +28,11 @@ namespace WishList.Views
         {
             base.OnNavigatedTo(e);
 
-            ObservableCollection<Wishlist> invites = await wishListService.InvitedWishLists();
-            InvitesListBox.ItemsSource = invites.Count() == 0 ? new ObservableCollection<Wishlist>() : invites;
+            Invites = await wishListService.InvitedWishLists();
+            InvitesListBox.ItemsSource = Invites.Count() == 0 ? new ObservableCollection<Wishlist>() : Invites;
 
-            ObservableCollection<PendingRequest> requests = await wishListService.GetRequests();
-            RequestsListBox.ItemsSource = requests.Count() == 0 ? new ObservableCollection<PendingRequest>() : requests;
+            Requests = await wishListService.GetRequests();
+            RequestsListBox.ItemsSource = Requests.Count() == 0 ? new ObservableCollection<PendingRequest>() : Requests;
         }
 
         private async void InviteSelected(object sender, SelectionChangedEventArgs e)
@@ -40,30 +41,24 @@ namespace WishList.Views
 
             if (item == null) return;
 
-            var dialog = new MessageDialog(
-                        "Are you sure you want to accept wishlist \"" + item.Title + "\" from " + item.CreatorName + "?",
-                        "Accept invite");
 
-            dialog.Commands.Add(new UICommand("Yes") { Id = 0 });
-            dialog.Commands.Add(new UICommand("No") { Id = 1 });
+            var text = $"Are you sure you want to accept wishlist '{item.Title}' from {item.CreatorName} ?";
+            var title = "Accept invite";
 
-            dialog.DefaultCommandIndex = 0;
-            dialog.CancelCommandIndex = 1;
-
-            var result = await dialog.ShowAsync();
-
-            if (result.Id.ToString() == "0")
+            if (await ShowDialog(text, title))
             {
                 AcceptInvite(item);
             }
-
-            System.Diagnostics.Debug.WriteLine(result.Id);
+            else
+            {
+                InvitesListBox.SelectedItem = null;
+            }
         }
 
         private async void AcceptInvite(Wishlist item)
         {
             await wishListService.AcceptInvite(item.WishlistId);
-            WishLists.Remove(item);
+            Invites.Remove(item);
         }
 
         public void NewInvite(object sender, RoutedEventArgs e)
@@ -75,9 +70,30 @@ namespace WishList.Views
         {
             var item = (PendingRequest)RequestsListBox.SelectedItem;
 
-            var dialog = new MessageDialog(
-                        "Do you want to grant access?",
-                        "Accept Request");
+            if (item == null) return;
+
+            var text = "Do you want to grant access?";
+            var title = "Accept request";
+
+            if (await ShowDialog(text, title))
+            {
+                AcceptRequest(item);
+            }
+            else
+            {
+                RequestsListBox.SelectedItem = null;
+            }
+        }
+
+        private async void AcceptRequest(PendingRequest item)
+        {
+            await wishListService.GrantAccess(item.Wishlist.WishlistId, item.User.UserName);
+            Requests.Remove(item);
+        }
+
+        private async Task<bool> ShowDialog(string text, string title)
+        {
+            var dialog = new MessageDialog(text, title);
 
             dialog.Commands.Add(new UICommand("Yes") { Id = 0 });
             dialog.Commands.Add(new UICommand("No") { Id = 1 });
@@ -86,18 +102,7 @@ namespace WishList.Views
             dialog.CancelCommandIndex = 1;
 
             var result = await dialog.ShowAsync();
-
-            if (result.Id.ToString() == "0")
-            {
-                AcceptRequest(item);
-            }
-        }
-
-        private async void AcceptRequest(PendingRequest item)
-        {
-            int wishlistId = item.Wishlist.WishlistId;
-            string user = item.User.UserName;
-            await wishListService.GrantAccess(wishlistId, user);
+            return result.Id.ToString() == "0";
         }
     }
 }

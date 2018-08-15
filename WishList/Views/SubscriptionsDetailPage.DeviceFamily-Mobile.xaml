@@ -28,14 +28,33 @@
             <TextBlock Text="{Binding CreatorName}" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right"/>
         </Grid>
 
-        <ListBox x:Name="ListView1" Width="Auto" HorizontalAlignment="Stretch" 
+        <ListBox x:Name="OpenWishesListBox" Width="Auto" HorizontalAlignment="Stretch" 
                              Height="Auto" VerticalAlignment="Stretch" Margin="10" 
-                 ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="ButtonShowMessageDialog_Click">
+                 ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="OpenWishSelected">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock Text="{Binding Name}" Foreground="Black" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding Price}" Foreground="Black"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="€" Foreground="Black"/>
+                            <TextBlock Text="{Binding Price}" Foreground="Black"/>
+                        </StackPanel>
+                        <TextBlock Text="{Binding Description}" Foreground="Black" FontStyle="Italic"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ListBox x:Name="ClaimedWishesListBox" Width="Auto" HorizontalAlignment="Stretch"  Height="Auto"
+                 VerticalAlignment="Stretch" Margin="10" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" Foreground="Black" FontWeight="Bold"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="€" Foreground="Black"/>
+                            <TextBlock Text="{Binding Price}" Foreground="Black"/>
+                        </StackPanel>
                         <TextBlock Text="{Binding Description}" Foreground="Black" FontStyle="Italic"/>
                     </StackPanel>
                 </DataTemplate>

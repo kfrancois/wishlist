@@ -36,7 +36,10 @@
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock Text="{Binding Name}" Foreground="Black" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding Price}" Foreground="Black"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="€" Foreground="Black"/>
+                            <TextBlock Text="{Binding Price}" Foreground="Black"/>
+                        </StackPanel>
                         <TextBlock Text="{Binding Description}" Foreground="Black" FontStyle="Italic"/>
                     </StackPanel>
                 </DataTemplate>

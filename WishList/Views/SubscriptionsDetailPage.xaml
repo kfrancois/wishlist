@@ -1,8 +1,9 @@
 ﻿<Page
     x:Class="WishList.Views.SubscriptionsDetailPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    >
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Page.Resources>
+    </Page.Resources>
     <StackPanel Name="stackpanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" Width="Auto">
         <StackPanel Background="SteelBlue">
             <Grid>
@@ -19,18 +20,44 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Click to fulfill"  Foreground="Black" TextWrapping="WrapWholeWords" Grid.Row="0" Grid.Column="0" Margin="10"/>
-            <TextBlock Text="{Binding CreatorName}" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right"/>
+            <TextBlock Text="Wishes to fulfill"  Foreground="Black" TextWrapping="WrapWholeWords" Grid.Row="0" Grid.Column="0" Margin="10"/>
         </Grid>
 
-        <ListBox x:Name="ListView1"  Width="Auto" HorizontalAlignment="Stretch" 
+        <ListBox x:Name="OpenWishesListBox"  Width="Auto" HorizontalAlignment="Stretch" 
                              Height="Auto" VerticalAlignment="Stretch" Margin="10" 
-                 ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="ButtonShowMessageDialog_Click">
+                 ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="OpenWishSelected">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock Text="{Binding Name}" Foreground="Black" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding Price}" Foreground="Black"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="€" Foreground="Black"/>
+                            <TextBlock Text="{Binding Price}" Foreground="Black"/>
+                        </StackPanel>
+                        <TextBlock Text="{Binding Description}" Foreground="Black" FontStyle="Italic"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <TextBlock Text="Fulfilled wishes"  Foreground="Black" TextWrapping="WrapWholeWords" Grid.Row="0" Grid.Column="0" Margin="10"/>
+
+
+        <ListBox x:Name="ClaimedWishesListBox"  Width="Auto" HorizontalAlignment="Stretch"  Height="Auto"
+                 VerticalAlignment="Stretch" Margin="10"  ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="IsHitTestVisible" Value="False"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" Foreground="Black" FontWeight="Bold"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="€" Foreground="Black"/>
+                            <TextBlock Text="{Binding Price}" Foreground="Black"/>
+                        </StackPanel>
                         <TextBlock Text="{Binding Description}" Foreground="Black" FontStyle="Italic"/>
                     </StackPanel>
                 </DataTemplate>

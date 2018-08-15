@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -11,7 +13,8 @@ namespace WishList.Views
 {
     public sealed partial class SubscriptionsDetailPage : Page
     {
-        public ObservableCollection<Wish> Wishes = new ObservableCollection<Wish>();
+        public ObservableCollection<Wish> OpenWishes = new ObservableCollection<Wish>();
+        public ObservableCollection<Wish> ClaimedWishes = new ObservableCollection<Wish>();
         private WishService wishService;
 
         public SubscriptionsDetailPage()
@@ -24,57 +27,56 @@ namespace WishList.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            var parameter = (Wishlist)e.Parameter;
-            PageHeader.Text = parameter.Title;
-            Wishes = new ObservableCollection<Wish>(parameter.Wishes);
-            ListView1.ItemsSource = Wishes;
+            var wishlist = (Wishlist)e.Parameter;
+            PageHeader.Text = $"{wishlist.Title} by {wishlist.CreatorName}";
+            OpenWishes = new ObservableCollection<Wish>(wishlist.Wishes.FindAll(w => !w.Claimed));
+            ClaimedWishes = new ObservableCollection<Wish>(wishlist.Wishes.FindAll(w => w.Claimed));
+            OpenWishesListBox.ItemsSource = OpenWishes;
+            ClaimedWishesListBox.ItemsSource = ClaimedWishes;
         }
 
-        private async void ButtonShowMessageDialog_Click(object sender, RoutedEventArgs e)
+        private async void OpenWishSelected(object sender, RoutedEventArgs e)
         {
-            Wish selected = (Wish)ListView1.SelectedItem;
+            Wish wish = (Wish)OpenWishesListBox.SelectedItem;
 
-            if (selected.Claimed == false)
+            if (wish == null) return;
+
+            var text = "Are you sure you want to fulfill this Wish?";
+            var title = "Fulfill this Wish";
+
+            if (await ShowDialog(text, title))
             {
-                var dialog = new Windows.UI.Popups.MessageDialog(
-                            "Are you sure you want to fulfill this Wish?",
-                            "Fulfill this Wish");
-
-                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Yes") { Id = 0 });
-                dialog.Commands.Add(new Windows.UI.Popups.UICommand("No") { Id = 1 });
-
-                dialog.DefaultCommandIndex = 0;
-                dialog.CancelCommandIndex = 1;
-
-                var result = await dialog.ShowAsync();
-                if ((int)result.Id == 0)
-                {
-                    Claime(selected);
-                }
-            } else
-            {
-                var dialog = new Windows.UI.Popups.MessageDialog(
-                           "This wish is already claimed",
-                           "Claimed");
-
-                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Cancel") { Id = 1 });
-
-                dialog.CancelCommandIndex = 1;
-
-                var result = await dialog.ShowAsync();
+                ClaimWish(wish);
             }
-
+            else
+            {
+                OpenWishesListBox.SelectedItem = null;
+            }
         }
 
-        private async void Claime(Wish selected)
+        private async Task<bool> ShowDialog(string text, string title)
         {
-            selected.Claimed = true;
-            await wishService.PutWish(selected.WishId, selected);
+            var dialog = new MessageDialog(text, title);
+
+            dialog.Commands.Add(new UICommand("Yes") { Id = 0 });
+            dialog.Commands.Add(new UICommand("No") { Id = 1 });
+
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 1;
+
+            var result = await dialog.ShowAsync();
+            return result.Id.ToString() == "0";
         }
 
-        public void GoBack(object sender, RoutedEventArgs e)
+        private async void ClaimWish(Wish wish)
         {
-            Frame.GoBack();
+            wish.Claimed = true;
+            await wishService.PutWish(wish.WishId, wish);
+
+            OpenWishes.Remove(wish);
+            ClaimedWishes.Add(wish);
         }
+
+        public void GoBack(object sender, RoutedEventArgs e) => Frame.GoBack();
     }
 }

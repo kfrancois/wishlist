@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <!--  <conv:StringToPriceFormatter x:Name="DateToStringFormatConverter"/> -->
-
+    
     <StackPanel Name="stackpanel" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" Width="Auto">
 
         <StackPanel Background="SteelBlue">
@@ -30,7 +30,7 @@
             <Button Content="Add New Wish" VerticalAlignment="Stretch" 
                     Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Click="NewWish"/>
         </Grid>
-        
+
         <ListBox x:Name="ListView1" Width="Auto" HorizontalAlignment="Stretch" 
                              Height="Auto" VerticalAlignment="Stretch" Margin="10" 
                  ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="ButtonShowMessageDialog_Click">
@@ -38,10 +38,15 @@
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock Text="{Binding Name}" Foreground="Black" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding Price}" Foreground="Black"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="€" Foreground="Black"/>
+                            <TextBlock Text="{Binding Price}" Foreground="Black"/>
+                        </StackPanel>
                         <TextBlock Text="{Binding Description}" Foreground="Black" FontStyle="Italic"/>
+
                     </StackPanel>
-               </DataTemplate>
+
+                </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
     </StackPanel>

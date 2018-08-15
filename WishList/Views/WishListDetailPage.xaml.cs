@@ -25,7 +25,7 @@ namespace WishList.Views
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            WishList = await wishListService.GetWishlist(((Wishlist)e.Parameter).WishlistId);
+            WishList = await wishListService.GetWishlist(((int)e.Parameter));
             PageHeader.Text = WishList.Title;
             Wishes = new ObservableCollection<Wish>(WishList.Wishes);
             ListView1.ItemsSource = Wishes;

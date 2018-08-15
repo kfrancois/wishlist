@@ -1,28 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+using System.Threading.Tasks;
+using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using WishList.Model;
 using WishList.Services;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace WishList.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class Browse : Page
     {
 
@@ -32,7 +19,7 @@ namespace WishList.Views
 
         public Browse()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             wishListService = WishListService.Instance;
         }
 
@@ -51,23 +38,34 @@ namespace WishList.Views
         {
             var SelectedList = (Wishlist)ListBox.SelectedItem;
 
-            var dialog = new Windows.UI.Popups.MessageDialog(
-                            "Do you want to enter this wishlist?",
-                            "Send Request");
+            if (SelectedList == null) return;
 
-            dialog.Commands.Add(new Windows.UI.Popups.UICommand("Yes") { Id = 0 });
-            dialog.Commands.Add(new Windows.UI.Popups.UICommand("Cancel") { Id = 1 });
+            var text = "Do you want to enter this wishlist?";
+            var title = "Send Request";
+
+            if (await ShowDialog(text, title))
+            {
+                await wishListService.RequestAccess(SelectedList.WishlistId);
+                WishLists.Remove(SelectedList);
+            }
+            else
+            {
+                ListBox.SelectedItem = null;
+            }
+        }
+
+        private async Task<bool> ShowDialog(string text, string title)
+        {
+            var dialog = new MessageDialog(text, title);
+
+            dialog.Commands.Add(new UICommand("Yes") { Id = 0 });
+            dialog.Commands.Add(new UICommand("No") { Id = 1 });
 
             dialog.DefaultCommandIndex = 0;
             dialog.CancelCommandIndex = 1;
 
             var result = await dialog.ShowAsync();
-
-            if ((int)result.Id == 0)
-            {
-                await wishListService.RequestAccess(SelectedList.WishlistId);
-            }
-
+            return result.Id.ToString() == "0";
         }
 
     }

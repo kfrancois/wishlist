@@ -88,15 +88,12 @@ namespace WishListRestService.Controllers
             var requests = wishlists.Where(wl => wl.CreatorName == name && wl.PendingRequests.Count > 0).SelectMany(wl => wl.PendingRequests).ToArray();
             foreach (var request in requests)
             {
-                var wishlist = wishlists.Single(wl => wl.WishlistId == request.WishListId);
-                wishlist.PendingInvites.ForEach(pi => pi.WishList = null);
-                wishlist.Subscribers.ForEach(s => s.WishList = null);
-                wishlist.PendingRequests = new List<PendingRequest>();
+                request.WishList.PendingInvites = new List<PendingInvite>();
+                request.WishList.Subscribers = new List<WishlistSubscriber>();
+                request.WishList.PendingRequests = new List<PendingRequest>();
 
                 var user = _userManager.FindByIdAsync(request.UserId).Result;
-
-                request.WishList = wishlist;
-                request.User = new ApplicationUser
+                request.User = new ApplicationUser // Only give username, as other fields are unnecessary
                 {
                     UserName = user.UserName
                 };
